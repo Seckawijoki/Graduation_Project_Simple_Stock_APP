@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="8dp"
+              android:gravity="center_vertical"
+              android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btn_connect_to_server"
+        android:textAllCaps="false"
+        android:text="@string/action_test_connect_to_server"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="@string/txt_test_title_send"/>
+
+    <EditText
+        android:id="@+id/et_test_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/btn_test_client_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/action_test_client_send"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_test_get_sz_id_and_name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:text="@string/action_test_get_sz"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="@string/txt_test_title_reception"/>
+
+    <EditText
+        android:id="@+id/et_test_reception"
+        android:inputType="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:background="@color/white"
+              android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/et_group_name"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/m_l_r_new_group_name"
+        android:layout_marginRight="@dimen/m_l_r_new_group_name"
+        android:layout_marginTop="@dimen/m_t_b_new_group_name"
+        android:layout_marginBottom="@dimen/m_t_b_new_group_name"
+        android:hint="@string/hint_add_new_group"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

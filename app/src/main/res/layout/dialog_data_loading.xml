@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:background="@color/transparent"
+              android:padding="@dimen/p_data_loading_dialog"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ProgressBar
+        android:fadeScrollbars="true"
+        android:scrollbarStyle="insideInset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_data_loading_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m_t_tv_data_loading_tips"
+        android:gravity="center"
+        android:minWidth="@dimen/min_w_tv_data_loading_tips"
+        android:text="@string/msg_under_connecting_to_server"/>
+</LinearLayout>

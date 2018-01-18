@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners
+        android:bottomLeftRadius="1px"
+        android:bottomRightRadius="1px"
+        android:topLeftRadius="1px"
+        android:topRightRadius="1px"
+        />
+    <solid
+        android:color="@color/transparent"
+        />
+    <stroke
+        android:width="1px"
+        android:color="@color/bg_tv_personal_information_disable"
+        />
+    <padding
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp"
+        android:bottom="3dp"
+        />
+</shape>

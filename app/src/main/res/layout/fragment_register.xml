@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h_register_progress"
+        android:layout_marginBottom="@dimen/p_t_b_activity"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/v_register_progress_first"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_bg_v_register_progress"
+            android:enabled="true"/>
+
+        <Button
+            android:id="@+id/v_register_progress_second"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_bg_v_register_progress"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/v_register_progress_third"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_bg_v_register_progress"
+            android:enabled="false"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/p_t_b_activity"
+        android:paddingLeft="@dimen/p_l_r_activity"
+        android:paddingRight="@dimen/p_l_r_activity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_register_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/action_back"
+                android:src="@mipmap/ic_arrow_back_black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_label_phone_register"
+                android:text="@string/label_phone_register"
+                android:textSize="@dimen/ts_label_register"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_et_phone_number">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/et_register_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_register_phone"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="phone"
+                        android:paddingRight="@dimen/p_r_et"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/img_clear_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/chb_show_password"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/chb_show_password"
+                    android:contentDescription="@string/action_clear"
+                    android:src="@mipmap/ic_clear_black_24dp"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_get_verification_code"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_et_vericode"
+                    android:orientation="vertical">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/et_vericode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/prompt_register_vericode"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="number"
+                        android:paddingRight="@dimen/p_r_et"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_get_vericode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_btn_get_vericode"
+                    android:text="@string/action_get_vericode"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_et_password">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/et_register_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_register_password"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="text"
+                        android:paddingRight="@dimen/p_r_et"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/img_clear_register_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/chb_show_password"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/chb_show_password"
+                    android:contentDescription="@string/action_clear"
+                    android:src="@mipmap/ic_clear_black_24dp"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/tv_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_get_verification_code"
+                android:text="@string/action_register"/>
+
+            <TextView
+                android:id="@+id/tv_go_back_to_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/m_t_go_back_to_login"
+                android:text="@string/action_login"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

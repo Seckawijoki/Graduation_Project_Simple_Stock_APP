@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:paddingLeft="@dimen/p_l_r_layout_simple_quotation"
+                android:paddingRight="@dimen/p_l_r_layout_simple_quotation"
+                android:paddingTop="@dimen/p_t_b_layout_simple_quotation"
+                android:paddingBottom="@dimen/p_t_b_layout_simple_quotation"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_simple_quotation_name_and_stock_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

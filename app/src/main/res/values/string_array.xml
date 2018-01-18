@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_main_labels">
+        <item>推荐</item>
+        <item>资产</item>
+        <item>行情</item>
+        <item>资讯</item>
+        <item>我的</item>
+    </string-array>
+    <string-array name="array_assets">
+        <item>动态</item>
+        <item>交易</item>
+        <item>资产</item>
+    </string-array>
+    <string-array name="array_quotations">
+        <item>自选</item>
+        <item>市场</item>
+    </string-array>
+    <string-array name="array_the_quotation">
+        <item>报价</item>
+        <item>新闻</item>
+        <item>评论</item>
+    </string-array>
+    <string-array name="array_k_line_choice_labels">
+        <item>分时</item>
+        <item>日K</item>
+        <item>周K</item>
+        <item>月K</item>
+    </string-array>
+</resources>

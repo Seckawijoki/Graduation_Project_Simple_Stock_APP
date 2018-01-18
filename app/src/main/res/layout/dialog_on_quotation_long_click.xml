@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingTop="@dimen/p_t_b_layout_on_quotation_long_click"
+              android:paddingBottom="@dimen/p_t_b_layout_on_quotation_long_click"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        style="@style/tv_on_quotation_long_click"
+        android:id="@+id/tv_delete"
+        android:text="@string/action_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        style="@style/tv_on_quotation_long_click"
+        android:id="@+id/tv_set_top"
+        android:text="@string/action_set_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        style="@style/tv_on_quotation_long_click"
+        android:id="@+id/tv_set_special_attention"
+        android:text="@string/action_set_special_attention"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        style="@style/tv_on_quotation_long_click"
+        android:id="@+id/tv_bulk_edition"
+        android:text="@string/action_bulk_edition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -1,0 +1,244 @@
+<resources>
+
+    <string name="empty"></string>
+    <string name="app_name">Graduation_Project</string>
+    <string name="action_back">返回</string>
+    <string name="action_clear">清空</string>
+    <string name="action_search">搜索</string>
+    <string name="action_share">分享</string>
+    <string name="action_refresh">刷新</string>
+    <string name="action_more_menus">更多菜单</string>
+    <string name="action_settings">设置</string>
+    <string name="action_message">信息</string>
+    <string name="action_add">添加</string>
+    <string name="action_add_person">加群/加好友</string>
+    <string name="action_create_group">创建群</string>
+    <string name="action_address_book">通讯录</string>
+    <string name="label_favorites">自选</string>
+    <string name="label_market">市场</string>
+    <string name="action_confirm">确认</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_delete">删除</string>
+    <string name="error_interrupted_exception">InterruptedException</string>
+    <string name="error_execution_exception">ExecutionException</string>
+    <string name="msg_succeed_in_deleting">删除成功</string>
+    <string name="error_failed_to_delete">删除失败</string>
+    <string name="prompt_full_screen_image">全屏图</string>
+    <string name="msg_under_developing">功能开发中</string>
+
+
+    <!-- Strings in LoginActivity -->
+    <string name="prompt_user_name_phone_and_email">牛牛号/手机号/邮箱</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_login">登录</string>
+    <string name="action_visitor_login">游客登录</string>
+    <string name="action_forget_password">忘记密码</string>
+    <string name="action_register">注册</string>
+    <string name="action_goto_test_activity">goto TestActivity</string>
+    <string name="error_empty_account_forbidden">请输入账号</string>
+    <string name="error_empty_password_forbidden">请输入密码</string>
+    <string name="error_too_short_password">密码长度不能少于6位</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="msg_login_successful">登录成功</string>
+    <string name="error_login_failed">登录失败</string>
+    <string name="error_has_not_registered">该用户尚未注册</string>
+    <string name="error_invalid_username">用户名不正确</string>
+    <string name="error_invalid_phone">手机号不正确</string>
+    <string name="error_invalid_email">邮箱不正确</string>
+    <string name="error_incorrect_password">密码不正确</string>
+    <string name="warn_different_mac_address">您上次登录的设备不同</string>
+    <string name="error_has_logged_in_on_another_phone">您的账号已经在另一台设备登录</string>
+    <string name="error_has_logged_in_on_the_phone">已在本设备登录过</string>
+    <string name="error_account_frozen">您的账号已被冻结</string>
+    <string name="error_internet_not_connected">网络异常</string>
+    <string name="error_server_disconnected">服务器异常</string>
+    <string name="cancel_login">取消登录</string>
+
+    <!-- Strings in RegisterActivity -->
+    <string name="label_phone_register">手机号注册</string>
+    <string name="label_countries_and_regions">国家/地区</string>
+    <string name="prompt_register_phone">您注册的手机号码</string>
+    <string name="prompt_register_vericode">验证码</string>
+    <string name="prompt_register_password">您设置的密码</string>
+    <string name="action_get_vericode">获取验证码</string>
+    <string name="format_get_vericode_again">%d秒后可重新获取</string>
+    <string name="msg_under_submitting_vericode">正在提交验证码……</string>
+    <string name="error_phone_been_registered">该手机号已被注册</string>
+    <string name="msg_get_vericode_successfully">验证码已发送到您的手机上</string>
+    <string name="msg_verify_successfully">验证成功</string>
+    <string name="error_vericode_mismatched">验证码错误</string>
+    <string name="msg_register_succeeded">注册成功</string>
+    <string name="error_register_failed">注册失败</string>
+
+    <!-- Strings in MainActivity -->
+    <string name="label_recommendations">推荐</string>
+    <string name="label_assets">资产</string>
+    <string name="label_quotations">行情</string>
+    <string name="label_information">资讯</string>
+    <string name="label_mine">我的</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="msg_one_more_time_click_to_exit">再次点击退出APP</string>
+
+    <!-- Strings in DataLoadingDialog -->
+    <string name="msg_under_connecting_to_server">正在连接服务器……</string>
+    <string name="msg_under_data_loading">正在加载数据……</string>
+    <string name="msg_under_data_loading_sz">正在加载深证成指……</string>
+    <string name="msg_under_data_loading_sh">正在加载上证指数……</string>
+    <string name="msg_under_data_loading_chuang_ye_ban">正在加载创业板指……</string>
+    <string name="error_failed_to_load_data">加载失败</string>
+    <string name="msg_succeed_in_loading_data">加载成功</string>
+    <string name="msg_under_saving_in_database">正在保存数据……</string>
+    <string name="error_failed_to_save_in_database">无法保存数据</string>
+
+    <!-- strings in AssetsFragment -->
+
+    <!-- strings in TransactionFragment -->
+    <string name="label_shanghai_shenzhen_simulate_market">沪深模拟盘</string>
+    <string name="label_profit_and_loss">盈亏：</string>
+    <string name="format_profit_and_loss">%.3f</string>
+    <string name="label_buy">买入</string>
+    <string name="label_sell">卖出</string>
+    <string name="label_transaction_price">价格</string>
+    <string name="format_transaction_price">%.3f</string>
+    <string name="label_total_revenue_of_buying">买入时总收入：</string>
+    <string name="label_total_revenue_of_selling">卖出时总收入：</string>
+    <string name="format_total_revenue">%d%%</string>
+    <string name="action_follow_to_buy">跟买</string>
+    <string name="action_follow_to_sell">跟卖</string>
+
+    <!-- strings in TradeFragment -->
+    <string name="label_unit_price_of_buying">买1价</string>
+    <string name="label_unit_price_of_selling">卖1价</string>
+    <string name="label_stock">股票</string>
+    <string name="label_order_of_magnitude">订单金额</string>
+    <string name="label_purchasing_power">购买力</string>
+    <string name="label_max_available_buying_count">最大可买</string>
+    <string name="label_max_available_selling_count">最大可卖</string>
+
+    <!-- strings in PersonalAssetFragment -->
+
+
+    <!-- Strings in GroupManagerFragment -->
+    <string name="label_group_manager">管理分组</string>
+    <string name="action_group_manager">管理分组</string>
+    <string name="format_group_name">%1$s (%2$d)</string>
+    <string name="action_add_new_group"> + 新建分组</string>
+    <string name="label_input_group_name">请输入分组名称</string>
+    <string name="hint_add_new_group">最多5个中文</string>
+    <string name="error_failed_to_add_new_group">添加失败</string>
+    <string name="error_the_group_has_existed">该分组已存在</string>
+    <string name="error_group_name_too_long">分组名称太长</string>
+    <string name="error_group_name_empty">请输入分组名称</string>
+    <string name="msg_succeed_in_adding_new_group">添加成功</string>
+
+    <!-- Strings in GroupEditorFragment -->
+    <string name="action_group_editor">编辑分组</string>
+    <string name="action_click_to_rename_group"> 点击分组名称可重命名</string>
+    <string name="msg_succeed_in_renaming_group">重命名成功</string>
+    <string name="error_failed_to_rename_group">重命名失败</string>
+
+    <!-- Strings in SearchFragment -->
+    <string name="prompt_stock_name_id_or_full_spelling">股票名称/代码/全拼</string>
+    <string name="label_stock_search_history">以下为历史查询记录</string>
+    <string name="action_clear_stock_search_history">清除记录</string>
+    <string name="msg_succeed_in_clearing_stock_search_history">已清除</string>
+    <string name="error_failed_to_clear_stock_search_history">清除失败</string>
+    <string name="msg_succeed_in_adding_favorite_stock">关注成功</string>
+    <string name="error_failed_to_add_favorite_stock">关注失败</string>
+    <string name="msg_succeed_in_cancelling_favorite_stock">取消关注</string>
+    <string name="error_failed_to_cancel_favorite_stock">取消关注失败</string>
+
+    <!-- strings in MessageFragment -->
+    <string name="label_message">消息</string>
+
+    <!-- Strings in QuotationListFragment -->
+    <string name="action_full_screen">全屏</string>
+    <string name="label_quotation_title_name_and_id">名称代码</string>
+    <string name="label_quotation_title_current_price">最新价</string>
+    <string name="label_quotation_title_fluctuation_rate">涨跌幅</string>
+    <string name="default_stock_name">股票名称</string>
+    <string name="default_stock_id">股票代码</string>
+    <string name="label_sz">SZ</string>
+    <string name="label_sh">SH</string>
+    <string name="format_stock_price">%.2f</string>
+    <string name="format_stock_point">%.3f</string>
+    <string name="format_stock_point_positive">+%.3f</string>
+    <string name="format_stock_point_negative">-%.3f</string>
+    <string name="format_stock_price_positive">+%.2f</string>
+    <string name="format_stock_price_negative">-%.2f</string>
+    <string name="format_fluctuation_rate">%.2f%%</string>
+    <string name="format_fluctuation_rate_positive">+%.2f%%</string>
+    <string name="format_fluctuation_rate_negative">-%.2f%%</string>
+    <string name="action_add_new_stock">添加股票</string>
+    <string name="action_set_special_attention">特别关注</string>
+    <string name="action_cancel_special_attention">取消关注</string>
+    <string name="msg_succeed_in_setting_special_attention">关注成功</string>
+    <string name="msg_succeed_in_cancelling_special_attention">取消关注</string>
+    <string name="action_set_top">置顶</string>
+    <string name="action_bulk_edition">批量编辑</string>
+    <string name="msg_succeed_in_setting_top">已置顶</string>
+    <string name="error_failed_to_set_top">置顶失败</string>
+    <string name="error_failed_to_set_special_attention">无法特别关注</string>
+    <string name="error_failed_to_cancel_special_attention">无法取消特别关注</string>
+    <string name="action_sort">排序</string>
+    <string name="msg_succeed_in_refreshing_quotation_list">行情列表刷新</string>
+
+
+    <!-- Strings in QuotationDetailsViewImpl -->
+    <string name="format_date_and_clock_time">MM/dd hh:mm</string>
+    <string name="tv_stock_status_has_not_opened">未开盘</string>
+    <string name="tv_stock_status_has_opened">已开盘</string>
+    <string name="tv_stock_status_has_closed">已收盘</string>
+    <string name="label_add_to_favorite_stocks">添加到自选</string>
+    <string name="label_up">↑</string>
+    <string name="label_down">↓</string>
+    <string name="default_value">- -</string>
+    <string name="label_highest_price_today">最　高</string>
+    <string name="label_opening_price_today">今　开</string>
+    <string name="label_lowest_price_today">最　低</string>
+    <string name="label_closing_price_yesterday">昨　收</string>
+    <string name="label_volume">成交量</string>
+    <string name="label_turnover">成交额</string>
+    <string name="label_fluctuation_rate">振　幅</string>
+    <string name="label_increment">上　涨</string>
+    <string name="label_flat_plate">平　盘</string>
+    <string name="label_decrement">下　跌</string>
+    <string name="label_average_price">平均价</string>
+    <string name="format_price_difference_rate_negative">-%.2f%%</string>
+    <string name="format_price_difference_rate_positive">+%.2f%%</string>
+    <string name="format_volume_in_hundred_million_hands">%.2f亿手</string>
+    <string name="format_turnover_in_hundred_million">%.2f亿</string>
+    <string name="format_average_price">%.3f</string>
+    <string name="prompt_k_line_chart">K线图</string>
+
+    <!-- K line -->
+
+    <!-- strings in MineFragment -->
+    <string name="label_user_id">牛牛号</string>
+    <string name="action_sign_up">签到</string>
+    <string name="action_has_signed_up">已签到</string>
+
+    <!-- strings in SettingsFragment -->
+    <string name="label_multi_account_management">多账号管理</string>
+    <string name="label_account_and_safety">账号与安全</string>
+    <string name="label_version_update">版本更新</string>
+    <string name="label_logout">退出登录</string>
+    <string name="label_about_us">关于我们</string>
+
+    <string name="label_contact_us">联系我们</string>
+
+    <!-- Strings in TestActivity -->
+    <string name="txt_test_title_send">发送内容</string>
+    <string name="txt_test_title_reception">接收内容</string>
+    <string name="action_test_client_send">发送</string>
+    <string name="action_test_get_sz">getSzIdAndName</string>
+    <string name="action_test_connect_to_server">连接到服务器</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+</resources>

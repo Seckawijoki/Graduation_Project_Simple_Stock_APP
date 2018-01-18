@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/action_search"
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:icon="@mipmap/ic_search_white"
+        android:id="@+id/menu_search"/>
+    <item
+        android:title="@string/action_more_menus"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="2"
+        android:icon="@mipmap/ic_more_horizontal_white"
+        android:id="@+id/menu_assets_more_menus">
+        <menu>
+            <item
+                android:title="@string/action_message"
+                app:showAsAction="ifRoom"
+                android:orderInCategory="3"
+                android:icon="@mipmap/ic_event_note_white"
+                android:id="@+id/menu_message"/>
+            <item
+                android:title="@string/action_share"
+                app:showAsAction="ifRoom"
+                android:orderInCategory="4"
+                android:icon="@mipmap/ic_share_white"
+                android:id="@+id/menu_share"/>
+            <item
+                android:title="@string/action_refresh"
+                app:showAsAction="ifRoom"
+                android:orderInCategory="5"
+                android:icon="@mipmap/ic_refresh_white"
+                android:id="@+id/menu_refresh"/>
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layout_list_item_stock_search"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:baselineAligned="false"
+              android:background="@drawable/selector_bg_quotation_list_item"
+              android:orientation="horizontal"
+              android:gravity="top"
+              android:paddingTop="@dimen/p_t_b_list_item_quotations">
+
+    <TextView
+        android:id="@+id/tv_stock_type"
+        style="@style/tv_stock_type.sz"
+        android:layout_width="@dimen/w_stock_type"
+        android:layout_height="@dimen/h_stock_type"
+        android:layout_marginTop="@dimen/m_t_stock_type"
+        android:text="@string/label_sz"/>
+    <RelativeLayout
+        android:layout_toRightOf="@id/tv_stock_type"
+        android:paddingRight="@dimen/p_r_list_item_quotations"
+        android:paddingBottom="@dimen/p_t_b_list_item_quotations"
+        android:id="@+id/layout_quotation_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_stock_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/m_l_stock_name"
+        android:layout_marginTop="@dimen/m_t_stock_name"
+        android:text="@string/default_stock_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ts_stock_name"/>
+
+    <TextView
+        android:id="@+id/tv_stock_id"
+        android:layout_marginBottom="@dimen/p_t_b_list_item_quotations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_stock_name"
+        android:layout_below="@id/tv_stock_name"
+        android:layout_marginTop="@dimen/m_t_stock_id"
+        android:text="@string/default_stock_id"
+        android:textColor="@color/tc_stock_id"
+        android:textSize="@dimen/ts_stock_id"/>
+
+    <CheckBox
+        android:id="@+id/chb_add_to_favorite_stocks"
+        android:button="@null"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/selector_bg_favorite"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+    <View
+        android:layout_toRightOf="@id/tv_stock_type"
+        android:layout_below="@id/layout_quotation_item"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/black"/>
+</RelativeLayout>

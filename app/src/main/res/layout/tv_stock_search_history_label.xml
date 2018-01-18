@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:background="@drawable/selector_bg_quotation_list_item"
+              android:orientation="vertical"
+              android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_stock_search_history_label"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ts_stock_search_history_label"
+        android:paddingLeft="@dimen/p_l_r_stock_search_history_label"
+        android:paddingRight="@dimen/p_l_r_stock_search_history_label"
+        android:paddingTop="@dimen/p_t_b_stock_search_history_label"
+        android:paddingBottom="@dimen/p_t_b_stock_search_history_label"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <View
+        android:layout_marginLeft="@dimen/p_l_r_stock_search_history_label"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/black"/>
+</LinearLayout>

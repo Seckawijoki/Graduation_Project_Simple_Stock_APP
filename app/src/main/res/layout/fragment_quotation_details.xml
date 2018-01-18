@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_quotation_details_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/m_b_quotation_details_id"
+            android:layout_marginRight="@dimen/m_r_quotation_details_id"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_quotation_details_id"/>
+
+        <TextView
+            android:id="@+id/tv_quotation_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_quotation_details_id"
+            android:layout_toRightOf="@id/tv_quotation_details_id"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts_quotation_details_name"/>
+
+        <TextView
+            android:id="@+id/tv_quotation_details_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_quotation_details_id"
+            android:layout_below="@id/tv_quotation_details_id"
+            android:layout_marginRight="@dimen/m_r_quotation_details_status"
+            android:textColor="@color/tc_quotation_details_status"
+            android:textSize="@dimen/ts_quotation_details_status"/>
+
+        <TextView
+            android:id="@+id/tv_quotation_details_date_and_clock_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_quotation_details_status"
+            android:layout_toRightOf="@id/tv_quotation_details_status"
+            android:textColor="@color/tc_quotation_details_date_and_clock_time"
+            android:textSize="@dimen/ts_quotation_details_date_and_clock_time"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chb_add_to_favorite_stocks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_quotation_details_id"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:text="@string/label_add_to_favorite_stocks"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/ts_quotation_details_add_to_favorite_stocks"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_quotation_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_rv_quotation_details"
+                android:layout_marginBottom="@dimen/m_b_rv_quotation_details"/>
+
+            <View
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_k_line_choice"
+                android:layout_marginTop="@dimen/m_t_k_line_choice"
+                android:layout_marginBottom="@dimen/m_b_k_line_choice"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/img_k_line"
+                    android:contentDescription="@string/prompt_k_line_chart"
+                    android:scaleType="fitXY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

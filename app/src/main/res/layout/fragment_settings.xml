@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_settings_fragment"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_settings"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@color/tc_tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@mipmap/ic_arrow_back_white"
+        app:theme="@style/MyToolBarTheme"
+        app:title="@string/action_settings">
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/layout_multi_account_management"
+        style="@style/layout_setting_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m_t_setting_item">
+
+        <TextView
+            style="@style/tv_settings_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_multi_account_management"/>
+
+        <TextView
+            android:id="@+id/tv_current_nickname"
+            style="@style/v_settings_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_account_and_safety"
+        style="@style/layout_setting_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m_t_setting_item">
+
+        <TextView
+            style="@style/tv_settings_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_account_and_safety"/>
+
+        <TextView
+            android:id="@+id/tv_device_lock_status"
+            style="@style/v_settings_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/img_device_lock_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/tv_device_lock_status"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1px"
+        android:layout_marginLeft="@dimen/p_l_r_setting_item"
+        android:background="@color/theme_blue_grey"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_about_us"
+        style="@style/layout_setting_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m_t_setting_item">
+
+        <TextView
+            style="@style/tv_settings_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_about_us"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_logout"
+        style="@style/layout_setting_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m_t_setting_item">
+
+        <TextView
+            style="@style/tv_settings_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_logout"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,181 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/p_t_b_activity"
+              android:paddingLeft="@dimen/p_l_r_activity"
+              android:paddingRight="@dimen/p_l_r_activity"
+              android:paddingTop="@dimen/p_t_b_activity"
+              tools:context=".functions.login.LoginActivity">
+
+    <!-- Login progress -->
+    <ScrollView
+        android:id="@+id/sv_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/layout_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_login_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/action_back"
+                android:src="@mipmap/ic_arrow_back_black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/m_b_label_login"
+                android:layout_marginTop="@dimen/m_t_label_login"
+                android:text="@string/action_login"
+                android:textSize="@dimen/ts_label_login"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actv_login_phone_or_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:completionThreshold="1"
+                        android:hint="@string/prompt_user_name_phone_and_email"
+                        android:inputType="textEmailAddress"
+                        android:imeOptions="actionUnspecified"
+                        android:maxLines="1"
+                        android:paddingRight="@dimen/p_r_et"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/img_clear_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/action_clear"
+                    android:src="@mipmap/ic_clear_black_24dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/chb_show_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:button="@null"
+                    android:drawableStart="@drawable/selector_bg_password_visibility"/>
+
+                <ImageView
+                    android:layout_marginRight="@dimen/m_r_clear_login_password"
+                    android:id="@+id/img_clear_login_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/chb_show_password"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/chb_show_password"
+                    android:contentDescription="@string/action_clear"
+                    android:src="@mipmap/ic_clear_black_24dp"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/chb_show_password">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actv_login_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_password"
+                        android:imeActionId="@+id/login"
+                        android:imeActionLabel="@string/action_login"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingRight="@dimen/p_r_et"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_sign_in"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/action_login"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/m_b_layout_visitor_login"
+                android:layout_marginTop="@dimen/m_t_layout_visitor_login"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_visitor_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/action_visitor_login"
+                    android:textAllCaps="false"/>
+
+                <TextView
+                    android:id="@+id/tv_forget_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/action_forget_password"
+                    android:textAllCaps="false"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/action_register"/>
+
+            <TextView
+                android:id="@+id/tv_test_activity"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/action_goto_test_activity"
+                android:textAllCaps="false"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/pb_login"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/m_b_pb_login"
+        android:visibility="gone"/>
+
+</LinearLayout>

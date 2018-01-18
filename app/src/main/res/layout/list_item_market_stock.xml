@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/layout_list_item_market_stock"
+                android:layout_width="@dimen/w_layout_market_stock"
+                android:paddingTop="@dimen/p_t_layout_market_stock"
+                android:layout_height="@dimen/h_layout_market_stock"
+                android:layout_marginBottom="@dimen/m_t_b_layout_market_stock"
+                android:layout_marginLeft="@dimen/m_l_r_layout_market_stock"
+                android:layout_marginRight="@dimen/m_l_r_layout_market_stock"
+                android:layout_marginTop="@dimen/m_t_b_layout_market_stock">
+
+    <TextView
+        android:id="@+id/tv_stock_current_price"
+        android:layout_marginTop="@dimen/m_t_market_stock_current_price"
+        android:layout_marginBottom="@dimen/m_b_market_stock_current_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/default_value"
+        android:textColor="@color/tc_market_stock_current_price"
+        android:textSize="@dimen/ts_market_stock_current_price"/>
+
+    <TextView
+        android:gravity="center_horizontal"
+        android:maxWidth="@dimen/max_w_market_stock_name"
+        android:id="@+id/tv_stock_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_stock_current_price"
+        android:layout_centerHorizontal="true"
+        android:text="@string/default_value"
+        android:textColor="@color/tc_market_stock_name"
+        android:textSize="@dimen/ts_market_stock_name"/>
+
+    <View
+        android:id="@+id/v_center_below"
+        android:layout_width="1px"
+        android:layout_height="1px"
+        android:layout_below="@id/tv_stock_current_price"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/tc_market_stock_current_point"/>
+
+    <TextView
+        android:id="@+id/tv_stock_current_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/m_r_market_stock_current_point"
+        android:layout_below="@id/tv_stock_current_price"
+        android:layout_toLeftOf="@id/v_center_below"
+        android:text="@string/default_value"
+        android:textColor="@color/tc_market_stock_current_point"
+        android:textSize="@dimen/ts_market_stock_current_point"/>
+
+    <TextView
+        android:id="@+id/tv_fluctuation_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/m_l_market_stock_fluctuation_rate"
+        android:layout_below="@id/tv_stock_current_price"
+        android:layout_toRightOf="@id/v_center_below"
+        android:text="@string/default_value"
+        android:textColor="@color/tc_market_stock_fluctuation_rate"
+        android:textSize="@dimen/ts_market_stock_fluctuation_rate"/>
+</RelativeLayout>
