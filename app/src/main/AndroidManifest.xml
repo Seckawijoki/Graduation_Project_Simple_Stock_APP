@@ -7,11 +7,14 @@
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--请求访问使用照相设备-->
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- Mob短信验证服务所需开启权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -127,6 +130,15 @@
             android:name=".functions.settings.SettingsActivity">
             <intent-filter>
                 <action android:name="com.seckawijoki.graduation_project.SETTINGS"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/empty"
+            android:name=".functions.personal_info.PersonalInfoActivity">
+            <intent-filter>
+                <action android:name="com.seckawijoki.graduation_project.PERSONAL_INFO"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>

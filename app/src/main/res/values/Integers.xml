@@ -10,4 +10,10 @@
     <integer name="weight_tv_group_editor_group_name">48</integer>
     <integer name="weight_img_set_top">10</integer>
     <integer name="weight_img_reorder">10</integer>
+
+    <!-- PersonalInfoFragment -->
+    <integer name="int_image_picker_crop_width">280</integer>
+    <integer name="int_image_picker_crop_height">280</integer>
+    <integer name="int_image_picker_output_x">800</integer>
+    <integer name="int_image_picker_output_y">800</integer>
 </resources>

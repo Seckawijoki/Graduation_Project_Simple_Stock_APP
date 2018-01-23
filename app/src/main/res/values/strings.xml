@@ -26,7 +26,8 @@
     <string name="error_failed_to_delete">删除失败</string>
     <string name="prompt_full_screen_image">全屏图</string>
     <string name="msg_under_developing">功能开发中</string>
-
+    <string name="action_save">保存</string>
+    <string name="error_sdcard_not_exist">SD卡未插入</string>
 
     <!-- Strings in LoginActivity -->
     <string name="prompt_user_name_phone_and_email">牛牛号/手机号/邮箱</string>
@@ -216,7 +217,7 @@
     <!-- K line -->
 
     <!-- strings in MineFragment -->
-    <string name="label_user_id">牛牛号</string>
+    <string name="label_user_id">用户账号</string>
     <string name="action_sign_up">签到</string>
     <string name="action_has_signed_up">已签到</string>
 
@@ -228,6 +229,26 @@
     <string name="label_about_us">关于我们</string>
 
     <string name="label_contact_us">联系我们</string>
+
+    <!-- strings in PersonalInfoFragment -->
+    <string name="label_personal_info">个人信息</string>
+    <string name="label_portrait">头像</string>
+    <string name="label_nickname">昵称</string>
+    <string name="label_phone">手机号</string>
+    <string name="label_email">邮箱</string>
+    <string name="label_select_portrait">选择头像</string>
+    <string name="action_photograph">拍照</string>
+    <string name="action_select_from_album">从相册选择</string>
+    <string name="action_check_portrait">查看头像</string>
+    <string name="label_not_bound_with_email">未绑定邮箱</string>
+    <string name="error_failed_to_change_user_portrait">头像更换失败</string>
+    <string name="msg_succeed_in_uploading_portrait">头像上传成功</string>
+    <string name="label_change_nickname">更改昵称</string>
+    <string name="prompt_new_nickname">新昵称</string>
+    <string name="tip_good_nickname_to_be_remembered">一个好的昵称可以让别人记住你</string>
+    <string name="error_failed_to_change_nickname">昵称更换失败</string>
+    <string name="msg_succeed_in_changing_nickname">昵称更换成功</string>
+
 
     <!-- Strings in TestActivity -->
     <string name="txt_test_title_send">发送内容</string>

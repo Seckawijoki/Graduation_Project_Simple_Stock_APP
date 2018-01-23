@@ -340,7 +340,7 @@ public interface ServerPath {
   /**
    * @Param
    * stockTableId {@link Long}
-   * kLineType {@link Integer} see {@link com.seckawijoki.graduation_project.constants.app.KLineType}
+   * kLineType {@link Integer}
    * @return a gif file
    * {@link java.io.File}
    */
@@ -360,6 +360,57 @@ public interface ServerPath {
    * ]
    */
   String GET_FOREIGN_STOCKS = BASE_PATH + "stock/getForeignStocks";
-
+  /**
+   * @Param
+   * stockTableId {@link Long}
+   * kLineType {@link Integer}
+   * @return an {@link org.json.JSONObject} containing
+   * {@link String} by the key "kLineChartFileName"
+   */
   String GET_K_LINE_CHART_FILE_NAME= BASE_PATH + "stock/getKLineChartFileName";
+  /**
+   * @Param
+   * null
+   * @return a gif file
+   * {@link java.io.File}
+   */
+  String GET_DEFAULT_PORTRAIT = BASE_PATH + "user/getDefaultPortrait";
+  /**
+   * @Param
+   * userId {@link Long}
+   * @return a gif file
+   * {@link java.io.File}
+   */
+  String GET_USER_PORTRAIT = BASE_PATH + "user/getUserPortrait";
+  /**
+   * @Param
+   * userId {@link Long}
+   * @return an {@link org.json.JSONObject} containing
+   * {@link String} by the key "phone"
+   * {@link String} by the key "email"
+   * {@link String} by the key "nickname"
+   */
+  String GET_USER_INFO = BASE_PATH + "user/getUserInfo";
+  /**
+   * @Param
+   * the portrait file as {@link java.io.File}
+   * userId as {@link Long}
+   * @return an {@link org.json.JSONObject} containing
+   * {@link Boolean} by the key "result"
+   */
+  String UPLOAD_USER_PORTRAIT = BASE_PATH + "user/uploadUserPortrait";
+  /**
+   * @Param
+   * userId {@link Long}
+   * nickname {@link String}
+   * @return a {@link Boolean} 
+   */
+  String CHANGE_NICKNAME = BASE_PATH + "user/changeNickname";
+  /**
+   * @Param
+   * userId {@link Long}
+   * email {@link String}
+   * @return a {@link Boolean}
+   */
+  String CHANGE_EMAIL = BASE_PATH + "user/changeEmail";
 }

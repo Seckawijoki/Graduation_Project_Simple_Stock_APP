@@ -11,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -39,7 +38,7 @@ public class MineFragment extends Fragment {
     super.onActivityCreated(savedInstanceState);
     presenter = new MinePresenterImpl();
     view = new MineViewImpl(this);
-    model = new MineModelImpl();
+    model = new MineModelImpl(getActivity());
     presenter.setView(view);
     presenter.setModel(model);
     presenter.initiate();
@@ -54,7 +53,11 @@ public class MineFragment extends Fragment {
         switch ( requestCode ){
           case ActivityRequestCode.LOGOUT:
             boolean hasLoggedOut = data.getBooleanExtra(IntentKey.HAS_LOGGED_OUT, false);
-            view.displayUserInformation(!hasLoggedOut);
+            view.displayShowUserInfo(!hasLoggedOut);
+            break;
+          case ActivityRequestCode.PERSONAL_INFO:
+            model.requestUserInfo();
+            model.requestUserPortrait();
             break;
         }
         break;
@@ -68,6 +71,5 @@ public class MineFragment extends Fragment {
   @Override
   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     inflater.inflate(R.menu.menu_mine, menu);
-    super.onCreateOptionsMenu(menu, inflater);
   }
 }

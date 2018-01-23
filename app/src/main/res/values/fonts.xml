@@ -58,6 +58,9 @@
     <!-- fonts in SettingsFragment -->
     <dimen name="ts_setting_item_label">16sp</dimen>
 
+    <!-- fonts in PersonalInfoFragment -->
+    <dimen name="ts_personal_info_label">16sp</dimen>
+    <dimen name="ts_personal_info_value">16sp</dimen>
 
 </resources>
 

@@ -57,7 +57,7 @@ final class MarketModelImpl implements MarketContract.Model {
     List<MarketStock> marketStockList = DataSupport
             .order("rankWeight desc")
             .find(MarketStock.class);
-    Log.d(TAG, "requestMarketStocksFromServer()\n: marketStockList = " + marketStockList);
+//    Log.d(TAG, "requestMarketStocksFromServer()\n: marketStockList = " + marketStockList);
     callback.onDisplayMarketStocks(marketStockList);
   }
 

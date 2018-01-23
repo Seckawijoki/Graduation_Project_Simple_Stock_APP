@@ -144,7 +144,7 @@ public class GroupEditorFragment extends Fragment implements GroupEditorContract
 
   @Override
   public void onGroupRename(String groupName) {
-    View v = activity.getLayoutInflater().inflate(R.layout.dialog_group_name, null);
+    View v = activity.getLayoutInflater().inflate(R.layout.dialog_on_group_name_change, null);
     final EditText et = v.findViewById(R.id.et_group_name);
     et.setText(groupName);
     et.setSelection(groupName.length());

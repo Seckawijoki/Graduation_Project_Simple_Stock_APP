@@ -11,12 +11,30 @@ import java.io.IOException;
 
 public class FileUtils {
   private FileUtils(){}
+  public static File getTempImage() {
+    if (android.os.Environment.getExternalStorageState().equals(
+            android.os.Environment.MEDIA_MOUNTED)) {
+      File tempFile = new File(Environment.getExternalStorageDirectory(), "temp.jpg");
+      try {
+        tempFile.createNewFile();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+      return tempFile;
+    }
+    return null;
+  }
+  public static boolean isSDCardExistent() {
+    return Environment.getExternalStorageState().equals(
+            Environment.MEDIA_MOUNTED);
+  }
   /**
    * @param saveDir
    * @return
    * @throws IOException 判断下载目录是否存在
    */
-  public static String isExistDir(String saveDir) throws IOException {
+  public static String isDirectoryExistent(String saveDir) throws IOException {
     // 下载位置
     File downloadFile = new File(Environment.getExternalStorageDirectory(), saveDir);
 //    File downloadFile = new File(saveDir);

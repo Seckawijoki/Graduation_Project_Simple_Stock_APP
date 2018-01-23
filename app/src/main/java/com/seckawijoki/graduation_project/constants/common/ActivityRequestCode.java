@@ -10,4 +10,8 @@ public interface ActivityRequestCode {
   int GROUP_EDITOR = 2;
   int SEARCH = 3;
   int THE_QUOTATION = 4;
+  int PERSONAL_INFO = 5;
+  int IMAGE_PICKER = 6;
+  int SYSTEM_CAMERA = 7;
+  int IMAGE_PICKER_CAMERA = 8;
 }

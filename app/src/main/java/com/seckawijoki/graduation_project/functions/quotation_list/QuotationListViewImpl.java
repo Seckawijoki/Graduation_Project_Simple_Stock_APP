@@ -180,7 +180,7 @@ final class QuotationListViewImpl implements QuotationListContract.View,
             view.findViewById(R.id.tv_set_top),
             tvSetSpecialAttention,
             view.findViewById(R.id.tv_set_special_attention));
-    longClickDialog = new AlertDialog.Builder(activity)
+    longClickDialog = new AlertDialog.Builder(activity, R.style.MyAlertDialog)
             .setTitle(stock.getStockName())
             .setView(view)
             .create();

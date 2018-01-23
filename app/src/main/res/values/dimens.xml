@@ -5,6 +5,10 @@
     <dimen name="p_r_et">20dp</dimen>
     <dimen name="max_h_tb">44dp</dimen>
     <dimen name="h_common_navigator">45dp</dimen>
+    <dimen name="p_t_b_layout_alert_dialog_custom">8dp</dimen>
+    <dimen name="p_l_r_alert_dialog_item">24dp</dimen>
+    <dimen name="p_t_b_alert_dialog_item">16dp</dimen>
+    <dimen name="p_l_r_layout_alert_dialog_custom">22dp</dimen>
 
     <!-- dimensions in LoginActivity -->
     <dimen name="m_t_layout_visitor_login">16dp</dimen>
@@ -68,7 +72,6 @@
     <!-- dimensions in GroupManagerFragment -->
     <dimen name="p_l_group_manager_group_name">18dp</dimen>
     <dimen name="p_t_b_group_manager_group_name">12dp</dimen>
-    <dimen name="m_l_r_new_group_name">22dp</dimen>
     <dimen name="m_t_b_new_group_name">26dp</dimen>
 
     <!-- dimensions in GroupEditorFragment -->
@@ -93,9 +96,6 @@
     <dimen name="m_r_stock_current_price">12dp</dimen>
     <dimen name="dr_p_add_new_stock">12dp</dimen>
     <dimen name="w_h_star_with_special_attention">18dp</dimen>
-    <dimen name="p_t_b_layout_on_quotation_long_click">8dp</dimen>
-    <dimen name="p_l_r_on_quotation_long_click">24dp</dimen>
-    <dimen name="p_t_b_on_quotation_long_click">16dp</dimen>
     <dimen name="w_h_quotation_sort">20dp</dimen>
 
     <!-- dimension in QuotationDetailsViewImpl -->
@@ -113,7 +113,6 @@
     <dimen name="m_t_k_line_choice">12dp</dimen>
     <dimen name="m_b_k_line_choice">12dp</dimen>
 
-
     <!-- dimension in MineFragment -->
     <dimen name="h_layout_personal_information">160dp</dimen>
     <dimen name="p_l_r_layout_personal_information">12dp</dimen>
@@ -129,5 +128,14 @@
     <dimen name="min_h_layout_setting_item">42dp</dimen>
     <dimen name="p_l_r_setting_item">20dp</dimen>
     <dimen name="m_t_setting_item">16dp</dimen>
+
+    <!-- dimension in PersonalInfoFragment -->
+    <dimen name="p_t_b_layout_personal_info">12dp</dimen>
+    <dimen name="p_l_r_layout_personal_info">16dp</dimen>
+    <dimen name="w_h_personal_info_user_portrait">24dp</dimen>
+    <dimen name="m_l_r_new_nickname">22dp</dimen>
+    <dimen name="m_t_new_nickname">26dp</dimen>
+    <dimen name="m_b_new_nickname">12dp</dimen>
+    <dimen name="m_b_new_nickname_tip">26dp</dimen>
 
 </resources>

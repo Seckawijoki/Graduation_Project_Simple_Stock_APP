@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.util.Log;
 
+import com.seckawijoki.graduation_project.constants.app.FilePath;
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.QuotationDetails;
 import com.seckawijoki.graduation_project.db.Stock;
@@ -43,7 +44,6 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
 
 final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model {
   private static final String TAG = "QuotationDetailsModImpl";
-  private String savePath = "/GraduationProject/";
   private Activity activity;
   private List<Stock> stockList = new LinkedList<>();
   private DataCallback callback;
@@ -199,7 +199,7 @@ final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model 
     try {
       InputStream inputStream = response.body().byteStream();
       long total = response.body().contentLength();
-      savePath = FileUtils.isExistDir(savePath);
+       String savePath = FileUtils.isDirectoryExistent(FilePath.K_LINE_CHART_PATH);
       File file = new File(savePath, fileName);
       FileOutputStream fos = new FileOutputStream(file);
       byte[] buf = new byte[2048];

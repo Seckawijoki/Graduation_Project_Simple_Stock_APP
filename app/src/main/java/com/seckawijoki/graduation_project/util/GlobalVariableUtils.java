@@ -58,9 +58,9 @@ public class GlobalVariableUtils {
   public static boolean setUserId(Activity activity, long userId){
     return putLong(activity, PreferenceKey.USER_ID, userId);
   }
-  public static String getUserId(Activity activity){
-    SharedPreferences sp = activity.getSharedPreferences(
-            activity.getString(R.string.app_name), Context.MODE_PRIVATE
+  public static String getUserId(Context context){
+    SharedPreferences sp = context.getSharedPreferences(
+            context.getString(R.string.app_name), Context.MODE_PRIVATE
     );
     // TODO: 2018/1/3
     return sp.getLong(PreferenceKey.USER_ID, 1) + "";

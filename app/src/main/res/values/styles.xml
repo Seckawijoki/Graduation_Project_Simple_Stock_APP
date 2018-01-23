@@ -9,7 +9,7 @@
         <item name="colorPrimaryDark">@color/theme_blue_grey</item>
         <item name="colorAccent">@color/theme_orange</item>
         <item name="android:colorBackground">@color/theme_blue_grey</item>
-        <item name="android:textColor">@color/white</item>
+        <!--<item name="android:textColor">@color/white</item>-->
         <item name="android:actionMenuTextColor">@color/white</item>
         <!-- 加入toolbar溢出【弹出】菜单的风格 -->
         <!--<item name="android:actionOverflowMenuStyle">@style/MyOverflowMenuStyle</item>-->
@@ -27,6 +27,10 @@
         <item name="android:dropDownHorizontalOffset">0dp</item>
         <!-- 设置弹出菜单文字颜色 -->
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MyAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/white</item>
     </style>
 
     <!-- styles for FullScreenDialog -->
@@ -69,14 +73,14 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center</item>
     </style>
-    <style name="tv_on_quotation_long_click">
+    <style name="tv_alert_dialog_item">
         <item name="android:textColor">@color/black</item>
-        <item name="android:background">@drawable/selector_bg_on_quotation_long_click</item>
+        <item name="android:background">@drawable/selector_bg_alert_dialog_item</item>
         <item name="android:textSize">@dimen/ts_on_quotation_long_click</item>
-        <item name="android:paddingLeft">@dimen/p_l_r_on_quotation_long_click</item>
-        <item name="android:paddingRight">@dimen/p_l_r_on_quotation_long_click</item>
-        <item name="android:paddingTop">@dimen/p_t_b_on_quotation_long_click</item>
-        <item name="android:paddingBottom">@dimen/p_t_b_on_quotation_long_click</item>
+        <item name="android:paddingLeft">@dimen/p_l_r_alert_dialog_item</item>
+        <item name="android:paddingRight">@dimen/p_l_r_alert_dialog_item</item>
+        <item name="android:paddingTop">@dimen/p_t_b_alert_dialog_item</item>
+        <item name="android:paddingBottom">@dimen/p_t_b_alert_dialog_item</item>
     </style>
 
     <!-- styles in OldQuotationsFragment -->

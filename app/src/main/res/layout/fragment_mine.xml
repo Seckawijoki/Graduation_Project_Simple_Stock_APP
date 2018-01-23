@@ -27,12 +27,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/h_layout_personal_information"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/p_t_b_layout_personal_information"
         android:paddingLeft="@dimen/p_l_r_layout_personal_information"
         android:paddingRight="@dimen/p_l_r_layout_personal_information"
         android:paddingTop="@dimen/p_t_b_layout_personal_information">
 
         <RelativeLayout
+            android:id="@+id/layout_user_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2">
@@ -106,6 +106,12 @@
                     android:text="@string/action_register"/>
             </LinearLayout>
         </RelativeLayout>
+        <View
+            android:background="@color/black"
+            android:layout_marginTop="@dimen/p_t_b_layout_personal_information"
+            android:layout_marginBottom="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
 
         <LinearLayout
             android:layout_width="match_parent"

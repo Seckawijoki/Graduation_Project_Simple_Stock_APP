@@ -18,4 +18,5 @@ public interface ActivityIntent {
   String MESSAGE = BASE_PATH + "MESSAGE";
   String ADDRESS_BOOK = BASE_PATH + "ADDRESS_BOOK";
   String FULL_SCREEN_IMAGE = BASE_PATH + "FULL_SCREEN_IMAGE";
+  String PERSONAL_INFO = BASE_PATH + "PERSONAL_INFO";
 }

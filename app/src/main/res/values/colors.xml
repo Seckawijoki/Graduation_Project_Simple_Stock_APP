@@ -16,6 +16,7 @@
     <color name="tc_default_magic_indicator_label_checked">@color/white</color>
     <color name="tc_default_magic_indicator_label">#607D8B</color>
     <color name="bg_default_magic_indicator">#607D8B</color>
+    <color name="bg_alert_dialog_item_clicked">#E0E0E0</color>
 
     <!-- default colors about Stocks and Quotations -->
     <color name="bg_stock_red">#F44336</color>
@@ -52,7 +53,6 @@
 
     <!-- colors in QuotationListFragment -->
     <color name="bg_quotation_list_item_clicked">#CC000000</color>
-    <color name="bg_on_quotation_long_click_item_clicked">#E0E0E0</color>
 
     <!-- colors in GroupManagerFragment -->
     <color name="tc_add_new_group">#0091EA</color>
@@ -79,6 +79,11 @@
 
     <!-- colors in SettingsFragment -->
     <color name="bg_setting_item_clicked">#9E9E9E</color>
-    <color name="bg_settings_fragment">#CFD8DC</color>
-    
+    <color name="bg_settings_fragment">#ECEFF1</color>
+
+    <!-- colors in PersonalInfoFragment -->
+    <color name="bg_personal_info_fragment">#ECEFF1</color>
+    <color name="tc_personal_info_label">@color/black</color>
+    <color name="tc_personal_info_value">#9E9E9E</color>
+
 </resources>

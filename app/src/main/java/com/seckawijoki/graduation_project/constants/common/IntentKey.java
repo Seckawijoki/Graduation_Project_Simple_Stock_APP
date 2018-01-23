@@ -31,4 +31,9 @@ public interface IntentKey {
    * {@link Boolean}
    */
   String HAS_FAVORED_STOCK = "hasFavoredStock";
+  /**
+   * @value
+   * {@link Boolean}
+   */
+  String HAS_CHANGED_PERSONAL_INFO = "hasChangedPersonalInfo";
 }

@@ -111,7 +111,7 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
   @Override
   public void onAddNewGroup() {
     // TODO: 2017/12/10
-    View v = activity.getLayoutInflater().inflate(R.layout.dialog_group_name, null);
+    View v = activity.getLayoutInflater().inflate(R.layout.dialog_on_group_name_change, null);
     final EditText et = v.findViewById(R.id.et_group_name);
     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity)
             .setView(v)
