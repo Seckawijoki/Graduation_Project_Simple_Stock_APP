@@ -12,13 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.functions.assets.OnFollowToBuyOrSellListener;
 
 public class TransactionFragment extends Fragment {
   private TransactionContract.Presenter presenter;
-
-  public static TransactionFragment newInstance() {
+  private OnFollowToBuyOrSellListener listener;
+  public static TransactionFragment newInstance(OnFollowToBuyOrSellListener listener) {
     Bundle args = new Bundle();
     TransactionFragment fragment = new TransactionFragment();
+    fragment.listener = listener;
     fragment.setArguments(args);
     return fragment;
   }
@@ -35,7 +37,7 @@ public class TransactionFragment extends Fragment {
     super.onActivityCreated(savedInstanceState);
     presenter = new TransactionPresenterImpl()
             .setModel(getActivity())
-            .setView(new TransactionViewImpl(this))
+            .setView(new TransactionViewImpl(this).setOnFollowToBuyOrSellListener(listener))
             .initiate();
   }
 

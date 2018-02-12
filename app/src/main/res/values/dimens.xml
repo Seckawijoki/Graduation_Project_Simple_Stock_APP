@@ -6,9 +6,10 @@
     <dimen name="max_h_tb">44dp</dimen>
     <dimen name="h_common_navigator">45dp</dimen>
     <dimen name="p_t_b_layout_alert_dialog_custom">8dp</dimen>
-    <dimen name="p_l_r_alert_dialog_item">24dp</dimen>
-    <dimen name="p_t_b_alert_dialog_item">16dp</dimen>
-    <dimen name="p_l_r_layout_alert_dialog_custom">22dp</dimen>
+    <dimen name="p_l_r_alert_dialog_options_item">24dp</dimen>
+    <dimen name="p_t_b_alert_dialog_options_item">16dp</dimen>
+    <dimen name="m_l_r_layout_alert_dialog_edit_text">22dp</dimen>
+    <dimen name="p_l_r_layout_alert_dialog">22dp</dimen>
 
     <!-- dimensions in LoginActivity -->
     <dimen name="m_t_layout_visitor_login">16dp</dimen>
@@ -35,15 +36,56 @@
     <!-- dimensions in AssetsFragment -->
 
 
-    <!-- dimensions in TradeFragment -->
-    <dimen name="p_l_r_layout_simple_quotation">12dp</dimen>
-    <dimen name="p_t_b_layout_simple_quotation">6dp</dimen>
+    <!-- dimensions in TransactionFragment -->
+    <dimen name="p_l_r_layout_simulate_market">8dp</dimen>
+    <dimen name="p_t_b_layout_simulate_market">8dp</dimen>
+    <dimen name="p_l_r_layout_list_item_transaction">12dp</dimen>
+    <dimen name="p_t_b_layout_list_item_transaction">16dp</dimen>
+    <dimen name="w_h_transaction_user_portrait">24dp</dimen>
+    <dimen name="m_l_transaction_user_nickname">16dp</dimen>
+    <dimen name="m_t_transaction_dotted_line">16dp</dimen>
+    <dimen name="m_t_transaction_buy_or_sell_label">32dp</dimen>
+    <dimen name="m_r_transaction_buy_or_sell_label">12dp</dimen>
+    <dimen name="m_t_transaction_price_label">4dp</dimen>
+    <dimen name="m_r_transaction_price_label">12dp</dimen>
+    <dimen name="m_t_transaction_date_time">16dp</dimen>
+    <dimen name="w_follow_to_buy_or_sell">64dp</dimen>
+    <dimen name="h_follow_to_buy_or_sell">28dp</dimen>
 
-    <!-- dimensions in InformationFragment -->
-    <dimen name="h_vp_information">160dp</dimen>
-    <dimen name="h_tv_vp_information">24dp</dimen>
-    <dimen name="w_img_rv_information">70dp</dimen>
-    <dimen name="h_img_rv_information">85dp</dimen>
+    <!-- dimensions in TradeFragment -->
+    <dimen name="h_layout_trade_stock_info">56dp</dimen>
+    <dimen name="p_l_open_k_line_chart">12dp</dimen>
+    <dimen name="m_t_layout_unit_price_of_buying_and_selling">2dp</dimen>
+    <dimen name="p_l_r_layout_unit_price_of_buying_or_selling">12dp</dimen>
+    <dimen name="p_t_b_layout_unit_price_of_buying_or_selling">8dp</dimen>
+    <dimen name="p_l_r_layout_trade_info">12dp</dimen>
+    <dimen name="p_t_b_layout_trade_info">16dp</dimen>
+    <dimen name="m_r_trade_info_label_or_value">@dimen/p_l_r_layout_trade_info</dimen>
+    <dimen name="m_t_trade_summary">12dp</dimen>
+    <dimen name="m_l_r_trade_summary">@dimen/p_l_r_layout_trade_info</dimen>
+    <dimen name="m_t_b_layout_trade_summary_list_item">2dp</dimen>
+    <dimen name="m_l_r_trade_buy_or_sell">12dp</dimen>
+    <dimen name="m_t_b_trade_buy_or_sell">16dp</dimen>
+    <dimen name="radius_bg_trade_buy_or_sell">6dp</dimen>
+    <dimen name="p_t_b_layout_trade_stock_info">6dp</dimen>
+    <dimen name="p_l_r_layout_trade_stock_info">6dp</dimen>
+    <dimen name="m_t_trade_stock_current_price">3dp</dimen>
+    <dimen name="m_l_trade_stock_current_point">18dp</dimen>
+    <dimen name="m_l_trade_stock_fluctuation_rate">24dp</dimen>
+    <dimen name="m_t_trade_stock_name_id_and_district">12dp</dimen>
+    <dimen name="m_t_trade_price_or_count">1px</dimen>
+
+    <!-- dimensions in LatestInformationFragment -->
+    <dimen name="h_vp_latest_information">160dp</dimen>
+    <dimen name="h_tv_vp_latest_information">24dp</dimen>
+    <dimen name="w_img_rv_latest_information">70dp</dimen>
+    <dimen name="p_l_r_layout_latest_information_rv_list_item">8dp</dimen>
+    <dimen name="p_t_b_layout_latest_information_rv_list_item">8dp</dimen>
+    <dimen name="m_b_layout_latest_information_rv_list_item">1dp</dimen>
+    <dimen name="h_img_rv_latest_information">85dp</dimen>
+    <dimen name="stroke_information_indicator">1dp</dimen>
+    <dimen name="h_information_indicator">40dp</dimen>
+    <dimen name="radius_information_indicator">20dp</dimen>
 
     <!-- dimension in SearchFragment -->
 
@@ -70,12 +112,14 @@
 
 
     <!-- dimensions in GroupManagerFragment -->
-    <dimen name="p_l_group_manager_group_name">18dp</dimen>
+    <dimen name="p_l_group_manager_list_item">18dp</dimen>
     <dimen name="p_t_b_group_manager_group_name">12dp</dimen>
     <dimen name="m_t_b_new_group_name">26dp</dimen>
+    <dimen name="h_group_list_item_divider">1px</dimen>
 
     <!-- dimensions in GroupEditorFragment -->
-    <dimen name="p_l_group_editor_list_item">18dp</dimen>
+    <dimen name="p_l_r_layout_group_editor_list_item">18dp</dimen>
+    <dimen name="p_t_b_group_name">12dp</dimen>
 
     <!-- dimensions in SearchFragment -->
     <dimen name="p_l_r_stock_search_history_label">22dp</dimen>
@@ -97,6 +141,7 @@
     <dimen name="dr_p_add_new_stock">12dp</dimen>
     <dimen name="w_h_star_with_special_attention">18dp</dimen>
     <dimen name="w_h_quotation_sort">20dp</dimen>
+    <dimen name="h_quotation_list_item_divider">1px</dimen>
 
     <!-- dimension in QuotationDetailsViewImpl -->
     <dimen name="m_r_quotation_details_id">32dp</dimen>
@@ -125,17 +170,29 @@
     <dimen name="m_r_label_user_id">8dp</dimen>
 
     <!-- dimension in SettingsFragment -->
-    <dimen name="min_h_layout_setting_item">42dp</dimen>
-    <dimen name="p_l_r_setting_item">20dp</dimen>
+    <dimen name="min_h_layout_setting_item">46dp</dimen>
+    <dimen name="p_l_r_layout_settings_list_item">16dp</dimen>
+    <dimen name="p_t_b_layout_settings_list_item">12dp</dimen>
+    <dimen name="m_t_layout_settings_list_item">12dp</dimen>
     <dimen name="m_t_setting_item">16dp</dimen>
+    <dimen name="h_settings_list_item_divider">1px</dimen>
+    <dimen name="h_settings_list_item_gap">16dp</dimen>
 
     <!-- dimension in PersonalInfoFragment -->
-    <dimen name="p_t_b_layout_personal_info">12dp</dimen>
-    <dimen name="p_l_r_layout_personal_info">16dp</dimen>
+    <dimen name="p_t_b_layout_personal_info_list_item">@dimen/p_l_r_layout_settings_list_item</dimen>
+    <dimen name="p_l_r_layout_personal_info_list_item">@dimen/p_t_b_layout_settings_list_item</dimen>
     <dimen name="w_h_personal_info_user_portrait">24dp</dimen>
     <dimen name="m_l_r_new_nickname">22dp</dimen>
     <dimen name="m_t_new_nickname">26dp</dimen>
     <dimen name="m_b_new_nickname">12dp</dimen>
-    <dimen name="m_b_new_nickname_tip">26dp</dimen>
+    <dimen name="m_b_new_nickname_tip">20dp</dimen>
 
+    <!-- dimensions in AboutUsFragment -->
+    <dimen name="m_t_app_icon">14dp</dimen>
+    <dimen name="m_t_app_name_and_version">@dimen/m_t_app_icon</dimen>
+    <dimen name="m_b_app_name_and_version">14dp</dimen>
+    <dimen name="p_t_b_layout_about_us_list_item">@dimen/p_l_r_layout_settings_list_item</dimen>
+    <dimen name="p_l_r_layout_about_us_list_item">@dimen/p_t_b_layout_settings_list_item</dimen>
+    <dimen name="m_b_official_website">2dp</dimen>
+    <dimen name="m_b_copyright">16dp</dimen>
 </resources>

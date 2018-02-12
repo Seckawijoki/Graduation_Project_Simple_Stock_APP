@@ -9,7 +9,7 @@
               android:paddingLeft="@dimen/p_l_r_activity"
               android:paddingRight="@dimen/p_l_r_activity"
               android:paddingTop="@dimen/p_t_b_activity"
-              tools:context=".functions.login.LoginActivity">
+              tools:resources=".functions.login.LoginActivity">
 
     <!-- Login progress -->
     <ScrollView
@@ -34,10 +34,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginBottom="@dimen/m_b_label_login"
                 android:layout_marginTop="@dimen/m_t_label_login"
                 android:text="@string/action_login"
+                android:textColor="@color/black"
                 android:textSize="@dimen/ts_label_login"/>
 
             <RelativeLayout

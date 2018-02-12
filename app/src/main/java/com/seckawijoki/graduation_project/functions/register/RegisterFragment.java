@@ -23,11 +23,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.functions.login.LoginActivity;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.ToastUtils;
-import com.seckawijoki.graduation_project.util.ViewUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ViewUtils;
 
 public class RegisterFragment extends Fragment implements RegisterContract.View, View.OnClickListener {
   private ActionCallback callback;
@@ -213,9 +213,9 @@ public class RegisterFragment extends Fragment implements RegisterContract.View,
     if (successful){
       btnProgressThird.setEnabled(true);
 //      ( (MyApplication) activity.getApplicationContext() ).setLoginAccount(actvPhone.getText().toString());
-      GlobalVariableUtils.setAccount(activity, actvPhone.getText().toString());
-//      GlobalVariables.getInstance().account = actvPhone.getText().toString();
-      startActivity(new Intent(ActivityIntent.MAIN));
+      GlobalVariableTools.setAccount(activity, actvPhone.getText().toString());
+//      GlobalVariables.newInstance().account = actvPhone.getText().toString();
+      startActivity(new Intent(IntentAction.MAIN));
       activity.finish();
     } else {
       actvVericode.setError(getString(msgId));

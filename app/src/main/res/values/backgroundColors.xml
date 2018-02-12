@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="theme_background">#455A64</color>
+
+    <!-- default colors -->
+    <color name="theme_blue_grey">#263238</color>
+    <color name="theme_orange">#FF9100</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#D50000</color>
+    <color name="transparent">#00000000</color>
+    <color name="bg_default_magic_indicator">#607D8B</color>
+    <color name="bg_alert_dialog_options_item_clicked">#E0E0E0</color>
+
+
+    <!-- default colors about Stocks and Quotations -->
+    <color name="bg_stock_red">#F44336</color>
+    <color name="bg_stock_green">#4CAF50</color>
+    <color name="bg_stock_grey">#9E9E9E</color>
+
+    <!-- colors in MainActivity -->
+    <color name="tb_main_fragments">#3F51B5</color>
+    <color name="bg_tv_vp_information">#BDBDBD</color>
+    <color name="bg_main_labels_checked">#0091EA</color>
+    <color name="bg_main_labels">@color/white</color>
+
+    <!-- colors in RegisterFragment -->
+    <color name="bg_register_progress_enabled">#EF6C00</color>
+    <color name="bg_register_progress_disabled">#FFCC80</color>
+
+    <!-- colors in TransactionFragment -->
+    <color name="bg_follow_to_buy">#2962FF</color>
+    <color name="bg_follow_to_sell">#FF6D00</color>
+
+    <!-- colors in TradeFragment -->
+    <color name="bg_trade_fragment">#ECEFF1</color>
+    <color name="bg_unit_price_of_buying">#B3E5FC</color>
+    <color name="bg_unit_price_of_selling">#FFF9C4</color>
+    <color name="bg_buy">@color/bg_follow_to_buy</color>
+    <color name="bg_sell">@color/bg_follow_to_sell</color>
+
+    <!-- colors in QuotationsFragment -->
+    <color name="bg_quotations_magic_indicator">#263238</color>
+    <color name="bg_quotations_indicator">#607D8B</color>
+
+    <!-- colors in FavoritesFragment -->
+    <color name="bg_favorites_label_dark">#E0E0E0</color>
+    <color name="bg_favorites_label_light">#0091EA</color>
+
+    <!-- colors in MarketFragment -->
+
+    <!-- colors in QuotationListFragment -->
+    <color name="bg_quotation_list_item_clicked">#CC000000</color>
+
+    <!-- colors in GroupManagerFragment -->
+    <color name="bg_group_manager_clicked">#263238</color>
+    <color name="bg_group_manager_editor_fragment">#37474F</color>
+    <color name="bg_group_list_item">#455A64</color>
+
+    <!-- colors in OldQuotationsFragment -->
+    <color name="bg_stock_type_sz">#E91E63</color>
+    <color name="bg_stock_type_sh">#E91E63</color>
+    <color name="bg_stock_fluctuation_rate_red">@color/bg_stock_red</color>
+    <color name="bg_stock_fluctuation_rate_green">@color/bg_stock_green</color>
+    <color name="bg_stock_fluctuation_rate_grey">@color/bg_stock_grey</color>
+
+    <!-- colors in QuotationDetailsViewImpl -->
+
+    <!-- colors in InformationFragment -->
+    <color name="bg_information_indicator_checked">#0091EA</color>
+
+    <!-- colors in MineFragment -->
+    <color name="bg_tv_personal_information">#2979FF</color>
+    <color name="bg_tv_personal_information_disable">#B0BEC5</color>
+
+    <!-- colors in SettingsFragment -->
+    <color name="bg_setting_item_clicked">#9E9E9E</color>
+    <color name="bg_settings_list_item_clicked">#E0E0E0</color>
+    <color name="bg_settings_fragment">#ECEFF1</color>
+    <!--<color name="bg_settings_divider">#B0BEC5</color>-->
+    <color name="bg_settings_divider">@color/bg_settings_fragment</color>
+
+    <!-- colors in PersonalInfoFragment -->
+    <color name="bg_personal_info_fragment">@color/bg_settings_fragment</color>
+    <color name="bg_personal_info_divider">@color/bg_settings_divider</color>
+
+    <!-- colors in AboutUsFragment -->
+    <color name="bg_about_us_fragment">@color/bg_settings_fragment</color>
+
+</resources>

@@ -5,12 +5,15 @@ package com.seckawijoki.graduation_project.constants.server;
  */
 
 public interface ServerPath {
-  String WITH_WIFI_CONNECTION = "http://192.168.191.1:80/";
+  String WITH_LAPTOP_WIFI_CONNECTION = "http://192.168.191.1:80/";
+  String WITH_WHOLESALE_DEPARTMENT_WIFI_CONNECTION = "http://192.168.0.107:80/";
   String IN_THE_DORMITORY = "http://172.29.25.78:80/";
   String IN_THE_LIBRARY = "http://172.27.10.123:80/";
-  String AT_HOME = "http://192.168.1.104:80/";
+  String AT_HOME = "http://192.168.1.105:80/";
 //  String BASE_PATH = WITH_WIFI_CONNECTION;
-  String BASE_PATH = IN_THE_DORMITORY;
+//  String BASE_PATH = IN_THE_DORMITORY;
+  String BASE_PATH = AT_HOME;
+//  String BASE_PATH = WITH_WHOLESALE_DEPARTMENT_WIFI_CONNECTION;
   /**
    * @Param
    * phone {@link String}
@@ -377,8 +380,8 @@ public interface ServerPath {
   String GET_DEFAULT_PORTRAIT = BASE_PATH + "user/getDefaultPortrait";
   /**
    * @Param
-   * userId {@link Long}
-   * @return a gif file
+   * DIRECTLY portraitFileName
+   * @return a file
    * {@link java.io.File}
    */
   String GET_USER_PORTRAIT = BASE_PATH + "user/getUserPortrait";
@@ -389,6 +392,7 @@ public interface ServerPath {
    * {@link String} by the key "phone"
    * {@link String} by the key "email"
    * {@link String} by the key "nickname"
+   * {@link String} by the key "portraitFileName"
    */
   String GET_USER_INFO = BASE_PATH + "user/getUserInfo";
   /**
@@ -413,4 +417,69 @@ public interface ServerPath {
    * @return a {@link Boolean}
    */
   String CHANGE_EMAIL = BASE_PATH + "user/changeEmail";
+  /**
+   * @Param
+   * null
+   * @return a {@link org.json.JSONArray}
+   * in which the element as {@link org.json.JSONObject} containing
+   * {@link Double} by the key "tradePrice"
+   * {@link Integer} by the key "tradeCount"
+   * {@link java.util.Date} by the key "tradeDate"
+   * {@link java.sql.Time} by the key "tradeTime"
+   * {@link Long} by the key "stockTableId"
+   * {@link String} by the key "stockName"
+   * {@link String} by the key "stockId"
+   * {@link Integer} by the key "stockType"
+   * {@link Long} by the key "userId"
+   * {@link String} by the key "nickname"
+   */
+  String GET_ALL_TRANSACTIONS = BASE_PATH + "transaction/getAllTransactions";
+  /**
+   * @Param
+   * userId {@link Long}
+   * @return a {@link org.json.JSONArray}
+   * in which the element as {@link org.json.JSONObject} containing
+   * {@link Double} by the key "tradePrice"
+   * {@link Integer} by the key "tradeCount"
+   * {@link java.util.Date} by the key "tradeDate"
+   * {@link java.sql.Time} by the key "tradeTime"
+   * {@link Long} by the key "stockTableId"
+   * {@link String} by the key "stockName"
+   * {@link String} by the key "stockId"
+   * {@link Integer} by the key "stockType"
+   * {@link String} by the key "nickname"
+   */
+  String GET_USER_TRANSACTIONS = BASE_PATH + "transaction/getUserTransactions";
+  /**
+   * @Param
+   * userId {@link Long}
+   * stockTableId {@link Long}
+   * tradePrice {@link Double}
+   * tradeCount {@link Integer}
+   * @return {@link org.json.JSONObject} containing
+   * {@link Boolean} by the key "result"
+   */
+  String ADD_TRANSACTION = BASE_PATH + "transaction/addTransaction";
+  /**
+   * @Param
+   * null
+   * @return {@link org.json.JSONObject} containing
+   * {@link Integer} by the key "versionCode"
+   * {@link String} by the key "versionName"
+   * {@link String} by the key "versionDescription"
+   */
+  String GET_LATEST_APP_VERSION = BASE_PATH + "app/getLatestAppVersion";
+  /**
+   * @Param
+   * null
+   * @return {@link org.json.JSONObject} containing
+   * {@link Integer} by the key "versionCode"
+   */
+  String GET_LATEST_APP_VERSION_CODE = BASE_PATH + "app/getLatestAppVersionCode";
+  /**
+   * @Param
+   * null
+   * @return an APK file
+   */
+  String GET_LATEST_APK = BASE_PATH + "app/getLatestApk";
 }

@@ -23,12 +23,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
-import com.seckawijoki.graduation_project.constants.common.BundleKey;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.db.client.SearchStock;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 import java.util.List;
 
@@ -114,11 +113,12 @@ public final class SearchFragment extends Fragment
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
     Log.w(TAG, "onActivityResult()\n: ");
     Log.d(TAG, "onActivityResult()\n: requestCode = " + requestCode);
     Log.d(TAG, "onActivityResult()\n: resultCode = " + resultCode);
     Log.d(TAG, "onActivityResult()\n: data = " + data);
-    if ( resultCode == Activity.RESULT_OK && requestCode == ActivityRequestCode.THE_QUOTATION ) {
+    if ( resultCode == Activity.RESULT_OK && requestCode == ActivityRequestCode.SINGLE_QUOTATION ) {
       boolean hasFavoredFromDetails = data.getBooleanExtra(IntentKey.HAS_FAVORED_STOCK, false);
       Log.d(TAG, "onActivityResult()\n: hasFavoredFromDetails = " + hasFavoredFromDetails);
       hasFavored = hasFavored | hasFavoredFromDetails;
@@ -233,12 +233,18 @@ public final class SearchFragment extends Fragment
 
   @Override
   public void onSearchStockClick(SearchStock searchStock) {
-    Intent intent = new Intent(ActivityIntent.THE_QUOTATION);
-    Bundle bundle = new Bundle();
-    bundle.putLong(BundleKey.STOCK_TABLE_ID, searchStock.getStockTableId());
-    intent.putExtra(IntentKey.THE_QUOTATION, bundle);
-    startActivityForResult(intent, ActivityRequestCode.THE_QUOTATION);
-    callback.onRequestSaveStockSearchHistory(searchStock);
+    boolean clickForCallback = activity.getIntent().getBooleanExtra(IntentKey.SEARCH_FOR_CALLBACK, false);
+    if ( clickForCallback ) {
+      Intent intent = new Intent();
+      intent.putExtra(IntentKey.STOCK_TABLE_ID, searchStock.getStockTableId());
+      activity.setResult(Activity.RESULT_OK, intent);
+      activity.finish();
+    } else {
+      Intent intent = new Intent(IntentAction.SINGLE_QUOTATION);
+      intent.putExtra(IntentKey.STOCK_TABLE_ID, searchStock.getStockTableId());
+      startActivityForResult(intent, ActivityRequestCode.SINGLE_QUOTATION);
+      callback.onRequestSaveStockSearchHistory(searchStock);
+    }
   }
 
   @Override

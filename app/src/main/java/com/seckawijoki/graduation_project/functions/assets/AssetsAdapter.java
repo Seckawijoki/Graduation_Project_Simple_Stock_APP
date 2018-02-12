@@ -6,16 +6,23 @@ package com.seckawijoki.graduation_project.functions.assets;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
+import com.seckawijoki.graduation_project.db.client.UserTransaction;
 import com.seckawijoki.graduation_project.functions.personal_asset.PersonalAssetFragment;
 import com.seckawijoki.graduation_project.functions.trade.TradeFragment;
 import com.seckawijoki.graduation_project.functions.transaction.TransactionFragment;
 
-class AssetsAdapter extends FragmentPagerAdapter {
+class AssetsAdapter extends FragmentPagerAdapter implements OnFollowToBuyOrSellListener {
+  private TradeFragment tradeFragment;
+  private ViewPager vp;
   AssetsAdapter(FragmentManager fm) {
     super(fm);
   }
-
+  public AssetsAdapter setViewPager(ViewPager viewPager) {
+    this.vp = viewPager;
+    return this;
+  }
   @Override
   public int getCount() {
     return 3;
@@ -26,12 +33,19 @@ class AssetsAdapter extends FragmentPagerAdapter {
     Fragment fragment;
     switch ( position ){
       default:case 0:
-        fragment = TransactionFragment.newInstance();break;
+        fragment = TransactionFragment.newInstance(this);break;
       case 1:
-        fragment = TradeFragment.newInstance();break;
+        fragment = tradeFragment = TradeFragment.newInstance();break;
       case 2:
         fragment = PersonalAssetFragment.newInstance();break;
     }
     return fragment;
+  }
+
+  @Override
+  public void onFollowToBuyOrSell(UserTransaction transaction) {
+    // TODO: 2018/1/26
+    vp.setCurrentItem(1);
+    tradeFragment.getPresenter().getView().displayFollowingTransaction(transaction);
   }
 }

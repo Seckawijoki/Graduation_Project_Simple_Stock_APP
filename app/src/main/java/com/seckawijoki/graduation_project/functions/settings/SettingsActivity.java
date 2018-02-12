@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.util.ActivityUtils;
+import com.seckawijoki.graduation_project.utils.ActivityUtils;
 
 /**
  * Created by 瑶琴频曲羽衣魂 on 2017/12/2 at 23:12.

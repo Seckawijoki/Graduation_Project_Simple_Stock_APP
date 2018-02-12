@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.util.ActivityUtils;
+import com.seckawijoki.graduation_project.utils.ActivityUtils;
 
 public class RegisterActivity extends AppCompatActivity {
   private RegisterContract.Presenter presenter;

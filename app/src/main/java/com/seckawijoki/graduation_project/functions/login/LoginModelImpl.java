@@ -8,7 +8,7 @@ import com.seckawijoki.graduation_project.R;
 import com.seckawijoki.graduation_project.constants.server.LoginStatus;
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.client.LoggedInUsers;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -162,7 +162,7 @@ class LoginModelImpl implements LoginContract.Model {
         try {
           int loginStatus = jsonObject.getInt(LoginStatus.KEY);
           long userId = jsonObject.getLong("userId");
-          GlobalVariableUtils.setUserId(activity, userId);
+          GlobalVariableTools.setUserId(activity, userId);
           checkLoginStatus(loginStatus);
           saveLoggedInUsers(mAccount, mPassword, loginStatus);
         } catch ( JSONException e ) {

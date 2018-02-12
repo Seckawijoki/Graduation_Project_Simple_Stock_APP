@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 /**
  * Created by 瑶琴频曲羽衣魂 on 2017/10/22.
@@ -52,7 +52,7 @@ public class Layer3Fragment extends Fragment {
                           "Layer 2 haven't been chose!");
                   listener.onFragmentChange(1, arguments);
                 } else {
-                  fragment.getActivity().startActivity(new Intent(ActivityIntent.MAIN));
+                  fragment.getActivity().startActivity(new Intent(IntentAction.MAIN));
                   fragment.getActivity().finish();
                 }
               }

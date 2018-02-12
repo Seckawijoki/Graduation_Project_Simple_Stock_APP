@@ -1,28 +1,28 @@
 package com.seckawijoki.graduation_project.functions.quotation_list;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.content.res.Resources;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.constants.app.UnderlineDecoration;
 import com.seckawijoki.graduation_project.constants.app.QuotationListSortType;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
-import com.seckawijoki.graduation_project.constants.common.BundleKey;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.constants.server.DefaultGroups;
 import com.seckawijoki.graduation_project.db.Stock;
-import com.seckawijoki.graduation_project.util.ToastUtils;
-import com.seckawijoki.graduation_project.util.ViewUtils;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ViewUtils;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ import java.util.List;
  */
 
 final class QuotationListViewImpl implements QuotationListContract.View,
-        OnQuotationClickListener, View.OnClickListener{
+        OnQuotationClickListener, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
   private static final String TAG = "QuotationListViewImpl";
   private String groupName;
   private AppCompatActivity activity;
@@ -39,11 +39,12 @@ final class QuotationListViewImpl implements QuotationListContract.View,
   private Fragment fragment;
   private ActionCallback callback;
   private QuotationListAdapter adapter;
+  private SwipeRefreshLayout layoutRefresh;
   private RecyclerView rv;
   private ImageView imgStockNameSort;
   private ImageView imgCurrentPriceSort;
   private ImageView imgFluctuationRateSort;
-  private ViewGroup layoutAddNewStock;
+  private View layoutAddNewStock;
   private TextView tvAddNewStock;
   private AlertDialog longClickDialog;
   private Stock stock;
@@ -60,12 +61,26 @@ final class QuotationListViewImpl implements QuotationListContract.View,
             imgFluctuationRateSort = view.findViewById(R.id.img_quotation_fluctuation_rate_sort),
             view.findViewById(R.id.img_quotation_full_screen),
             tvAddNewStock = view.findViewById(R.id.tv_add_new_stock));
+    layoutRefresh = view.findViewById(R.id.layout_refresh_stock_list);
     imgStockNameSort.setVisibility(View.INVISIBLE);
     imgCurrentPriceSort.setVisibility(View.INVISIBLE);
     imgFluctuationRateSort.setVisibility(View.INVISIBLE);
+    layoutRefresh.setOnRefreshListener(this);
+    layoutRefresh.setColorSchemeResources(
+            R.color.bg_stock_grey,
+            R.color.bg_stock_green,
+            R.color.bg_stock_red
+    );
     adapter = new QuotationListAdapter(activity)
             .setOnQuotationClickListener(this);
     rv.setLayoutManager(new LinearLayoutManager(activity));
+    Resources resources = activity.getResources();
+    UnderlineDecoration itemDecoration = new UnderlineDecoration.Builder(activity)
+            .setPaddingLeft(resources.getDimension(R.dimen.w_stock_type) + resources.getDimension(R.dimen.m_l_stock_name))
+            .setLineSizeRes(R.dimen.h_quotation_list_item_divider)
+            .build();
+//    rv.addItemDecoration(new QuotationListItemDecoration(activity));
+    rv.addItemDecoration(itemDecoration);
     callback.onRequestQuotationList();
     rv.setAdapter(adapter);
   }
@@ -99,6 +114,7 @@ final class QuotationListViewImpl implements QuotationListContract.View,
         adapter.setStockList(stockList)
                 .notifyDataSetChanged();
       }
+      layoutRefresh.setRefreshing(false);
     });
   }
 
@@ -156,17 +172,18 @@ final class QuotationListViewImpl implements QuotationListContract.View,
 
   @Override
   public void onQuotationClick(long stockTableId) {
-    Intent intent = new Intent(ActivityIntent.THE_QUOTATION);
-    Bundle bundle = new Bundle();
-    bundle.putLong(BundleKey.STOCK_TABLE_ID, stockTableId);
-    intent.putExtra(IntentKey.THE_QUOTATION, bundle);
-    fragment.startActivityForResult(intent, ActivityRequestCode.THE_QUOTATION);
+    Intent intent = new Intent(IntentAction.SINGLE_QUOTATION);
+    intent.putExtra(IntentKey.STOCK_TABLE_ID, stockTableId);
+    fragment.startActivityForResult(intent, ActivityRequestCode.SINGLE_QUOTATION);
   }
 
   @Override
   public void onQuotationLongClick(Stock stock) {
+    if (stock == null){
+      callback.onRequestQuotationList();
+    }
     this.stock = stock;
-    View view = activity.getLayoutInflater().inflate(R.layout.dialog_on_quotation_long_click, null);
+    View view = activity.getLayoutInflater().inflate(R.layout.alert_dialog_on_quotation_long_click, null);
     TextView tvDelete = view.findViewById(R.id.tv_delete);
     TextView tvSetSpecialAttention = view.findViewById(R.id.tv_set_special_attention);
     if (stock.isSpecialAttention()){
@@ -222,5 +239,11 @@ final class QuotationListViewImpl implements QuotationListContract.View,
 
         break;
     }
+  }
+
+  @Override
+  public void onRefresh() {
+    layoutRefresh.setRefreshing(true);
+    callback.onRequestQuotationList();
   }
 }

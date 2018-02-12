@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.util.ActivityUtils;
+import com.seckawijoki.graduation_project.utils.ActivityUtils;
 
 public class FullScreenImageActivity extends AppCompatActivity {
   @Override

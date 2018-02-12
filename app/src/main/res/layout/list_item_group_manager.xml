@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:orientation="vertical"
+              android:background="@color/bg_group_list_item"
               android:layout_height="wrap_content">
 
     <TextView
-        android:paddingLeft="@dimen/p_l_group_manager_group_name"
         android:id="@+id/tv_group_name"
         android:textColor="@color/white"
+        android:paddingLeft="@dimen/p_l_group_manager_list_item"
         android:textSize="@dimen/ts_group_manager_group_name"
         android:paddingTop="@dimen/p_t_b_group_manager_group_name"
         android:paddingBottom="@dimen/p_t_b_group_manager_group_name"
@@ -15,10 +16,5 @@
         android:background="@drawable/selector_bg_tv_group_manager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <View
-        android:background="@color/black"
-        android:layout_marginLeft="@dimen/p_l_group_manager_group_name"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
 
 </LinearLayout>

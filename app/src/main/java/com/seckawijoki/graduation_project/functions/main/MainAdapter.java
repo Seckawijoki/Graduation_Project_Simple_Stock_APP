@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.seckawijoki.graduation_project.functions.assets.AssetsFragment;
 import com.seckawijoki.graduation_project.functions.information.InformationFragment;
+import com.seckawijoki.graduation_project.functions.latest_information.LatestInformationFragment;
 import com.seckawijoki.graduation_project.functions.mine.MineFragment;
 import com.seckawijoki.graduation_project.functions.quotations.QuotationsFragment;
 import com.seckawijoki.graduation_project.functions.recommendations.RecommendationsFragment;
@@ -33,7 +34,7 @@ class MainAdapter extends FragmentPagerAdapter {
       case 2:
         return QuotationsFragment.newInstance();
       case 3:
-        return InformationFragment.getInstance();
+        return InformationFragment.newInstance();
       case 4:
         return MineFragment.getInstance();
     }

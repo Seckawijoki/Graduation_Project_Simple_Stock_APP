@@ -20,11 +20,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.app.UnderlineDecoration;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.db.server.FavoriteGroupType;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 import java.util.List;
 
@@ -63,10 +64,26 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
     LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
     layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     rv.setLayoutManager(layoutManager);
+    UnderlineDecoration itemDecoration = new UnderlineDecoration.Builder(activity)
+            .setPaddingLeftRes(R.dimen.p_l_group_manager_list_item)
+            .setLineSizeRes(R.dimen.h_group_list_item_divider)
+            .setColorRes(R.color.bg_group_manager_editor_fragment)
+            .build();
+    rv.addItemDecoration(itemDecoration);
     adapter = new GroupManagerAdapter(getContext())
             .setOnGroupManagerClickListener(this);
     rv.setAdapter(adapter);
     callback.onRequestFavoriteGroups();
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    Log.i(TAG, "onActivityResult(): ");
+    if ( resultCode == Activity.RESULT_OK && requestCode == ActivityRequestCode.GROUP_EDITOR ) {
+      activity.setIntent(data);
+      callback.onRequestFavoriteGroups();
+    }
   }
 
   @Override
@@ -79,10 +96,12 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
   public boolean onOptionsItemSelected(MenuItem item) {
     switch ( item.getItemId() ){
       case android.R.id.home:
-        Log.d(TAG, "onOptionsItemSelected(): hasAdded = " + hasAdded);
         Intent data = activity.getIntent();
         boolean hasDeleted = data.getBooleanExtra(IntentKey.HAS_DELETED_GROUP, false);
         boolean hasRenamed = data.getBooleanExtra(IntentKey.HAS_RENAMED_GROUP, false);
+        Log.d(TAG, "onOptionsItemSelected(): hasAdded = " + hasAdded);
+        Log.d(TAG, "onOptionsItemSelected()\n: hasDeleted = " + hasDeleted);
+        Log.d(TAG, "onOptionsItemSelected()\n: hasRenamed = " + hasRenamed);
         if ( hasAdded || hasDeleted || hasRenamed){
           data.putExtra(IntentKey.HAS_ADDED_NEW_GROUP, hasAdded);
           activity.setResult(Activity.RESULT_OK, data);
@@ -93,8 +112,8 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
         break;
       case R.id.menu_edit:
         Log.d(TAG, "onOptionsItemSelected(): item.getItemId() = " + item.getItemId());
-        activity.startActivityForResult(
-                new Intent(ActivityIntent.GROUP_EDITOR),
+        startActivityForResult(
+                new Intent(IntentAction.GROUP_EDITOR),
                 ActivityRequestCode.GROUP_EDITOR
         );
         break;
@@ -111,7 +130,7 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
   @Override
   public void onAddNewGroup() {
     // TODO: 2017/12/10
-    View v = activity.getLayoutInflater().inflate(R.layout.dialog_on_group_name_change, null);
+    View v = activity.getLayoutInflater().inflate(R.layout.alert_dialog_on_group_name_change, null);
     final EditText et = v.findViewById(R.id.et_group_name);
     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity)
             .setView(v)

@@ -1,6 +1,7 @@
 package com.seckawijoki.graduation_project.functions.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,13 +15,15 @@ import android.view.Menu;
 import android.widget.LinearLayout;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.functions.assets.AssetsFragment;
 import com.seckawijoki.graduation_project.functions.information.InformationFragment;
+import com.seckawijoki.graduation_project.functions.latest_information.LatestInformationFragment;
 import com.seckawijoki.graduation_project.functions.mine.MineFragment;
 import com.seckawijoki.graduation_project.functions.quotations.QuotationsFragment;
 import com.seckawijoki.graduation_project.functions.recommendations.RecommendationsFragment;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 import net.lucode.hackware.magicindicator.FragmentContainerHelper;
 import net.lucode.hackware.magicindicator.MagicIndicator;
@@ -40,7 +43,6 @@ public class MainActivity extends AppCompatActivity{
   private static final String TAG = "MainActivity";
   private FragmentContainerHelper fragmentContainerHelper;
   private SparseArray<Fragment> fragmentList;
-  private int position;
   private String[] labels;
   private long firstExitClickTime;
   @Override
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity{
     setContentView(R.layout.activity_main);
     labels = getResources().getStringArray(R.array.array_main_labels);
     initFragments();
-    MagicIndicator magicIndicator = (MagicIndicator) findViewById(R.id.indicator_main);
+    MagicIndicator magicIndicator = findViewById(R.id.indicator_main);
     CommonNavigator commonNavigator = new CommonNavigator(this);
     commonNavigator.setAdapter(adapter);
     magicIndicator.setNavigator(commonNavigator);
@@ -61,16 +63,9 @@ public class MainActivity extends AppCompatActivity{
 
     fragmentContainerHelper = new FragmentContainerHelper();
     fragmentContainerHelper.attachMagicIndicator(magicIndicator);
-    position = GlobalVariableUtils.getMainFragment(this);
+    int position = GlobalVariableTools.getMainFragment(this);
     fragmentContainerHelper.handlePageSelected(position, true);
     switchPages(position);
-  }
-
-
-  @Override
-  protected void onDestroy() {
-    super.onDestroy();
-    GlobalVariableUtils.setMainFragment(this, position);
   }
 
   @Override
@@ -89,9 +84,16 @@ public class MainActivity extends AppCompatActivity{
     }
   }
 
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode != RESULT_OK)return;
+    if (requestCode == ActivityRequestCode.SINGLE_QUOTATION ){
+        fragmentList.get(3).onActivityResult(requestCode, resultCode, data);
+    }
+  }
 
-
-    private void initFragments(){
+  private void initFragments(){
       fragmentList = new SparseArray<>();
       for ( int i = 0 ; i < 5 ; ++i ) {
         Fragment fragment;
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity{
           case 2:
             fragment = QuotationsFragment.newInstance();break;
           case 3:
-            fragment = InformationFragment.getInstance();break;
+            fragment = InformationFragment.newInstance();break;
           case 4:
             fragment = MineFragment.getInstance();break;
         }
@@ -112,12 +114,12 @@ public class MainActivity extends AppCompatActivity{
       }
     }
 
-  private void switchPages(int index) {
+  private void switchPages(int position) {
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     Fragment fragment;
     for (int i = 0, j = fragmentList.size(); i < j; i++) {
-      if (i == index) {
+      if (i == position) {
         continue;
       }
       fragment = fragmentList.get(i);
@@ -125,13 +127,14 @@ public class MainActivity extends AppCompatActivity{
         fragmentTransaction.hide(fragment);
       }
     }
-    fragment = fragmentList.get(index);
+    fragment = fragmentList.get(position);
     if (fragment.isAdded()) {
       fragmentTransaction.show(fragment);
     } else {
       fragmentTransaction.add(R.id.layout_main, fragment);
     }
-    fragmentTransaction.commitAllowingStateLoss();
+    GlobalVariableTools.setMainFragment(this, position);
+    fragmentTransaction.commitNow();
   }
 
   private CommonNavigatorAdapter adapter = new CommonNavigatorAdapter() {
@@ -153,7 +156,6 @@ public class MainActivity extends AppCompatActivity{
       pagerTitleView.setClipColor(ContextCompat.getColor(MainActivity.this, R.color.bg_main_labels_checked));
       pagerTitleView.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.bg_main_labels));
       pagerTitleView.setOnClickListener(v -> {
-        position = index;
         fragmentContainerHelper.handlePageSelected(index);
         switchPages(index);
       });

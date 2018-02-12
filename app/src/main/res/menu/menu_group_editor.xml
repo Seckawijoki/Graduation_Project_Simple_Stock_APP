@@ -3,7 +3,7 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="@string/action_delete"
-        android:icon="@mipmap/ic_delete"
+        android:icon="@mipmap/ic_delete_white"
         app:showAsAction="always"
         android:orderInCategory="40"
         android:id="@+id/menu_delete"/>

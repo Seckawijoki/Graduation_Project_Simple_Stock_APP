@@ -14,10 +14,9 @@ import com.seckawijoki.graduation_project.db.QuotationDetails;
 import com.seckawijoki.graduation_project.db.Stock;
 import com.seckawijoki.graduation_project.db.client.SearchStock;
 import com.seckawijoki.graduation_project.db.server.FavoriteStock;
-import com.seckawijoki.graduation_project.util.FileUtils;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.OkHttpUtils;
-import com.seckawijoki.graduation_project.util.SwitchCaseUtils;
+import com.seckawijoki.graduation_project.tools.FileTools;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.OkHttpUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,8 +41,8 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
  * Created by 瑶琴频曲羽衣魂 on 2017/10/24.
  */
 
-final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model {
-  private static final String TAG = "QuotationDetailsModImpl";
+public final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model {
+  private static final String TAG = "QuotationDetailsModel";
   private Activity activity;
   private List<Stock> stockList = new LinkedList<>();
   private DataCallback callback;
@@ -52,7 +51,7 @@ final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model 
   private ScheduledExecutorService detailsThread = Executors.newSingleThreadScheduledExecutor();
   private ScheduledExecutorService stockListPool = Executors.newSingleThreadScheduledExecutor();
 
-  QuotationDetailsModelImpl(Activity activity, long stockTableId) {
+  public QuotationDetailsModelImpl(Activity activity, long stockTableId) {
     this.activity = activity;
     this.stockTableId = stockTableId;
   }
@@ -94,7 +93,7 @@ final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model 
   public void requestAddFavoriteStock() {
     JSONObject jsonObject = OkHttpUtils.post()
             .url(ServerPath.ADD_FAVORITE_STOCK_FROM_SEARCH)
-            .addParam("userId", GlobalVariableUtils.getUserId(activity))
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
             .addParam("stockTableId", stockTableId + "")
             .execute()
             .jsonObject();
@@ -126,10 +125,9 @@ final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model 
 
   @Override
   public void requestDeleteFavoriteStock() {
-
     Boolean result = OkHttpUtils.post()
             .url(ServerPath.DELETE_FAVORITE_STOCK_FROM_SEARCH)
-            .addParam("userId", GlobalVariableUtils.getUserId(activity))
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
             .addParam("stockTableId", stockTableId + "")
             .execute()
             .bool();
@@ -152,7 +150,7 @@ final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model 
   private void requestQuotationDetailsFromServer() {
     JSONArray jsonArray = OkHttpUtils.post()
             .url(ServerPath.GET_STOCKS)
-            .addParam("userId", GlobalVariableUtils.getUserId(activity))
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
             .addParam("stockTableId", stockTableId + "")
             .execute()
             .jsonArray();
@@ -181,25 +179,26 @@ final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model 
     try {
       return jsonObject.getString("kLineChartFileName");
     } catch ( JSONException e ) {
-      String stockId = quotationDetails.getStockId();
-      String sinaKLineType = SwitchCaseUtils.getSinaKLineType(kLineType);
-      String sinaStockType = SwitchCaseUtils.getSinaStockType(quotationDetails.getStockType());
-      return sinaStockType+stockId+"_"+sinaKLineType+".gif";
+      return FileTools.getKLineChartFileName(
+              quotationDetails.getStockId(),
+              quotationDetails.getStockType(),
+              kLineType
+      );
     }
   }
 
   @Override
-  public void requestKLine(int kLineType) {
+  public void requestKLineChart(int kLineType) {
     String fileName = requestKLineChartFileName(kLineType);
     Response response = OkHttpUtils.post()
             .url(ServerPath.GET_K_LINE)
             .addParam("stockTableId", stockTableId+"")
             .addParam("kLineType", kLineType+"")
-            .executeForByteStream();
+            .executeForResponse();
     try {
       InputStream inputStream = response.body().byteStream();
       long total = response.body().contentLength();
-       String savePath = FileUtils.isDirectoryExistent(FilePath.K_LINE_CHART_PATH);
+       String savePath = FileTools.isDirectoryExistent(FilePath.K_LINE_CHART_PATH);
       File file = new File(savePath, fileName);
       FileOutputStream fos = new FileOutputStream(file);
       byte[] buf = new byte[2048];
@@ -210,8 +209,8 @@ final class QuotationDetailsModelImpl implements QuotationDetailsContract.Model 
         sum += len;
       }
       fos.flush();
-      callback.onDisplayKLine(file);
-      Log.d(TAG, "requestKLine()\n: file = " + file);
+      callback.onDisplayKLineChart(file);
+      Log.d(TAG, "requestKLineChart()\n: file = " + file);
     } catch ( IOException e ) {
       e.printStackTrace();
     }

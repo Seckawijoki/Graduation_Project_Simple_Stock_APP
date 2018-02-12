@@ -3,9 +3,12 @@ package com.seckawijoki.graduation_project.functions.settings;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,11 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.app.DebuggingSwitcher;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.ViewUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
 
 import java.io.IOException;
 
@@ -35,14 +38,11 @@ import okhttp3.Response;
  * Created by 瑶琴频曲羽衣魂 on 2017/11/27 at 21:10.
  */
 
-public class SettingsFragment extends Fragment implements View.OnClickListener{
+public class SettingsFragment extends Fragment implements OnSettingsOptionListener {
   private static final String TAG = "SettingsFragment";
+  private SettingsAdapter adapter;
   private AppCompatActivity activity;
-  private ViewGroup layoutMultiAccount;
-  private ViewGroup layoutAccountAndSafety;
-  private ViewGroup layoutAboutUs;
-  private ViewGroup layoutLogout;
-  private Toolbar tb;
+
   public static SettingsFragment newInstance() {
     Bundle args = new Bundle();
     SettingsFragment fragment = new SettingsFragment();
@@ -54,12 +54,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener{
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_settings, container, false);
-    layoutMultiAccount = view.findViewById(R.id.layout_multi_account_management);
-    layoutAccountAndSafety = view.findViewById(R.id.layout_account_and_safety);
-    layoutAboutUs = view.findViewById(R.id.layout_about_us);
-    layoutLogout = view.findViewById(R.id.layout_logout);
     setHasOptionsMenu(true);
-    tb = view.findViewById(R.id.tb_settings);
     return view;
   }
 
@@ -67,31 +62,37 @@ public class SettingsFragment extends Fragment implements View.OnClickListener{
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
     activity = ( (AppCompatActivity) getActivity() );
+    View view = getView();
+    Toolbar tb = view.findViewById(R.id.tb_settings);
     activity.setSupportActionBar(tb);
-//    activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    ViewUtils.bindOnClick(this,
-            layoutMultiAccount,
-            layoutAccountAndSafety,
-            layoutAboutUs,
-            layoutLogout);
+    RecyclerView rv = view.findViewById(R.id.rv_settings);
+    rv.setLayoutManager(new LinearLayoutManager(activity));
+    rv.addItemDecoration(new SettingsDecoration(activity));
+    rv.setAdapter(adapter = new SettingsAdapter(activity)
+            .setOnSettingsOptionListener(this));
+    autoDebuggingEvent();
+  }
+
+  private void autoDebuggingEvent(){
+    if ( DebuggingSwitcher.APP_UPDATE) {
+      new Handler().postDelayed(() ->
+                      SettingsFragment.this.onSettingsOptionClick(SettingsOptions.ABOUT_US),
+              300);
+    }
   }
 
   @Override
   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     inflater.inflate(R.menu.menu_settings, menu);
-    super.onCreateOptionsMenu(menu, inflater);
   }
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    Log.d(TAG, "onOptionsItemSelected(): item.getItemId() = " + item.getItemId());
-    switch ( item.getItemId() ){
+    switch ( item.getItemId() ) {
       case R.id.menu_message:
-        Log.d(TAG, "onOptionsItemSelected(): R.id.menu_message = " + R.id.menu_message);
-        startActivity(new Intent(ActivityIntent.MESSAGE));
+        startActivity(new Intent(IntentAction.MESSAGE));
         break;
       case android.R.id.home:
-        Log.d(TAG, "onOptionsItemSelected(): android.R.id.home = " + android.R.id.home);
         activity.setResult(Activity.RESULT_CANCELED);
         activity.finish();
         break;
@@ -101,13 +102,13 @@ public class SettingsFragment extends Fragment implements View.OnClickListener{
     return true;
   }
 
-  private void attemptToLogout(){
-//    account = GlobalVariables.getInstance().account;
+  private void logout() {
+//    account = GlobalVariables.newInstance().account;
 //    account = ( (MyApplication) getActivity().getApplicationContext() ).getLoginAccount();
-    final String account = GlobalVariableUtils.getAccount(activity);
-    Log.d(TAG, "attemptToLogout(): account = " + account);
+    final String account = GlobalVariableTools.getAccount(activity);
+    Log.d(TAG, "logout(): account = " + account);
     new Thread(() -> {
-      Log.i(TAG, "attemptToLogout(): ");
+      Log.i(TAG, "logout(): ");
       if ( TextUtils.isEmpty(account) ) return;
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
@@ -120,10 +121,10 @@ public class SettingsFragment extends Fragment implements View.OnClickListener{
       try {
         Response response = okHttpClient.newCall(request).execute();
         if ( response.isSuccessful() ) {
-          Log.d(TAG, "attemptToLogout(): response.body().string() = " + response.body().string());
-//          GlobalVariables.getInstance().account = null;
+          Log.d(TAG, "logout(): response.body().string() = " + response.body().string());
+//          GlobalVariables.newInstance().account = null;
 //          ( (MyApplication) getActivity().getApplicationContext() ).setLoginAccount(null);
-//          GlobalVariableUtils.setAccount(getActivity(), null);
+//          GlobalVariableTools.setAccount(getActivity(), null);
           Intent data = new Intent();
           data.putExtra(IntentKey.HAS_LOGGED_OUT, true);
           activity.setResult(Activity.RESULT_OK, data);
@@ -136,23 +137,26 @@ public class SettingsFragment extends Fragment implements View.OnClickListener{
   }
 
   @Override
-  public void onClick(View v) {
-    Log.d(TAG, "onClick(): v.getId() = " + v.getId());
-    // TODO: 2017/11/30
-    switch ( v.getId() ){
-      case R.id.layout_multi_account_management:
+  public void onSettingsOptionClick(int position) {
+    switch ( position ) {
+      case SettingsOptions.MULTI_ACCOUNT_MANAGEMENT:
 
         break;
-      case R.id.layout_account_and_safety:
+      case SettingsOptions.ACCOUNT_AND_SAFETY:
 
         break;
-      case R.id.layout_about_us:
+      case SettingsOptions.PRIVACY:
 
         break;
-      case R.id.layout_logout:
-        attemptToLogout();
+      case SettingsOptions.COMMON_SETTINGS:
+
+        break;
+      case SettingsOptions.ABOUT_US:
+        startActivity(new Intent(IntentAction.ABOUT_US));
+        break;
+      case SettingsOptions.LOGOUT:
+        logout();
         break;
     }
   }
-
 }

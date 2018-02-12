@@ -14,6 +14,7 @@
         android:icon="@mipmap/ic_more_horizontal_white"
         android:id="@+id/menu_assets_more_menus">
         <menu>
+            <group>
             <item
                 android:title="@string/action_message"
                 app:showAsAction="ifRoom"
@@ -32,6 +33,7 @@
                 android:orderInCategory="5"
                 android:icon="@mipmap/ic_refresh_white"
                 android:id="@+id/menu_refresh"/>
+            </group>
         </menu>
     </item>
 </menu>

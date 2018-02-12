@@ -20,7 +20,7 @@ import com.seckawijoki.graduation_project.db.AccessibleChuangYeBan;
 import com.seckawijoki.graduation_project.db.AccessibleStock;
 import com.seckawijoki.graduation_project.db.server.FavoriteStock;
 import com.seckawijoki.graduation_project.db.Stock;
-import com.seckawijoki.graduation_project.util.MyLogUtils;
+import com.seckawijoki.graduation_project.tools.DbLogTools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -228,8 +228,8 @@ public class DataLoadingDialog extends DialogFragment {
 
   private void logDatabase(){
     new Thread(() -> {
-      MyLogUtils.logAllDataSupport();
-      MyLogUtils.logCount();
+      DbLogTools.logAllDataSupport();
+      DbLogTools.logCount();
       /*
       for ( int i = 0 ; i < list.size() ; i++ ) {
         AccessibleSz accessibleSinaSz = list.get(i);

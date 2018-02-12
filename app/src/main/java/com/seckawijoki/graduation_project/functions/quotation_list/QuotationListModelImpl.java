@@ -12,8 +12,8 @@ import com.seckawijoki.graduation_project.db.server.FavoriteGroupType;
 import com.seckawijoki.graduation_project.db.server.FavoriteStock;
 import com.seckawijoki.graduation_project.db.Stock;
 import com.seckawijoki.graduation_project.functions.favorite.OnQuotationListRefreshListener;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.OkHttpUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.OkHttpUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -52,7 +53,7 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
   private long favoriteGroupId;
   private ExecutorService singleThread = Executors.newFixedThreadPool(1);
   private ScheduledExecutorService cyclicThread = Executors.newSingleThreadScheduledExecutor();
-  private List<FavoriteStock> favoriteStockList;
+
   QuotationListModelImpl(Activity activity, String favoriteGroupName,
                          OnQuotationListRefreshListener listener) {
     this.activity = activity;
@@ -96,7 +97,7 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
-              .add("userId", GlobalVariableUtils.getUserId(activity))
+              .add("userId", GlobalVariableTools.getUserId(activity))
               .add("favoriteGroupId", favoriteGroupId + "")
               .build();
       Request request = new Request.Builder()
@@ -145,14 +146,14 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
   }
 
   private void requestQuotationsFromServer() {
-    favoriteStockList = getFavoriteStockList();
+    List<FavoriteStock> favoriteStockList = getFavoriteStockList();
     if ( favoriteStockList.size() <= 0 ) {
       requestStockListFromDatabase();
       return;
     }
     OkHttpUtils.PostBuilder postBuilder = OkHttpUtils.post()
             .url(ServerPath.GET_QUOTATIONS)
-            .addParam("userId", GlobalVariableUtils.getUserId(activity));
+            .addParam("userId", GlobalVariableTools.getUserId(activity));
     for ( int i = 0 ; i < favoriteStockList.size() ; ++i ) {
       postBuilder.addParam("stockTableId", favoriteStockList.get(i).getStockTableId() + "");
     }
@@ -189,7 +190,7 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
-              .add("userId", GlobalVariableUtils.getUserId(activity))
+              .add("userId", GlobalVariableTools.getUserId(activity))
               .add("favoriteGroupId", favoriteGroupId + "")
               .add("stockTableId", stock.getStockTableId() + "")
               .build();
@@ -234,7 +235,7 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
-              .add("userId", GlobalVariableUtils.getUserId(activity))
+              .add("userId", GlobalVariableTools.getUserId(activity))
               .add("stockTableId", stock.getStockTableId() + "")
               .build();
       Request request = new Request.Builder()
@@ -273,7 +274,7 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
-              .add("userId", GlobalVariableUtils.getUserId(activity))
+              .add("userId", GlobalVariableTools.getUserId(activity))
               .add("stockTableId", stock.getStockTableId() + "")
               .add("specialAttention", !originIsSpecialAttention + "")
               .build();
@@ -388,32 +389,15 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
   @Override
   public void requestStockListFromDatabase() {
     List<FavoriteStock> favoriteStockList = getFavoriteStockList();
-//    Log.d(TAG, "requestStockListFromDatabase()\n: favoriteGroupName = " + favoriteGroupName);
-//    Log.d(TAG, "requestStockListFromDatabase()\n: favoriteStockList = " + favoriteStockList);
-//    long[] stockTableIds = new long[favoriteStockList.size()];
     List<Stock> stockList = new ArrayList<>();
     for ( int i = 0 ; i < favoriteStockList.size() ; i++ ) {
       FavoriteStock favoriteStock = favoriteStockList.get(i);
-//      stockTableIds[i] = favoriteStock.getStockTableId();
       stockList.add(
               where("stockTableId = ?", favoriteStock.getStockTableId() + "")
                       .findFirst(Stock.class)
       );
     }
-    /*
-    String condition = Arrays.toString(stockTableIds);
-    condition = condition.substring(1, condition.length() - 1).trim();
-    condition = "(" + condition + ")";
-    */
-//    Log.d(TAG, "requestStockListFromDatabase()\n: condition = " + condition);
-//    MyLogUtils.logDataSupport(Stock.class);
-    /*
-    stockList = DataSupport
-            .where("stockTableId in " + condition)
-            .find(Stock.class);
-    */
-//    Log.w(TAG, "requestStockListFromDatabase()\n: favoriteGroupName = " + favoriteGroupName);
-//    Log.i(TAG, "requestStockListFromDatabase()\n: stockList = " + stockList);
+    Log.d(TAG, "requestStockListFromDatabase()\n: stockList = " + stockList);
     callback.onDisplayQuotationList(stockList);
   }
 

@@ -18,7 +18,7 @@ import com.seckawijoki.graduation_project.functions.quotation_list.QuotationList
 
 class FavoriteAdapter extends FragmentPagerAdapter implements OnQuotationListRefreshListener {
   private List<QuotationListFragment> fragmentList;
-  public FavoriteAdapter setFavoriteGroupList(List<FavoriteGroupType> favoriteGroupTypeList) {
+  FavoriteAdapter setFavoriteGroupList(List<FavoriteGroupType> favoriteGroupTypeList) {
     if ( fragmentList == null ) {
       fragmentList = new ArrayList<>(favoriteGroupTypeList.size());
     }

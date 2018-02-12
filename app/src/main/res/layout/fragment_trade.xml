@@ -1,18 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@color/white"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@color/bg_trade_fragment"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <ScrollView
+        android:scrollbars="none"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h_layout_trade_stock_info"/>
+
+            <ImageView
+                android:id="@+id/img_k_line_chart"
+                android:src="@mipmap/ic_refresh_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/prompt_k_line_chart"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_open_or_close_k_line_chart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:drawableRight="@mipmap/ic_open_k_line_chart"
+                android:gravity="center"
+                android:paddingLeft="@dimen/p_l_open_k_line_chart"
+                android:text="@string/action_open_k_line_chart"
+                android:textColor="@color/tc_open_or_close_k_line_chart"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_layout_unit_price_of_buying_and_selling"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/bg_unit_price_of_buying"
+                    android:paddingBottom="@dimen/p_t_b_layout_unit_price_of_buying_or_selling"
+                    android:paddingLeft="@dimen/p_l_r_layout_unit_price_of_buying_or_selling"
+                    android:paddingRight="@dimen/p_l_r_layout_unit_price_of_buying_or_selling"
+                    android:paddingTop="@dimen/p_t_b_layout_unit_price_of_buying_or_selling">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/label_unit_price_of_buying"
+                        android:textColor="@color/tc_unit_price_of_buying_label"/>
+
+                    <TextView
+                        android:id="@+id/tv_unit_price_of_buying"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/default_value"
+                        android:textColor="@color/tc_unit_price_of_buying_or_selling"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/bg_unit_price_of_selling"
+                    android:paddingBottom="@dimen/p_t_b_layout_unit_price_of_buying_or_selling"
+                    android:paddingLeft="@dimen/p_l_r_layout_unit_price_of_buying_or_selling"
+                    android:paddingRight="@dimen/p_l_r_layout_unit_price_of_buying_or_selling"
+                    android:paddingTop="@dimen/p_t_b_layout_unit_price_of_buying_or_selling">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/label_unit_price_of_selling"
+                        android:textColor="@color/tc_unit_price_of_selling_label"/>
+
+                    <TextView
+                        android:id="@+id/tv_unit_price_of_selling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/default_value"
+                        android:textColor="@color/tc_unit_price_of_buying_or_selling"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/m_t_trade_stock_name_id_and_district"
+                style="@style/layout_trade_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_trade_stock_name"
+                    style="@style/tv_trade_info_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_stock_name"
+                    android:text="@string/label_stock"/>
+
+                <TextView
+                    android:id="@+id/tv_stock_id_and_district"
+                    style="@style/tv_trade_info_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_stock_id"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layout_trade_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_trade_price_or_count">
+
+                <TextView
+                    android:id="@+id/tv_trade_price_label"
+                    style="@style/tv_trade_info_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_label"
+                    android:text="@string/label_price"/>
+
+                <TextView
+                    android:id="@+id/tv_subtract_point_nought_one"
+                    style="@style/tv_trade_info_subtraction"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_addition_or_subtraction"
+                    android:text="@string/action_subtract_point_nought_one"/>
+
+                <EditText
+                    android:id="@+id/et_trade_price"
+                    style="@style/tv_trade_info_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_value"/>
+
+                <TextView
+                    android:id="@+id/tv_add_point_nought_one"
+                    style="@style/tv_trade_info_addition"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_addition_or_subtraction"
+                    android:text="@string/action_add_point_nought_one"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layout_trade_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/m_t_trade_price_or_count">
+
+                <TextView
+                    android:id="@+id/tv_trade_count_label"
+                    style="@style/tv_trade_info_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_label"
+                    android:text="@string/label_count"/>
+
+                <TextView
+                    android:id="@+id/tv_subtract_hundred"
+                    style="@style/tv_trade_info_subtraction"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_addition_or_subtraction"
+                    android:text="@string/action_subtract_hundred"/>
+
+                <EditText
+                    android:id="@+id/et_trade_count"
+                    style="@style/tv_trade_info_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_value"/>
+
+                <TextView
+                    android:id="@+id/tv_add_hundred"
+                    style="@style/tv_trade_info_addition"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/weight_trade_info_addition_or_subtraction"
+                    android:text="@string/action_add_hundred"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="@dimen/m_t_trade_summary"
+                android:layout_marginLeft="@dimen/m_l_r_trade_summary"
+                android:layout_marginRight="@dimen/m_l_r_trade_summary"
+                android:id="@+id/rv_trade_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_buy"
+                    style="@style/btn_trade_buy_or_sell"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_tv_trade_buy"
+                    android:text="@string/action_buy"/>
+                <Button
+                    android:id="@+id/btn_sell"
+                    android:background="@drawable/shape_tv_trade_sell"
+                    style="@style/btn_trade_buy_or_sell"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/action_sell"/>
+            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
-</LinearLayout>
+
+    <include layout="@layout/include_trade_stock_info"/>
+</FrameLayout>

@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:orientation="vertical"
-              android:layout_height="wrap_content">
-    <View
-        android:layout_marginLeft="@dimen/p_l_group_editor_list_item"
-        android:background="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/p_l_group_editor_list_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<LinearLayout
+    android:background="@color/bg_group_list_item"
+    android:id="@+id/layout_group_editor_list_item"
+    android:paddingLeft="@dimen/p_l_r_layout_group_editor_list_item"
+    android:paddingRight="@dimen/p_l_r_layout_group_editor_list_item"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBox
         android:id="@+id/chb_choose_to_delete"
         android:layout_width="0dp"
@@ -22,6 +17,8 @@
         android:buttonTint="@color/white"
         android:layout_height="match_parent"/>
     <TextView
+        android:paddingTop="@dimen/p_t_b_group_name"
+        android:paddingBottom="@dimen/p_t_b_group_name"
         android:id="@+id/tv_group_name"
         android:gravity="center_vertical"
         android:textSize="@dimen/ts_group_editor_group_name"
@@ -30,6 +27,7 @@
         android:layout_weight="@integer/weight_tv_group_editor_group_name"
         android:layout_height="match_parent"/>
     <ImageView
+        android:contentDescription="@string/action_set_top"
         android:id="@+id/img_set_top"
         android:scaleX="0.8"
         android:scaleY="0.8"
@@ -38,11 +36,12 @@
         android:layout_weight="@integer/weight_img_set_top"
         android:layout_height="wrap_content"/>
     <ImageView
+        android:contentDescription="@string/action_reorder"
         android:scaleX="0.8"
         android:scaleY="0.8"
         android:id="@+id/img_reorder"
         android:src="@mipmap/ic_reorder_white"
         android:layout_width="0dp"
         android:layout_weight="@integer/weight_img_reorder"
-        android:layout_height="wrap_content"/></LinearLayout>
-</LinearLayout>
+        android:layout_height="wrap_content"/>
+    </LinearLayout>

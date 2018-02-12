@@ -6,16 +6,25 @@ package com.seckawijoki.graduation_project.functions.trade;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
+import com.seckawijoki.graduation_project.db.Stock;
+
+import java.io.File;
+
 final class TradePresenterImpl implements TradeContract.Presenter,
         TradeContract.View.ActionCallback,
-        TradeContract.Model.DataCallback {
+        TradeContract.Model.DataCallback{
   private TradeContract.View view;
   private TradeContract.Model model;
-
+  private Activity activity;
   @Override
   public TradeContract.Presenter setView(TradeContract.View view) {
     this.view = view;
     return this;
+  }
+
+  @Override
+  public TradeContract.View getView() {
+    return view;
   }
 
   @Override
@@ -27,8 +36,14 @@ final class TradePresenterImpl implements TradeContract.Presenter,
 
   @Override
   public TradeContract.Presenter setModel(Activity activity) {
-    this.model = new TradeModelImpl();
+    this.activity = activity;
+    this.model = new TradeModelImpl(activity);
     return this;
+  }
+
+  @Override
+  public TradeContract.Model getModel() {
+    return model;
   }
 
   @Override
@@ -45,4 +60,35 @@ final class TradePresenterImpl implements TradeContract.Presenter,
     view.destroy();
     model.destroy();
   }
+
+  @Override
+  public void onRequestRefreshQuotation() {
+    model.requestRefreshQuotation();
+  }
+
+  @Override
+  public void onRequestBuying(double tradePrice, int tradeCount) {
+    model.requestBuying(tradePrice, tradeCount);
+  }
+
+  @Override
+  public void onRequestSelling(double tradePrice, int tradeCount) {
+    model.requestSelling(tradePrice, tradeCount);
+  }
+
+  @Override
+  public void onRequestKLineChart(int kLineType) {
+    new Thread(()->model.requestKLineChart(kLineType)).start();
+  }
+
+  @Override
+  public void onDisplayRefreshQuotation(Stock stock) {
+    view.displayRefreshQuotation(stock);
+  }
+
+  @Override
+  public void onDisplayKLineChart(File chartFile) {
+    activity.runOnUiThread(() -> view.displayKLineChart(chartFile));
+  }
+
 }

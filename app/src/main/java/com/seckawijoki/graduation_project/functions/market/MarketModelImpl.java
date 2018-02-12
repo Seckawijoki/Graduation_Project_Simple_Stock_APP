@@ -1,10 +1,8 @@
 package com.seckawijoki.graduation_project.functions.market;
 
-import android.util.Log;
-
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.client.MarketStock;
-import com.seckawijoki.graduation_project.util.OkHttpUtils;
+import com.seckawijoki.graduation_project.utils.OkHttpUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

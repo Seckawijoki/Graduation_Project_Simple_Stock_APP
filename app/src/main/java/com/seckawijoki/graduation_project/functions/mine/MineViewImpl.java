@@ -3,23 +3,25 @@ package com.seckawijoki.graduation_project.functions.mine;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.app.DebuggingSwitcher;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
+import com.seckawijoki.graduation_project.constants.common.ServiceAction;
 import com.seckawijoki.graduation_project.functions.login.LoginActivity;
 import com.seckawijoki.graduation_project.functions.settings.OnLogoutListener;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.ViewUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.ViewUtils;
 
 import java.io.File;
 
@@ -27,7 +29,10 @@ import java.io.File;
  * Created by 瑶琴频曲羽衣魂 on 2017/10/24.
  */
 
-class MineViewImpl implements MineContract.View, View.OnClickListener, Toolbar.OnMenuItemClickListener, OnLogoutListener {
+class MineViewImpl implements MineContract.View,
+        View.OnClickListener,
+        Toolbar.OnMenuItemClickListener,
+        OnLogoutListener{
   private static final String TAG = "MineViewImpl";
   private AppCompatActivity activity;
   private Fragment fragment;
@@ -36,18 +41,28 @@ class MineViewImpl implements MineContract.View, View.OnClickListener, Toolbar.O
 
   @Override
   public void initiate() {
-    fragment.setHasOptionsMenu(true);
     Toolbar tb = view.findViewById(R.id.tb_mine);
     activity.setSupportActionBar(tb);
+    MenuItem menuItem = view.findViewById(R.id.menu_settings);
     tb.setOnMenuItemClickListener(this);
 //    String account = ( (MyApplication) activity.getApplicationContext() ).getLoginAccount();
-    String account = GlobalVariableUtils.getAccount(activity);
-    Log.d(TAG, "initiate(): account = " + account);
-    boolean showUserInfo = !TextUtils.isEmpty(account);
+    String userId = GlobalVariableTools.getUserId(activity);
+    boolean showUserInfo = !TextUtils.isEmpty(userId);
     displayShowUserInfo(showUserInfo);
     if (showUserInfo) {
       callback.onRequestUserInfo();
-      callback.onRequestUserPortrait();
+    }
+    // TODO: 2018/2/11 DEBUGGING AUTO-CLICK
+    autoDebuggingEvent();
+
+  }
+
+  private void autoDebuggingEvent(){
+    if ( DebuggingSwitcher.APP_UPDATE){
+      new Handler().postDelayed(() ->
+        fragment.startActivityForResult(new Intent(IntentAction.SETTINGS),
+                ActivityRequestCode.SETTINGS),
+              1000);
     }
   }
 
@@ -56,6 +71,13 @@ class MineViewImpl implements MineContract.View, View.OnClickListener, Toolbar.O
     activity = null;
     fragment = null;
     callback = null;
+  }
+
+  private void onRequestUserPortrait(){
+//    callback.onRequestUserPortrait();
+    Intent intent = new Intent(ServiceAction.PORTRAIT_DOWNLOAD);
+    activity.startService(intent);
+
   }
 
   @Override
@@ -103,6 +125,7 @@ class MineViewImpl implements MineContract.View, View.OnClickListener, Toolbar.O
   public void displayUserInfo(String userId, String nickname) {
     ( (TextView) view.findViewById(R.id.tv_nickname) ).setText(nickname);
     ( (TextView) view.findViewById(R.id.tv_user_id) ).setText(userId);
+    callback.onRequestUserPortrait();
   }
 
   private MineViewImpl() {
@@ -122,11 +145,11 @@ class MineViewImpl implements MineContract.View, View.OnClickListener, Toolbar.O
   public boolean onMenuItemClick(MenuItem item) {
     switch ( item.getItemId() ) {
       case R.id.menu_settings:
-        fragment.startActivityForResult(new Intent(ActivityIntent.SETTINGS),
-                ActivityRequestCode.LOGOUT);
+        fragment.startActivityForResult(new Intent(IntentAction.SETTINGS),
+                ActivityRequestCode.SETTINGS);
         break;
       case R.id.menu_message:
-        fragment.startActivity(new Intent(ActivityIntent.MESSAGE));
+        fragment.startActivity(new Intent(IntentAction.MESSAGE));
         break;
       default:
         return false;
@@ -141,21 +164,21 @@ class MineViewImpl implements MineContract.View, View.OnClickListener, Toolbar.O
       case R.id.tv_nickname:
       case R.id.tv_label_user_id:
       case R.id.tv_user_id:
-        if ( TextUtils.isEmpty(GlobalVariableUtils.getUserId(activity)) )return;
+        if ( TextUtils.isEmpty(GlobalVariableTools.getUserId(activity)) )return;
         fragment.startActivityForResult(
-                new Intent(ActivityIntent.PERSONAL_INFO),
+                new Intent(IntentAction.PERSONAL_INFO),
                 ActivityRequestCode.PERSONAL_INFO
         );
         break;
       case R.id.tv_login:
-        if ( !TextUtils.isEmpty(GlobalVariableUtils.getUserId(activity)) ) return;
-          GlobalVariableUtils.setAutoLogin(activity, false);
+        if ( !TextUtils.isEmpty(GlobalVariableTools.getUserId(activity)) ) return;
+          GlobalVariableTools.setAutoLogin(activity, false);
           fragment.startActivity(new Intent(activity, LoginActivity.class));
 
         break;
       case R.id.tv_register:
-        if ( !TextUtils.isEmpty(GlobalVariableUtils.getUserId(activity)) ) return;
-        activity.startActivity(new Intent(ActivityIntent.REGISTER));
+        if ( !TextUtils.isEmpty(GlobalVariableTools.getUserId(activity)) ) return;
+        activity.startActivity(new Intent(IntentAction.REGISTER));
         break;
     }
   }
@@ -166,4 +189,5 @@ class MineViewImpl implements MineContract.View, View.OnClickListener, Toolbar.O
       displayShowUserInfo(false);
     });
   }
+
 }

@@ -7,7 +7,7 @@ import android.util.Log;
 import com.seckawijoki.graduation_project.R;
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.server.FavoriteGroupType;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,7 +66,7 @@ final class GroupManagerModelImpl implements GroupManagerContract.Model {
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
-              .add("userId", GlobalVariableUtils.getUserId(activity))
+              .add("userId", GlobalVariableTools.getUserId(activity))
               .add("favoriteGroupName", favoriteGroupName)
               .build();
       Request request = new Request.Builder()

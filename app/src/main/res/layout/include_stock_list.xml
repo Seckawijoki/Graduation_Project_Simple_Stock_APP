@@ -7,8 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/h_quotation_list_labels"
-        android:paddingRight="@dimen/p_r_list_item_quotations"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/p_r_list_item_quotations">
 
         <View
             android:layout_width="@dimen/w_stock_type"
@@ -73,6 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/label_quotation_title_fluctuation_rate"/>
+
             <ImageView
                 android:id="@+id/img_quotation_fluctuation_rate_sort"
                 android:layout_width="@dimen/w_h_quotation_sort"
@@ -86,8 +87,8 @@
                 android:id="@+id/img_quotation_full_screen"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toRightOf="@id/img_quotation_fluctuation_rate_sort"
                 android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/img_quotation_fluctuation_rate_sort"
                 android:contentDescription="@string/action_full_screen"
                 android:gravity="center"
                 android:scaleX="0.8"
@@ -101,25 +102,37 @@
         android:layout_height="1px"
         android:background="@color/black"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_stock_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/layout_refresh_stock_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/layout_add_new_stock"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv_add_new_stock"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:drawablePadding="@dimen/dr_p_add_new_stock"
-            android:drawableTop="@mipmap/ic_add_circle_outline_blue"
-            android:text="@string/action_add_new_stock"
-            android:textColor="@color/white"/>
-    </RelativeLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_stock_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <RelativeLayout
+                android:id="@+id/layout_add_new_stock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_add_new_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawablePadding="@dimen/dr_p_add_new_stock"
+                    android:drawableTop="@mipmap/ic_add_circle_outline_blue"
+                    android:text="@string/action_add_new_stock"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

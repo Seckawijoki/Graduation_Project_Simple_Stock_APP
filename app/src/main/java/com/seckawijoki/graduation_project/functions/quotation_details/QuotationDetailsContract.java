@@ -13,7 +13,7 @@ import java.util.List;
  * Created by 瑶琴频曲羽衣魂 on 2017/11/14 at 23:50.
  */
 
-interface QuotationDetailsContract {
+public interface QuotationDetailsContract {
   interface View {
     void initiate();
     void destroy();
@@ -40,11 +40,11 @@ interface QuotationDetailsContract {
     void requestQuotationDetails();
     void requestAddFavoriteStock();
     void requestDeleteFavoriteStock();
-    void requestKLine(int type);
+    void requestKLineChart(int type);
     interface DataCallback {
       void onDisplayUpdateStockList(List<Stock> stockList);
       void onDisplayQuotationDetails(QuotationDetails details);
-      void onDisplayKLine(File chartFile);
+      void onDisplayKLineChart(File chartFile);
       void onDisplayAddFavoriteStock(boolean successful);
       void onDisplayDeleteFavoriteStock(boolean successful);
     }

@@ -1,12 +1,8 @@
 package com.seckawijoki.graduation_project.db;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.litepal.crud.DataSupport;
-
-import java.util.Arrays;
 
 /**
  * Created by 瑶琴频曲羽衣魂 on 2017/11/13 at 16:09.
@@ -53,10 +49,6 @@ public class Stock extends DataSupport{
     return this;
   }
 
-  public Stock setStockName(String stockName) {
-    this.stockName = stockName;
-    return this;
-  }
 
   public boolean isSpecialAttention() {
     return specialAttention;
@@ -82,7 +74,7 @@ public class Stock extends DataSupport{
     this.stockId = stockId;
     return this;
   }
-  public Stock setJsonArray(String[] values){
+  public Stock setValues(String[] values){
     stockName = values[0];
     currentPrice = Float.valueOf(values[1]);
     currentPoint = Float.valueOf(values[2]);
@@ -92,7 +84,7 @@ public class Stock extends DataSupport{
     return this;
   }
   public Stock setJsonArray(JSONArray jsonArray) throws JSONException {
-//    Log.d(TAG, "setJsonArray()\n: jsonArray = " + jsonArray);
+//    Log.d(TAG, "setValues()\n: jsonArray = " + jsonArray);
     stockName = jsonArray.optString(0, "");
     currentPrice = jsonArray.optDouble(1, 0);
     currentPoint = jsonArray.optDouble(2, 0);

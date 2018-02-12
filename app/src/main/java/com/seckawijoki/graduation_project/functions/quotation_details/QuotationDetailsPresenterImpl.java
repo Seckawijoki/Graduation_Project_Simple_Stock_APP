@@ -63,7 +63,7 @@ class QuotationDetailsPresenterImpl implements QuotationDetailsContract.Presente
 
   @Override
   public void onRequestKLine(int type) {
-    new Thread(()->model.requestKLine(type)).start();
+    new Thread(()->model.requestKLineChart(type)).start();
   }
 
   @Override
@@ -87,7 +87,7 @@ class QuotationDetailsPresenterImpl implements QuotationDetailsContract.Presente
   }
 
   @Override
-  public void onDisplayKLine(File chartFile) {
+  public void onDisplayKLineChart(File chartFile) {
     view.displayKLine(chartFile);
   }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@drawable/bg_tv_personal_information_disable"
+        android:drawable="@drawable/shape_tv_personal_information_disable"
         android:state_enabled="false"/>
     <item
-        android:drawable="@drawable/bg_tv_personal_information"
+        android:drawable="@drawable/shape_tv_personal_information"
           android:state_enabled="true"/>
 </selector>

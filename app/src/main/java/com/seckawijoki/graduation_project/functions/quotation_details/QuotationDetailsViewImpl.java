@@ -3,7 +3,6 @@ package com.seckawijoki.graduation_project.functions.quotation_details;
  * Created by 瑶琴频曲羽衣魂 on 2017/11/14 at 23:51.
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,9 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -22,13 +19,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
-import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.constants.server.KLineType;
 import com.seckawijoki.graduation_project.db.QuotationDetails;
 import com.seckawijoki.graduation_project.db.Stock;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 import java.io.File;
 import java.sql.Time;
@@ -129,6 +124,7 @@ public class QuotationDetailsViewImpl implements
   @Override
   public void displayAddFavoriteStock(boolean successful) {
     if ( successful ) {
+      Log.i(TAG, "displayAddFavoriteStock()\n: ");
       isFavorChanged = !isFavorChanged;
       Intent intent = activity.getIntent();
       boolean hasFavored = intent.getBooleanExtra(IntentKey.HAS_FAVORED_STOCK, false);
@@ -160,7 +156,7 @@ public class QuotationDetailsViewImpl implements
     final Bitmap bitmap = BitmapFactory.decodeFile(chartFile.getPath());
     activity.runOnUiThread(()->{
       kLineChoiceAdapter.notifyDataSetChanged();
-      ImageView img = view.findViewById(R.id.img_k_line);
+      ImageView img = view.findViewById(R.id.img_k_line_chart);
       img.setImageBitmap(bitmap);
     });
   }

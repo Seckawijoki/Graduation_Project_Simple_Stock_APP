@@ -6,10 +6,14 @@
     <string name="action_clear">清空</string>
     <string name="action_search">搜索</string>
     <string name="action_share">分享</string>
+    <string name="action_copy_website">复制链接</string>
+    <string name="action_open_in_browser">在浏览器打开</string>
     <string name="action_refresh">刷新</string>
+    <string name="action_reorder">排序</string>
     <string name="action_more_menus">更多菜单</string>
     <string name="action_settings">设置</string>
     <string name="action_message">信息</string>
+    <string name="action_push">推送</string>
     <string name="action_add">添加</string>
     <string name="action_add_person">加群/加好友</string>
     <string name="action_create_group">创建群</string>
@@ -24,10 +28,26 @@
     <string name="error_execution_exception">ExecutionException</string>
     <string name="msg_succeed_in_deleting">删除成功</string>
     <string name="error_failed_to_delete">删除失败</string>
+    <string name="error_failed_to_refresh">更新失败</string>
     <string name="prompt_full_screen_image">全屏图</string>
     <string name="msg_under_developing">功能开发中</string>
     <string name="action_save">保存</string>
     <string name="error_sdcard_not_exist">SD卡未插入</string>
+    <string name="format_double_with_two_decimals">%.2f</string>
+    <string name="format_double_with_two_decimals_negative">-%.2f</string>
+    <string name="format_double_with_two_decimals_positive">+%.2f</string>
+    <string name="format_double_with_three_decimals">%.3f</string>
+    <string name="format_double_with_three_decimals_negative">-%.3f</string>
+    <string name="format_double_with_three_decimals_positive">+%.3f</string>
+    <string name="format_percentage_with_two_decimals">%.2f%%</string>
+    <string name="format_percentage_with_two_decimals_negative">-%.2f%%</string>
+    <string name="format_percentage_with_two_decimals_positive">+%.2f%%</string>
+    <string name="msg_succeeded_in_downloading">下载成功，开始安装......</string>
+    <string name="error_failed_to_download">下载失败 </string>
+    <string name="msg_under_downloading">正在更新......</string>
+    <string name="msg_start_downloading">开始下载</string>
+    <string name="format_current_downloading_progress">当前进度：%.2f%%</string>
+    <string name="msg_finish_downloading">下载完成</string>
 
     <!-- Strings in LoginActivity -->
     <string name="prompt_user_name_phone_and_email">牛牛号/手机号/邮箱</string>
@@ -98,25 +118,40 @@
     <!-- strings in TransactionFragment -->
     <string name="label_shanghai_shenzhen_simulate_market">沪深模拟盘</string>
     <string name="label_profit_and_loss">盈亏：</string>
-    <string name="format_profit_and_loss">%.3f</string>
-    <string name="label_buy">买入</string>
-    <string name="label_sell">卖出</string>
-    <string name="label_transaction_price">价格</string>
-    <string name="format_transaction_price">%.3f</string>
+    <string name="format_profit_and_loss">@string/format_double_with_three_decimals</string>
+    <string name="label_buy">买入：</string>
+    <string name="label_sell">卖出：</string>
+    <string name="format_stock_name_id_and_type">%1$s(%2$s.%3$s)</string>
+    <string name="label_transaction_price">价格：</string>
+    <string name="format_transaction_price">@string/format_double_with_three_decimals</string>
     <string name="label_total_revenue_of_buying">买入时总收入：</string>
     <string name="label_total_revenue_of_selling">卖出时总收入：</string>
     <string name="format_total_revenue">%d%%</string>
     <string name="action_follow_to_buy">跟买</string>
     <string name="action_follow_to_sell">跟卖</string>
 
+
     <!-- strings in TradeFragment -->
+    <string name="action_open_k_line_chart">分时图</string>
     <string name="label_unit_price_of_buying">买1价</string>
     <string name="label_unit_price_of_selling">卖1价</string>
     <string name="label_stock">股票</string>
-    <string name="label_order_of_magnitude">订单金额</string>
-    <string name="label_purchasing_power">购买力</string>
-    <string name="label_max_available_buying_count">最大可买</string>
-    <string name="label_max_available_selling_count">最大可卖</string>
+    <string name="format_stock_id_and_china">%s.CN</string>
+    <string name="label_price">价格</string>
+    <string name="label_count">数量</string>
+    <string name="label_order_of_magnitude">订单金额：</string>
+    <string name="label_purchasing_power">购买力：</string>
+    <string name="label_max_available_buying_count">最大可买：</string>
+    <string name="label_max_available_selling_count">最大可卖：</string>
+    <string name="action_subtract_point_nought_one">-0.01</string>
+    <string name="action_add_point_nought_one">+0.01</string>
+    <string name="action_subtract_hundred">-100</string>
+    <string name="action_add_hundred">+100</string>
+    <string name="action_buy">买入</string>
+    <string name="action_sell">卖出</string>
+    <string name="default_trade_count_hundred">100</string>
+    <string name="error_failed_to_buy">买入失败</string>
+    <string name="error_failed_to_sell">卖出失败</string>
 
     <!-- strings in PersonalAssetFragment -->
 
@@ -161,10 +196,14 @@
     <string name="label_quotation_title_fluctuation_rate">涨跌幅</string>
     <string name="default_stock_name">股票名称</string>
     <string name="default_stock_id">股票代码</string>
+    <string name="default_stock_name_id_and_type">股票名称 (股票代码.股票类型)</string>
+    <string name="default_current_price">当前价格</string>
+    <string name="default_current_point">当前点数</string>
+    <string name="default_fluctuation_rate">涨跌率</string>
     <string name="label_sz">SZ</string>
     <string name="label_sh">SH</string>
     <string name="format_stock_price">%.2f</string>
-    <string name="format_stock_point">%.3f</string>
+    <string name="format_stock_point">@string/format_double_with_three_decimals</string>
     <string name="format_stock_point_positive">+%.3f</string>
     <string name="format_stock_point_negative">-%.3f</string>
     <string name="format_stock_price_positive">+%.2f</string>
@@ -187,7 +226,7 @@
     <string name="msg_succeed_in_refreshing_quotation_list">行情列表刷新</string>
 
 
-    <!-- Strings in QuotationDetailsViewImpl -->
+    <!-- Strings in QuotationDetailsFragment -->
     <string name="format_date_and_clock_time">MM/dd hh:mm</string>
     <string name="tv_stock_status_has_not_opened">未开盘</string>
     <string name="tv_stock_status_has_opened">已开盘</string>
@@ -211,12 +250,29 @@
     <string name="format_price_difference_rate_positive">+%.2f%%</string>
     <string name="format_volume_in_hundred_million_hands">%.2f亿手</string>
     <string name="format_turnover_in_hundred_million">%.2f亿</string>
-    <string name="format_average_price">%.3f</string>
+    <string name="format_average_price">@string/format_double_with_three_decimals</string>
     <string name="prompt_k_line_chart">K线图</string>
 
-    <!-- K line -->
+    <!-- strings in StockNewsFragment -->
+    <!-- eg sh000001 -->
+    <string name="format_baidu_stock_news">https://gupiao.baidu.com/stock/%s</string>
+    <string name="format_sina_stock_news">http://finance.sina.com.cn/realstock/company/%s/nc.shtml</string>
+    <!-- eg 000001 -->
+    <string name="format_tecent_stock_news">http://stockhtm.finance.qq.com/hqing/zhishu/%s.htm</string>
+    <string name="label_baidu_stock">百度股市通</string>
+    <string name="label_sina_stock">新浪财经</string>
+    <string name="label_tecent_stock">腾讯证券</string>
+
+    <!-- strings in InformationFragment -->
+    <string name="url_tecent_stock">http://stock.qq.com/</string>
+    <string name="label_latest">最新</string>
+    <string name="label_latest_information">最新资讯</string>
+    <string name="label_default_latest_information_title">最新资讯标题</string>
+    <string name="label_default_latest_information_clock_time">最新资讯时间</string>
+    <string name="label_default_latest_information_content">最新资讯内容</string>
 
     <!-- strings in MineFragment -->
+    <string name="label_user_portrait">头像</string>
     <string name="label_user_id">用户账号</string>
     <string name="action_sign_up">签到</string>
     <string name="action_has_signed_up">已签到</string>
@@ -224,11 +280,10 @@
     <!-- strings in SettingsFragment -->
     <string name="label_multi_account_management">多账号管理</string>
     <string name="label_account_and_safety">账号与安全</string>
-    <string name="label_version_update">版本更新</string>
+    <string name="label_privacy">隐私</string>
+    <string name="label_common_settings">通用</string>
     <string name="label_logout">退出登录</string>
     <string name="label_about_us">关于我们</string>
-
-    <string name="label_contact_us">联系我们</string>
 
     <!-- strings in PersonalInfoFragment -->
     <string name="label_personal_info">个人信息</string>
@@ -249,6 +304,33 @@
     <string name="error_failed_to_change_nickname">昵称更换失败</string>
     <string name="msg_succeed_in_changing_nickname">昵称更换成功</string>
 
+    <!-- Strings in AboutUsFragment -->
+    <string name="label_about">关于</string>
+    <string name="format_app_name_and_version">%1$s（V%2$s）</string>
+    <string name="action_official_website">https://github.com/Seckawijoki</string>
+    <string name="label_copyright">Copyright©2017 ??? All Rights Reserved</string>
+    <string name="label_version_update">版本更新</string>
+    <string name="label_find_latest_version">发现新版本</string>
+    <string name="label_is_the_latest_version">已是最新版本</string>
+    <string name="msg_under_checking_update">正在检测升级……</string>
+    <string name="format_find_latest_version">发现新版本（V%s）</string>
+    <string name="action_put_aside">暂不</string>
+    <string name="action_update_right_now">立即升级</string>
+    <string name="label_grade_my_app">给我的APP评分</string>
+    <string name="label_disclaimer_and_privacy_statement">免责及隐私声明</string>
+    <string name="label_contact_us">联系我们</string>
+    <string name="label_please_select">请选择</string>
+    <string name="action_dial_author_phone_number">作者的手机号 13510604840</string>
+    <string name="action_author_email">作者的邮箱 seckawijoki@foxmail.com</string>
+    <string name="action_qq_chat_with_author">作者的QQ号 498945554</string>
+    <string name="format_url_jump_to_qq">mqqwpa://im/chat?chat_type=wpa&amp;uin=%s</string>
+    <string name="qq_author">498945554</string>
+    <string name="format_dial">tel:%s</string>
+    <string name="phone_author">13510604840</string>
+
+    <!-- Strings in BrowserFragment -->
+    <string name="label_browser">网页浏览器</string>
+    <string name="msg_succeed_in_copying">复制成功</string>
 
     <!-- Strings in TestActivity -->
     <string name="txt_test_title_send">发送内容</string>

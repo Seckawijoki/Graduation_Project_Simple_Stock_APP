@@ -33,13 +33,13 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.FragmentTag;
 import com.seckawijoki.graduation_project.functions.data_loading.DataLoadingDialog;
 import com.seckawijoki.graduation_project.functions.data_loading.OnDataLoadingListener;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.ToastUtils;
-import com.seckawijoki.graduation_project.util.ViewUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ViewUtils;
 
 import java.util.List;
 
@@ -177,9 +177,9 @@ public class LoginFragment extends Fragment
     ToastUtils.show(activity, stringId);
     Log.d(TAG, "displayLogin(): successful = " + successful);
     if (successful){
-//      GlobalVariables.getInstance().account = account;
+//      GlobalVariables.newInstance().account = account;
 //      ( (MyApplication) activity.getApplicationContext() ).setLoginAccount(account);
-      GlobalVariableUtils.setAccount(activity, actvAccount.getText().toString());
+      GlobalVariableTools.setAccount(activity, actvAccount.getText().toString());
       /*
       activity.runOnUiThread(()->{
         DataLoadingDialog dataLoadingDialog = DataLoadingDialog.newInstance(LoginFragment.this);
@@ -188,7 +188,7 @@ public class LoginFragment extends Fragment
 */
       DataLoadingDialog dataLoadingDialog = DataLoadingDialog.newInstance(LoginFragment.this);
       dataLoadingDialog.show(getFragmentManager(), FragmentTag.DATA_LOADING);
-      GlobalVariableUtils.setAutoLogin(activity, true);
+      GlobalVariableTools.setAutoLogin(activity, true);
     }
   }
 
@@ -198,7 +198,7 @@ public class LoginFragment extends Fragment
     actvPassword.setText(password);
     actvPassword.setSelection(password.length());
     actvPassword.requestFocus();
-    if (GlobalVariableUtils.getAutoLogin(activity)){
+    if ( GlobalVariableTools.getAutoLogin(activity)){
       callback.onRequestLogin(account, password, mac);
     }
   }
@@ -235,17 +235,17 @@ public class LoginFragment extends Fragment
         // TODO: 2017/11/17 debugging
         DataLoadingDialog dataLoadingDialog = DataLoadingDialog.newInstance(this);
         dataLoadingDialog.show(getFragmentManager(), FragmentTag.DATA_LOADING);
-//        startActivity(new Intent(ActivityIntent.MAIN));
+//        startActivity(new Intent(IntentAction.MAIN));
         activity.finish();
         break;
       case R.id.tv_forget_password:
         ToastUtils.show(activity, "TODO");
         break;
       case R.id.tv_register:
-        startActivity(new Intent(ActivityIntent.REGISTER));
+        startActivity(new Intent(IntentAction.REGISTER));
         break;
       case R.id.tv_test_activity:
-        startActivity(new Intent(ActivityIntent.TEST));
+        startActivity(new Intent(IntentAction.TEST));
         break;
       default:
 
@@ -256,7 +256,7 @@ public class LoginFragment extends Fragment
   @Override
   public void onDataLoading(boolean finish) {
     if (finish){
-      startActivity(new Intent(ActivityIntent.MAIN));
+      startActivity(new Intent(IntentAction.MAIN));
       activity.finish();
     } else {
       ToastUtils.show(activity, "数据加载失败");

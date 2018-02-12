@@ -1,10 +1,8 @@
 package com.seckawijoki.graduation_project.functions.favorite;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -13,22 +11,15 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.db.server.FavoriteGroupType;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.ViewUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.ViewUtils;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
-import net.lucode.hackware.magicindicator.buildins.UIUtil;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
 
 import java.util.List;
 
@@ -45,6 +36,10 @@ final class FavoritesViewImpl implements FavoriteContract.View, View.OnClickList
   private MagicIndicator indicator;
   private ViewPager vp;
   private FavoriteAdapter vpAdapter;
+
+  public FavoriteAdapter getFavoriteAdapter() {
+    return vpAdapter;
+  }
 
   @Override
   public void onPresenterInitiate() {
@@ -78,7 +73,6 @@ final class FavoritesViewImpl implements FavoriteContract.View, View.OnClickList
   @Override
   public void displayFavoriteGroups(List<FavoriteGroupType> favoriteGroupTypeList) {
     Log.i(TAG, "displayFavoriteGroups(): ");
-//    if ( vpAdapter == null )
     vp.setOffscreenPageLimit(favoriteGroupTypeList.size());
     vp.setAdapter(
             vpAdapter = new FavoriteAdapter(fragment.getFragmentManager())
@@ -86,7 +80,8 @@ final class FavoritesViewImpl implements FavoriteContract.View, View.OnClickList
     CommonNavigator commonNavigator = new CommonNavigator(activity);
     FavoriteIndicatorAdapter indicatorAdapter =
             new FavoriteIndicatorAdapter()
-                    .setFavoriteGroupTypeList(favoriteGroupTypeList);
+                    .setFavoriteGroupTypeList(favoriteGroupTypeList)
+                    .setViewPager(vp);
     commonNavigator.setPivotX(0.8f);
     commonNavigator.setAdapter(indicatorAdapter);
     indicator.setBackgroundColor(Color.TRANSPARENT);
@@ -116,50 +111,12 @@ final class FavoritesViewImpl implements FavoriteContract.View, View.OnClickList
   public void onClick(View v) {
     switch ( v.getId() ) {
       case R.id.img_group_manager:
-        if ( !TextUtils.isEmpty(GlobalVariableUtils.getAccount(activity)) )
+        if ( !TextUtils.isEmpty(GlobalVariableTools.getAccount(activity)) )
           fragment.startActivityForResult(
-                  new Intent(ActivityIntent.GROUP_MANAGER),
-                  ActivityRequestCode.ADD_NEW_GROUP);
+                  new Intent(IntentAction.GROUP_MANAGER),
+                  ActivityRequestCode.GROUP_MANAGER
+          );
         break;
     }
   }
-
-  private class FavoriteIndicatorAdapter extends CommonNavigatorAdapter {
-    private List<FavoriteGroupType> favoriteGroupTypeList;
-
-    public FavoriteIndicatorAdapter setFavoriteGroupTypeList(List<FavoriteGroupType> favoriteGroupTypeList) {
-      this.favoriteGroupTypeList = favoriteGroupTypeList;
-      return this;
-    }
-
-    @Override
-    public int getCount() {
-      return favoriteGroupTypeList == null ? 0 : favoriteGroupTypeList.size();
-    }
-
-    @Override
-    public IPagerTitleView getTitleView(Context context, int index) {
-      SimplePagerTitleView simplePagerTitleView = new ColorTransitionPagerTitleView(context);
-      simplePagerTitleView.setNormalColor(
-              ContextCompat.getColor(context, R.color.bg_favorites_label_dark));
-      simplePagerTitleView.setSelectedColor(
-              ContextCompat.getColor(context, R.color.bg_favorites_label_light));
-      simplePagerTitleView.setPadding(16, 0, 16, 0);
-      simplePagerTitleView.setText(favoriteGroupTypeList.get(index).getFavoriteGroupName());
-      simplePagerTitleView.setOnClickListener(v -> vp.setCurrentItem(index));
-      return simplePagerTitleView;
-    }
-
-    @Override
-    public IPagerIndicator getIndicator(Context context) {
-      LinePagerIndicator linePagerIndicator = new LinePagerIndicator(context);
-      linePagerIndicator.setMode(LinePagerIndicator.MODE_WRAP_CONTENT);
-      float width = context.getResources().getDimension(R.dimen.min_w_favorite_group_label);
-      linePagerIndicator.setColors(ContextCompat.getColor(context, R.color.bg_favorites_label_light));
-      linePagerIndicator.setMinimumWidth(UIUtil.dip2px(context, width));
-      return linePagerIndicator;
-    }
-  }
-
-  ;
 }

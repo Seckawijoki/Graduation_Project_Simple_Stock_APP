@@ -30,6 +30,7 @@ public class MineFragment extends Fragment {
   @Nullable
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    setHasOptionsMenu(true);
     return inflater.inflate(R.layout.fragment_mine, container, false);
   }
 
@@ -46,25 +47,17 @@ public class MineFragment extends Fragment {
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (data == null)return;
     super.onActivityResult(requestCode, resultCode, data);
-    switch ( resultCode ){
-      case Activity.RESULT_OK:
-        switch ( requestCode ){
-          case ActivityRequestCode.LOGOUT:
-            boolean hasLoggedOut = data.getBooleanExtra(IntentKey.HAS_LOGGED_OUT, false);
-            view.displayShowUserInfo(!hasLoggedOut);
-            break;
-          case ActivityRequestCode.PERSONAL_INFO:
-            model.requestUserInfo();
-            model.requestUserPortrait();
-            break;
-        }
-        break;
-      case Activity.RESULT_CANCELED:
-      case Activity.RESULT_FIRST_USER:
+    if (data == null)return;
+    if ( resultCode == Activity.RESULT_OK ) {
+      if ( requestCode == ActivityRequestCode.SETTINGS ) {
+        boolean hasLoggedOut = data.getBooleanExtra(IntentKey.HAS_LOGGED_OUT, false);
+        view.displayShowUserInfo(!hasLoggedOut);
 
-        break;
+      } else if ( requestCode == ActivityRequestCode.PERSONAL_INFO ) {
+        model.requestUserInfo();
+        model.requestUserPortrait();
+      }
     }
   }
 

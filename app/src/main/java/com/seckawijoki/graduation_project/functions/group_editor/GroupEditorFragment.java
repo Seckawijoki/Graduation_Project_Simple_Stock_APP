@@ -24,13 +24,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.constants.app.UnderlineDecoration;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.db.server.FavoriteGroupType;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 import java.util.List;
 
-public class GroupEditorFragment extends Fragment implements GroupEditorContract.View, OnGroupEditorClickListener {
+public class GroupEditorFragment extends Fragment implements GroupEditorContract.View, OnGroupEditorClickListener, View.OnClickListener {
   private static final String TAG = "GroupEditorFragment";
   private ActionCallback callback;
   private AppCompatActivity activity;
@@ -41,6 +42,9 @@ public class GroupEditorFragment extends Fragment implements GroupEditorContract
   private boolean hasDeleted;
   private boolean hasRenamed;
   private MenuItem miDelete;
+  private String groupName;
+  private EditText etNewGroupName;
+  private AlertDialog groupNameDialog;
   public static GroupEditorFragment newInstance() {
     Bundle args = new Bundle();
     GroupEditorFragment fragment = new GroupEditorFragment();
@@ -65,6 +69,13 @@ public class GroupEditorFragment extends Fragment implements GroupEditorContract
     LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
     layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     rv.setLayoutManager(layoutManager);
+    UnderlineDecoration itemDecoration = new UnderlineDecoration.Builder(activity)
+            .setPaddingLeftRes(R.dimen.p_l_group_manager_list_item)
+            .setPaddingRightRes(R.dimen.p_l_group_manager_list_item)
+            .setLineSizeRes(R.dimen.h_group_list_item_divider)
+            .setColorRes(R.color.bg_group_manager_editor_fragment)
+            .build();
+    rv.addItemDecoration(itemDecoration);
     adapter = new GroupEditorAdapter(activity)
             .setOnGroupEditorClickListener(this);
     rv.setAdapter(adapter);
@@ -117,6 +128,8 @@ public class GroupEditorFragment extends Fragment implements GroupEditorContract
     Log.d(TAG, "displayDeleteFavoriteGroups(): successful = " + successful);
     if (successful) {
       hasDeleted = true;
+      miDelete.setEnabled(false);
+      miDelete.getIcon().setAlpha(100);
       ToastUtils.show(activity, R.string.msg_succeed_in_deleting);
       callback.onRequestFavoriteGroups();
     } else {
@@ -144,30 +157,18 @@ public class GroupEditorFragment extends Fragment implements GroupEditorContract
 
   @Override
   public void onGroupRename(String groupName) {
-    View v = activity.getLayoutInflater().inflate(R.layout.dialog_on_group_name_change, null);
-    final EditText et = v.findViewById(R.id.et_group_name);
-    et.setText(groupName);
-    et.setSelection(groupName.length());
-    String oldGroupName = groupName;
-    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity)
-            .setView(v)
+    View view = activity.getLayoutInflater().inflate(R.layout.alert_dialog_on_group_name_change, null);
+    etNewGroupName = view.findViewById(R.id.et_group_name);
+    etNewGroupName.setText(groupName);
+    view.findViewById(R.id.btn_cancel).setOnClickListener(this);
+    view.findViewById(R.id.btn_confirm).setOnClickListener(this);
+    groupNameDialog = new AlertDialog.Builder(activity)
+            .setView(view)
             .setTitle(R.string.label_input_group_name)
-            .setPositiveButton(R.string.action_confirm, (dialog, which) -> {
-              Log.i(TAG, "onGroupRename(): confirm");
-              String newGroupName = et.getText().toString();
-              if ( TextUtils.equals(oldGroupName, newGroupName)){
-                return;
-              }
-              callback.onRequestRenameFavoriteGroup(
-                      oldGroupName,
-                      newGroupName);
-            }).setNegativeButton(R.string.action_cancel, (dialog, which) -> {
-              Log.i(TAG, "onGroupRename(): cancel");
-
-            });
-    AlertDialog alertDialog = dialogBuilder.create();
-    alertDialog.show();
-    et.requestFocus();
+            .create();
+    groupNameDialog.show();
+    etNewGroupName.setSelection(groupName.length());
+    etNewGroupName.requestFocus();
   }
 
   @Override
@@ -189,5 +190,24 @@ public class GroupEditorFragment extends Fragment implements GroupEditorContract
   @Override
   public void setActionCallback(ActionCallback callback) {
     this.callback = callback;
+  }
+
+  @Override
+  public void onClick(View v) {
+    switch ( v.getId() ){
+      case R.id.btn_confirm:
+        groupNameDialog.dismiss();
+        String newGroupName = etNewGroupName.getText().toString();
+        if ( TextUtils.equals(groupName, newGroupName)){
+          return;
+        }
+        callback.onRequestRenameFavoriteGroup(
+                groupName,
+                newGroupName);
+        break;
+      case R.id.btn_cancel:
+        groupNameDialog.dismiss();
+        break;
+    }
   }
 }

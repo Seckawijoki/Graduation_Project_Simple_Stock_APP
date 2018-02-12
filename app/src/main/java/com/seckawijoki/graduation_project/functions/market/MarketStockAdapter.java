@@ -78,9 +78,9 @@ class MarketStockAdapter extends RecyclerView.Adapter<MarketStockAdapter.ViewHol
       } else if (fluctuationRate < 0){
         layout.setBackgroundColor(ContextCompat.getColor(context, R.color.bg_stock_green));
         tvCurrentPoint.setText(
-                String.format(context.getString(R.string.format_stock_point_negative), currentPoint));
+                String.format(context.getString(R.string.format_stock_point), currentPoint));
         tvFluctuationRate.setText(
-                String.format(context.getString(R.string.format_fluctuation_rate_negative), fluctuationRate));
+                String.format(context.getString(R.string.format_fluctuation_rate), fluctuationRate));
       } else {
         layout.setBackgroundColor(ContextCompat.getColor(context, R.color.bg_stock_grey));
         tvCurrentPoint.setText(

@@ -3,15 +3,17 @@ package com.seckawijoki.graduation_project.functions.full_screen_image;
  * Created by 瑶琴频曲羽衣魂 on 2018/1/16 at 13:21.
  */
 
-import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.constants.common.IntentKey;
 
 public class FullScreenImageFragment extends Fragment {
   public static FullScreenImageFragment newInstance() {
@@ -30,7 +32,13 @@ public class FullScreenImageFragment extends Fragment {
   @Override
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-
+    View view = getView();
+    ImageView img = view.findViewById(R.id.img_full_screen);
+    String imageUri = getActivity().getIntent().getStringExtra(IntentKey.FULL_SCREEN_IMAGE_URI);
+    img.setImageBitmap(
+            BitmapFactory.decodeFile(imageUri)
+    );
+    img.setOnClickListener(v -> FullScreenImageFragment.this.getActivity().finish());
   }
 
   @Override

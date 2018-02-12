@@ -6,7 +6,7 @@ import com.seckawijoki.graduation_project.constants.server.Quotations;
 import com.seckawijoki.graduation_project.constants.server.StockType;
 import com.seckawijoki.graduation_project.constants.sina.SinaServerPath;
 import com.seckawijoki.graduation_project.db.Quotation;
-import com.seckawijoki.graduation_project.util.SinaStockUtils;
+import com.seckawijoki.graduation_project.tools.SinaResponseTools;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,7 +79,7 @@ class QuotationsModelImpl implements QuotationsContract.Model {
         }
         String result = response.body().string();
 //        Log.d(TAG, "updateQuotation(): result = " + result);
-        String[] values = SinaStockUtils.parse(result);
+        String[] values = SinaResponseTools.parse(result);
         Quotation quotation = new Quotation()
                 .setQuotationId(stockId)
                 .setQuotationType(stockType)

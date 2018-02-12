@@ -31,7 +31,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.R;
 
 import java.util.ArrayList;
@@ -279,12 +279,12 @@ public class Login2Activity extends AppCompatActivity implements LoaderCallbacks
   }
 
   public void loginForDebugging(View view) {
-    startActivity(new Intent(ActivityIntent.RISKING_RATE));
+    startActivity(new Intent(IntentAction.RISKING_RATE));
     finish();
   }
 
   public void gotoTestActivity(View view) {
-    startActivity(new Intent(ActivityIntent.TEST));
+    startActivity(new Intent(IntentAction.TEST));
   }
 
   private interface ProfileQuery {

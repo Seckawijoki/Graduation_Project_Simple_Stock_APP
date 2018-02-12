@@ -6,8 +6,8 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_message"
-        app:navigationIcon="@mipmap/ic_arrow_back_white"
         android:background="?attr/colorPrimary"
+        app:navigationIcon="@mipmap/ic_arrow_back_white"
         app:title="@string/label_message"
         app:titleTextColor="@color/tc_tb"
         app:theme="@style/MyToolBarTheme"

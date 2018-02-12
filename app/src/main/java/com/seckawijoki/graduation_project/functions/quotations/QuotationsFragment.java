@@ -19,10 +19,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
-import com.seckawijoki.graduation_project.functions.main.NavigatorAdapter;
+import com.seckawijoki.graduation_project.functions.main.ToolbarNavigatorAdapter;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -86,9 +86,9 @@ public class QuotationsFragment extends Fragment implements ViewPager.OnPageChan
     vp.addOnPageChangeListener(this);
     vp.setAdapter(adapter);
     CommonNavigator commonNavigator = new CommonNavigator(activity);
-    commonNavigator.setBackgroundResource(R.drawable.bg_round_indicator);
+    commonNavigator.setBackgroundResource(R.drawable.shape_round_indicator);
     String[] labels = activity.getResources().getStringArray(R.array.array_quotations);
-    NavigatorAdapter navigatorAdapter = new NavigatorAdapter(labels, vp);
+    ToolbarNavigatorAdapter navigatorAdapter = new ToolbarNavigatorAdapter(labels, vp);
     commonNavigator.setAdapter(navigatorAdapter);
     mi.setNavigator(commonNavigator);
     ViewPagerHelper.bind(mi, vp);
@@ -104,12 +104,15 @@ public class QuotationsFragment extends Fragment implements ViewPager.OnPageChan
     switch ( item.getItemId() ) {
       case R.id.menu_search:
         startActivityForResult(
-                new Intent(ActivityIntent.SEARCH),
+                new Intent(IntentAction.SEARCH),
                 ActivityRequestCode.SEARCH
         );
         break;
       case R.id.menu_message:
-        startActivity(new Intent(ActivityIntent.MESSAGE));
+        startActivity(new Intent(IntentAction.MESSAGE));
+        break;
+      case R.id.menu_refresh:
+        adapter.getFavoriteFragment().getMvpModel().requestFavoriteGroups();
         break;
       default:
         return super.onOptionsItemSelected(item);
@@ -119,19 +122,11 @@ public class QuotationsFragment extends Fragment implements ViewPager.OnPageChan
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//    Log.i(TAG, "onActivityResult()\n: ");
-    switch ( resultCode ){
-      case Activity.RESULT_OK:
-        Log.d(TAG, "onActivityResult()\n: requestCode = " + requestCode);
-//        Log.d(TAG, "onActivityResult()\n: data = " + data);
-        if (requestCode == ActivityRequestCode.SEARCH &&
-                data.getBooleanExtra(IntentKey.HAS_FAVORED_STOCK, false) ){
-          adapter.getFavoriteFragment().getMvpView().displayFavoriteGroups();
-        }
-        break;
-      default:
-
-        break;
+    super.onActivityResult(requestCode, resultCode, data);
+    Log.i(TAG, "onActivityResult()\n: ");
+    if ( resultCode == Activity.RESULT_OK && requestCode == ActivityRequestCode.SEARCH &&
+            data.getBooleanExtra(IntentKey.HAS_FAVORED_STOCK, false) ) {
+      adapter.getFavoriteFragment().refreshQuotationLists();
     }
   }
 

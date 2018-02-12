@@ -33,6 +33,29 @@
         <item name="android:colorAccent">@color/white</item>
     </style>
 
+
+    <style name="layout_alert_dialog">
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingTop">@dimen/p_t_b_layout_alert_dialog_custom</item>
+        <item name="android:paddingBottom">@dimen/p_t_b_layout_alert_dialog_custom</item>
+    </style>
+    <style name="tv_alert_dialog_options_item">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/selector_bg_alert_dialog_options_item</item>
+        <item name="android:textSize">@dimen/ts_alert_dialog_options_item</item>
+        <item name="android:paddingLeft">@dimen/p_l_r_alert_dialog_options_item</item>
+        <item name="android:paddingRight">@dimen/p_l_r_alert_dialog_options_item</item>
+        <item name="android:paddingTop">@dimen/p_t_b_alert_dialog_options_item</item>
+        <item name="android:paddingBottom">@dimen/p_t_b_alert_dialog_options_item</item>
+    </style>
+    <style name="btn_alert_dialog">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">#1976D2</item>
+    </style>
+    <style name="et_alert_dialog">
+        <item name="android:background">@drawable/shape_et</item>
+    </style>
+
     <!-- styles for FullScreenDialog -->
     <style name="dialog_full_screen" parent="android:Theme.NoTitleBar.Fullscreen">
         <item name="android:windowNoTitle">true</item>
@@ -59,6 +82,44 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <!-- styles in TradeFragment -->
+    <style name="layout_trade_info">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingLeft">@dimen/p_l_r_layout_trade_info</item>
+        <item name="android:paddingRight">@dimen/p_l_r_layout_trade_info</item>
+        <item name="android:paddingTop">@dimen/p_t_b_layout_trade_info</item>
+        <item name="android:paddingBottom">@dimen/p_t_b_layout_trade_info</item>
+    </style>
+    <style name="tv_trade_info_label">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/m_r_trade_info_label_or_value</item>
+    </style>
+    <style name="tv_trade_info_value" parent="tv_trade_info_label">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:gravity">left</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+    <style name="tv_trade_info_subtraction" parent="tv_trade_info_label">
+        <item name="android:background">@drawable/shape_tv_trade_info_button</item>
+    </style>
+    <style name="tv_trade_info_addition" parent="tv_trade_info_subtraction">
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+    <style name="btn_trade_buy_or_sell">
+        <item name="android:textSize">@dimen/ts_trade_buy_or_sell</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/m_l_r_trade_buy_or_sell</item>
+        <item name="android:layout_marginRight">@dimen/m_l_r_trade_buy_or_sell</item>
+        <item name="android:layout_marginTop">@dimen/m_t_b_trade_buy_or_sell</item>
+        <item name="android:layout_marginBottom">@dimen/m_t_b_trade_buy_or_sell</item>
+    </style>
+
     <!-- styles in QuotationsFragment -->
     <style name="tv_quotations_label">
         <item name="android:textColor">@color/white</item>
@@ -72,15 +133,6 @@
         <item name="android:textSize">@dimen/ts_quotation_list_label</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center</item>
-    </style>
-    <style name="tv_alert_dialog_item">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:background">@drawable/selector_bg_alert_dialog_item</item>
-        <item name="android:textSize">@dimen/ts_on_quotation_long_click</item>
-        <item name="android:paddingLeft">@dimen/p_l_r_alert_dialog_item</item>
-        <item name="android:paddingRight">@dimen/p_l_r_alert_dialog_item</item>
-        <item name="android:paddingTop">@dimen/p_t_b_alert_dialog_item</item>
-        <item name="android:paddingBottom">@dimen/p_t_b_alert_dialog_item</item>
     </style>
 
     <!-- styles in OldQuotationsFragment -->
@@ -148,12 +200,12 @@
     <style name="layout_setting_item">
         <item name="android:minHeight">@dimen/min_h_layout_setting_item</item>
         <item name="android:background">@drawable/selector_bg_setting_item</item>
-        <item name="android:paddingLeft">@dimen/p_l_r_setting_item</item>
-        <item name="android:paddingRight">@dimen/p_l_r_setting_item</item>
+        <item name="android:paddingLeft">@dimen/p_l_r_layout_settings_list_item</item>
+        <item name="android:paddingRight">@dimen/p_l_r_layout_settings_list_item</item>
     </style>
     <style name="tv_settings_label">
         <item name="android:background">@color/transparent</item>
-        <item name="android:textSize">@dimen/ts_setting_item_label</item>
+        <item name="android:textSize">@dimen/ts_settings_list_item_label</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:textColor">@color/black</item>

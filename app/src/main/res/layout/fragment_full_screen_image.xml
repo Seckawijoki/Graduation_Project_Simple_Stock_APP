@@ -4,6 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <ImageView
+        android:layout_gravity="center"
         android:id="@+id/img_full_screen"
         android:contentDescription="@string/prompt_full_screen_image"
         android:layout_width="match_parent"

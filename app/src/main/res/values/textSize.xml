@@ -1,0 +1,85 @@
+<resources>
+
+    <!-- default textSizes -->
+    <dimen name="ts_alert_dialog_options_item">16sp</dimen>
+
+    <!-- textSizes in LoginActivity -->
+    <dimen name="ts_label_login">32sp</dimen>
+
+    <!-- textSizes in PhoneRegisterDialog -->
+    <dimen name="ts_label_register">32sp</dimen>
+
+
+    <!-- textSizes in DataLoadingDialog -->
+
+    <!-- textSizes in TransactionFragment -->
+    <dimen name="ts_follow_to_buy_or_sell">16sp</dimen>
+    <dimen name="ts_transaction_date_time">12sp</dimen>
+
+    <!-- textSizes in TradeFragment -->
+    <dimen name="ts_trade_stock_info">14sp</dimen>
+    <dimen name="ts_trade_buy_or_sell">16sp</dimen>
+    <dimen name="ts_trade_summary">14sp</dimen>
+
+    <!-- textSizes in QuotationsFragment -->
+    <dimen name="ts_quotations_label">16sp</dimen>
+
+    <!-- textSizes in MarketFragment -->
+    <dimen name="ts_market_stock_name">12sp</dimen>
+    <dimen name="ts_market_stock_current_price">16sp</dimen>
+    <dimen name="ts_market_stock_current_point">10sp</dimen>
+    <dimen name="ts_market_stock_fluctuation_rate">10sp</dimen>
+
+    <!-- textSizes in GroupManagerFragment -->
+    <dimen name="ts_group_manager_group_name">16sp</dimen>
+
+    <!-- textSizes in GroupEditorFragment -->
+    <dimen name="ts_group_editor_group_name">16sp</dimen>
+    <dimen name="ts_tip_click_to_rename">12sp</dimen>
+
+    <!-- textSizes in SearchFragment -->
+    <dimen name="ts_stock_search_history_label">14sp</dimen>
+
+    <!-- textSizes in QuotationListFragment -->
+    <dimen name="ts_quotation_list_label">14sp</dimen>
+
+    <!-- textSizes in OldQuotationsFragment -->
+    <dimen name="ts_stock_type">10sp</dimen>
+    <dimen name="ts_stock_name">18sp</dimen>
+    <dimen name="ts_stock_id">14sp</dimen>
+    <dimen name="ts_stock_current_price">18sp</dimen>
+    <dimen name="ts_stock_fluctuation_rate">18sp</dimen>
+
+    <!-- textSizes in QuotationDetailsFragment -->
+    <dimen name="ts_quotation_details_id">16sp</dimen>
+    <dimen name="ts_quotation_details_name">16sp</dimen>
+    <dimen name="ts_quotation_details_status">12sp</dimen>
+    <dimen name="ts_quotation_details_date_and_clock_time">12sp</dimen>
+    <dimen name="ts_quotation_details_add_to_favorite_stocks">12sp</dimen>
+    <dimen name="ts_quotation_details_label">12sp</dimen>
+    <dimen name="ts_quotation_details_value">12sp</dimen>
+    <dimen name="ts_quotation_details_current_price">18sp</dimen>
+
+    <!-- textSizesLatestInformationFragmentment -->
+
+    <!-- textSizes in MineFragment -->
+    <dimen name="ts_tv_personal_information">16sp</dimen>
+    <dimen name="ts_nickname">20sp</dimen>
+
+    <!-- textSizes in SettingsFragment -->
+    <dimen name="ts_settings_list_item_label">16sp</dimen>
+    <dimen name="ts_settings_list_item_value">16sp</dimen>
+
+    <!-- textSizes in PersonalInfoFragment -->
+    <dimen name="ts_personal_info_list_item_label">@dimen/ts_settings_list_item_label</dimen>
+    <dimen name="ts_personal_info_list_item_value">@dimen/ts_settings_list_item_value</dimen>
+
+    <!-- textSizes in AboutUsFragment -->
+    <dimen name="ts_app_name_and_version">16sp</dimen>
+    <dimen name="ts_about_us_item_label">@dimen/ts_settings_list_item_label</dimen>
+    <dimen name="ts_about_us_list_item_value">@dimen/ts_settings_list_item_value</dimen>
+    <dimen name="ts_official_website">12sp</dimen>
+    <dimen name="ts_copyright">10sp</dimen>
+
+</resources>
+

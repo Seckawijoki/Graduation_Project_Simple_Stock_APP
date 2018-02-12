@@ -1,10 +1,9 @@
 package com.seckawijoki.graduation_project.db;
 
-import com.seckawijoki.graduation_project.util.SinaStockUtils;
+import com.seckawijoki.graduation_project.tools.SinaResponseTools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -79,7 +78,7 @@ public class QuotationDetails extends Stock {
   }
 
   public QuotationDetails setResponseResult(String result) {
-    String[] values = SinaStockUtils.parse(result);
+    String[] values = SinaResponseTools.parse(result);
     stockName = values[0];
     openingPriceToday = Float.valueOf(values[1]);
     closingPriceYesterday = Float.valueOf(values[2]);

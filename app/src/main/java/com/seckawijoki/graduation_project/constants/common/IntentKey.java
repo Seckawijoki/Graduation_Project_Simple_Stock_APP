@@ -10,7 +10,7 @@ public interface IntentKey {
    * {@link Boolean}
    */
   String HAS_LOGGED_OUT = "hasLoggedOut";
-  String THE_QUOTATION = "quotationDetails";
+  String THE_QUOTATION = "theQuotation";
   /**
    * @value
    * {@link Boolean}
@@ -36,4 +36,24 @@ public interface IntentKey {
    * {@link Boolean}
    */
   String HAS_CHANGED_PERSONAL_INFO = "hasChangedPersonalInfo";
+  /**
+   * @value
+   * {@link String}
+   */
+  String BROWSER_URL = "browserUrl";
+  /**
+   * @value
+   * {@link Boolean}
+   */
+  String SEARCH_FOR_CALLBACK = "clickForCallback";
+  /**
+   * @value
+   * {@link Long}
+   */
+  String STOCK_TABLE_ID = "stockTableId";
+  /**
+   * @value
+   * {@link String}
+   */
+  String FULL_SCREEN_IMAGE_URI = "fullScreenImageUri";
 }

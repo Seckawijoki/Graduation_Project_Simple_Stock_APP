@@ -7,4 +7,5 @@ package com.seckawijoki.graduation_project.constants.common;
 public interface BundleKey {
   String STOCK_TABLE_ID = "stockTableId";
   String FAVORITE_GROUP_NAME = "favoriteListName";
+  String SIMPLE_WEB_URL = "simpleWebUrl";
 }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/bg_group_manager_editor_fragment"
               android:orientation="vertical"
               xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -15,6 +16,7 @@
         android:layout_height="wrap_content"/>
 
     <android.support.v7.widget.RecyclerView
+        android:background="@color/bg_group_list_item"
         android:id="@+id/rv_group_editor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
+        app:popupTheme="@style/MyOverflowMenuStyle"
         app:theme="@style/MyToolBarTheme"
         app:titleTextColor="@color/tc_tb">
 

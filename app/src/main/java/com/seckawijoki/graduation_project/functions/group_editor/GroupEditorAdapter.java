@@ -5,6 +5,7 @@ package com.seckawijoki.graduation_project.functions.group_editor;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
@@ -73,16 +74,19 @@ class GroupEditorAdapter extends RecyclerView.Adapter<GroupEditorAdapter.ViewHol
       float fontSize =
               context.getResources().getDimension(R.dimen.ts_tip_click_to_rename) /
                       context.getResources().getDisplayMetrics().density;
-      holder.chb.setVisibility(View.INVISIBLE);
+      holder.chb.setVisibility(View.GONE);
       holder.imgSetTop.setVisibility(View.GONE);
-      holder.imgReorder.setVisibility(View.INVISIBLE);
+      holder.imgReorder.setVisibility(View.GONE);
+      holder.layout.setBackgroundColor(Color.TRANSPARENT);
+      holder.layout.setPadding(0,0,0,0);
       holder.tv.setText(context.getString(R.string.action_click_to_rename_group));
-      holder.tv.setBackgroundColor(Color.TRANSPARENT);
+      holder.tv.setBackgroundColor(ContextCompat.getColor(context, R.color.bg_group_manager_editor_fragment));
       holder.tv.setGravity(Gravity.CENTER);
       holder.tv.setTextSize(fontSize);
     } else if ( favoriteGroupTypeList != null && position < favoriteGroupTypeList.size()) {
       if (position == 0){
-        holder.imgSetTop.setVisibility(View.GONE);
+        holder.imgSetTop.setVisibility(View.INVISIBLE);
+        holder.imgSetTop.setOnClickListener(null);
       }
       FavoriteGroupType favoriteGroupType = favoriteGroupTypeList.get(position);
       String groupName = favoriteGroupType.getFavoriteGroupName();
@@ -112,12 +116,14 @@ class GroupEditorAdapter extends RecyclerView.Adapter<GroupEditorAdapter.ViewHol
   }
 
   static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    View layout;
     CheckBox chb;
     TextView tv;
     ImageView imgSetTop;
     ImageView imgReorder;
     ViewHolder(View view) {
       super(view);
+      layout = view.findViewById(R.id.layout_group_editor_list_item);
       chb = view.findViewById(R.id.chb_choose_to_delete);
       tv = view.findViewById(R.id.tv_group_name);
       imgSetTop = view.findViewById(R.id.img_set_top);

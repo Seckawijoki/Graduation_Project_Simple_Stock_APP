@@ -19,7 +19,7 @@ public interface SinaForeignStock {
    * 恒生指数
    * HK
    */
-  String HANG_SENG = "int_hangseng";
+  String HENG_SENG = "int_hengseng";
   /**
    * 日经指数
    * HK
@@ -38,7 +38,7 @@ public interface SinaForeignStock {
   String[] ids = {
           DOW_JONES,
           NASDAQ,
-          HANG_SENG,
+          HENG_SENG,
           NIKKEI,
           TWSE,
           FSSTI

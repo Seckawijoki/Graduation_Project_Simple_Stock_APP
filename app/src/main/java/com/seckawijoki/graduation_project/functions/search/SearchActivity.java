@@ -8,11 +8,10 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.util.ActivityUtils;
+import com.seckawijoki.graduation_project.utils.ActivityUtils;
 
 public class SearchActivity extends AppCompatActivity {
   private SearchContract.Presenter presenter;
-  private SearchContract.Model model;
   private SearchFragment fragment;
 
   @Override
@@ -29,7 +28,7 @@ public class SearchActivity extends AppCompatActivity {
       );
     }
     presenter = new SearchPresenterImpl()
-            .setModel(model = new SearchModelImpl(this))
+            .setModel(new SearchModelImpl(this))
             .setView(fragment)
             .initiate();
   }

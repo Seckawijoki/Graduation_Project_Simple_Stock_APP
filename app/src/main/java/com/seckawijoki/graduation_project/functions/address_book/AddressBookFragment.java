@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 public class AddressBookFragment extends Fragment {
   public static AddressBookFragment newInstance() {

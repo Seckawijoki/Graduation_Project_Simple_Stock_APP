@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              style="@style/layout_alert_dialog"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        style="@style/tv_alert_dialog_options_item"
+        android:id="@+id/tv_delete"
+        android:text="@string/action_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        style="@style/tv_alert_dialog_options_item"
+        android:id="@+id/tv_set_top"
+        android:text="@string/action_set_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        style="@style/tv_alert_dialog_options_item"
+        android:id="@+id/tv_set_special_attention"
+        android:text="@string/action_set_special_attention"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        style="@style/tv_alert_dialog_options_item"
+        android:id="@+id/tv_bulk_edition"
+        android:text="@string/action_bulk_edition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -20,6 +20,7 @@ import static android.R.attr.fragment;
 
 public class QuotationDetailsFragment extends Fragment{
   private static final String TAG = "QuotationDetailsFragment";
+  private QuotationDetailsContract.Presenter presenter;
   public static QuotationDetailsFragment newInstance(long stockTableId) {
     Bundle args = new Bundle();
     args.putLong(BundleKey.STOCK_TABLE_ID, stockTableId);
@@ -39,12 +40,15 @@ public class QuotationDetailsFragment extends Fragment{
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
     Bundle bundle = getArguments();
-    new QuotationDetailsPresenterImpl()
+    presenter = new QuotationDetailsPresenterImpl()
             .setView(new QuotationDetailsViewImpl(this))
             .setModel(new QuotationDetailsModelImpl(getActivity(), bundle.getLong(BundleKey.STOCK_TABLE_ID)))
             .initiate();
   }
 
-
-
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    presenter.destroy();
+  }
 }

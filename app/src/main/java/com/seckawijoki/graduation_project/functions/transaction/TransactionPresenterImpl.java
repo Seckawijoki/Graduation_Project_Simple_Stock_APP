@@ -6,6 +6,10 @@ package com.seckawijoki.graduation_project.functions.transaction;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
+import com.seckawijoki.graduation_project.db.client.UserTransaction;
+
+import java.util.List;
+
 final class TransactionPresenterImpl implements TransactionContract.Presenter,
         TransactionContract.View.ActionCallback,
         TransactionContract.Model.DataCallback {
@@ -44,5 +48,15 @@ final class TransactionPresenterImpl implements TransactionContract.Presenter,
   public void destroy() {
     view.destroy();
     model.destroy();
+  }
+
+  @Override
+  public void onRequestAllTransactions() {
+    model.requestAllTransactions();
+  }
+
+  @Override
+  public void onDisplayAllTransactions(List<UserTransaction> transactionList) {
+    view.displayAllTransactions(transactionList);
   }
 }

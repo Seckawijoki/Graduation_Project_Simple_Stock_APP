@@ -16,7 +16,7 @@
         <item>自选</item>
         <item>市场</item>
     </string-array>
-    <string-array name="array_the_quotation">
+    <string-array name="array_single_quotation">
         <item>报价</item>
         <item>新闻</item>
         <item>评论</item>
@@ -26,5 +26,25 @@
         <item>日K</item>
         <item>周K</item>
         <item>月K</item>
+    </string-array>
+    <string-array name="array_stock_news">
+        <item>新浪财经</item>
+        <item>百度股市通</item>
+        <item>腾讯证券</item>
+    </string-array>
+    <string-array name="array_information">
+        <item>最新</item>
+        <item>新浪财经</item>
+        <item>同花顺财经</item>
+        <item>腾讯证券</item>
+        <item>京东股票</item>
+        <item>东方财富网</item>
+    </string-array>
+    <string-array name="array_information_url">
+        <item>http://finance.sina.com.cn/</item>
+        <item>http://www.10jqka.com.cn/</item>
+        <item>http://stock.qq.com/</item>
+        <item>http://gupiao.jd.com/</item>
+        <item>http://www.eastmoney.com/</item>
     </string-array>
 </resources>

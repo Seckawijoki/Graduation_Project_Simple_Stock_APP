@@ -5,14 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
-import com.seckawijoki.graduation_project.functions.main.NavigatorAdapter;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
+import com.seckawijoki.graduation_project.functions.main.ToolbarNavigatorAdapter;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -35,10 +34,11 @@ class AssetsViewImpl implements AssetsContract.View, Toolbar.OnMenuItemClickList
     activity.setSupportActionBar(tb);
     tb.setOnMenuItemClickListener(this);
     ViewPager vp = view.findViewById(R.id.vp_assets);
-    vp.setAdapter(new AssetsAdapter(fragment.getFragmentManager()));
+    vp.setOffscreenPageLimit(3);
+    vp.setAdapter(new AssetsAdapter(fragment.getFragmentManager()).setViewPager(vp));
     MagicIndicator mi = view.findViewById(R.id.indicator_assets);
     CommonNavigator navigator = new CommonNavigator(activity);
-    NavigatorAdapter adapter = new NavigatorAdapter(
+    ToolbarNavigatorAdapter adapter = new ToolbarNavigatorAdapter(
             activity.getResources().getStringArray(R.array.array_assets),
             vp
     );
@@ -68,10 +68,10 @@ class AssetsViewImpl implements AssetsContract.View, Toolbar.OnMenuItemClickList
   public boolean onMenuItemClick(MenuItem item) {
     switch ( item.getItemId() ){
       case R.id.menu_search:
-        fragment.startActivity(new Intent(ActivityIntent.SEARCH));
+        fragment.startActivity(new Intent(IntentAction.SEARCH));
         break;
       case R.id.menu_message:
-        fragment.startActivity(new Intent(ActivityIntent.MESSAGE));
+        fragment.startActivity(new Intent(IntentAction.MESSAGE));
         break;
       case R.id.menu_share:
         ToastUtils.show(activity, R.string.msg_under_developing);

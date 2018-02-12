@@ -3,32 +3,32 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="@string/action_address_book"
-        app:showAsAction="ifRoom"
-        android:orderInCategory="1"
+        android:id="@+id/menu_address_book"
         android:icon="@mipmap/ic_contacts_white"
-        android:id="@+id/menu_address_book"/>
+        android:orderInCategory="1"
+        android:title="@string/action_address_book"
+        app:showAsAction="always"/>
     <item
-        android:title="@string/action_add"
-        app:showAsAction="ifRoom"
-        android:orderInCategory="2"
+        android:id="@+id/menu_add"
         android:icon="@mipmap/ic_add_white"
-        android:id="@+id/menu_add">
+        android:orderInCategory="2"
+        android:title="@string/action_add"
+        app:showAsAction="ifRoom">
         <menu>
             <group>
                 <item
-                    android:title="@string/action_create_group"
-                    app:showAsAction="ifRoom"
-                    android:orderInCategory="4"
+                    android:id="@+id/menu_add_person"
+                    android:icon="@mipmap/ic_person_add_white"
+                    android:orderInCategory="3"
+                    android:title="@string/action_add_person"
+                    app:showAsAction="ifRoom"/>
+                <item
+                    android:id="@+id/menu_create_group"
                     android:icon="@mipmap/ic_group_add_white"
-                    android:id="@+id/menu_create_group"/>
-            <item
-                android:title="@string/action_add_person"
-                app:showAsAction="ifRoom"
-                android:orderInCategory="3"
-                android:icon="@mipmap/ic_person_add_white"
-                android:id="@+id/menu_add_person"/>
+                    android:orderInCategory="4"
+                    android:title="@string/action_create_group"
+                    app:showAsAction="ifRoom"/>
             </group>
         </menu>
-        </item>
+    </item>
 </menu>

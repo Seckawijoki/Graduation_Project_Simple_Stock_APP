@@ -9,4 +9,5 @@ public interface PreferenceKey {
   String ACCOUNT = "account";
   String AUTO_LOGIN = "autoLogin";
   String MAIN_FRAGMENT = "mainFragment";
+  String TRADE_STOCK_TABLE_ID = "tradeStockTableId";
 }

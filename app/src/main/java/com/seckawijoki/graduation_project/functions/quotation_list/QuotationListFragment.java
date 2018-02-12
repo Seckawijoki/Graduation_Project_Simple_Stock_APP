@@ -63,11 +63,10 @@ public class QuotationListFragment extends Fragment{
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if ( resultCode == Activity.RESULT_OK ) {
-      if ( requestCode == ActivityRequestCode.THE_QUOTATION &&
-              data.getBooleanExtra(IntentKey.HAS_FAVORED_STOCK, false) ) {
-        listener.onQuotationListRefresh(null);
-      }
+    if ( resultCode == Activity.RESULT_OK &&
+            requestCode == ActivityRequestCode.SINGLE_QUOTATION &&
+            data.getBooleanExtra(IntentKey.HAS_FAVORED_STOCK, false) ) {
+      listener.onQuotationListRefresh(null);
     }
   }
 

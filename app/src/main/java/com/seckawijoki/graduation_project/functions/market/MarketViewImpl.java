@@ -1,6 +1,7 @@
 package com.seckawijoki.graduation_project.functions.market;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,21 +18,24 @@ import java.util.List;
  * Created by 瑶琴频曲羽衣魂 on 2018/1/15 at 13:41.
  */
 
-final class MarketViewImpl implements MarketContract.View {
+final class MarketViewImpl implements MarketContract.View, SwipeRefreshLayout.OnRefreshListener {
   private AppCompatActivity activity;
   private View view;
   private Fragment fragment;
-  private ActionCallback callback;
+  private SwipeRefreshLayout layoutRefresh;
   private MarketStockAdapter adapter;
+  private ActionCallback callback;
   @Override
   public void onModelInitiate() {
-    RecyclerView rv = (RecyclerView) activity.findViewById(R.id.rv_market_stock);
+    RecyclerView rv = activity.findViewById(R.id.rv_market_stock);
     GridLayoutManager layoutManager = new GridLayoutManager(activity, 3);
     layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     rv.setLayoutManager(layoutManager);
 //    rv.setLayoutManager(new LinearLayoutManager(activity));
     adapter = new MarketStockAdapter(activity);
     rv.setAdapter(adapter);
+    layoutRefresh = activity.findViewById(R.id.layout_refresh_market_stock);
+    layoutRefresh.setOnRefreshListener(this);
     callback.onRequestMarketStocks();
   }
 
@@ -53,6 +57,7 @@ final class MarketViewImpl implements MarketContract.View {
       adapter = new MarketStockAdapter(activity);
     }
     adapter.setMarketStockList(marketStockList).notifyDataSetChanged();
+    layoutRefresh.setRefreshing(false);
     ( (RecyclerView) view.findViewById(R.id.rv_market_stock) ).setAdapter(adapter);
   }
 
@@ -67,5 +72,11 @@ final class MarketViewImpl implements MarketContract.View {
     this.fragment = fragment;
     view = fragment.getView();
     activity = (AppCompatActivity) fragment.getActivity();
+  }
+
+  @Override
+  public void onRefresh() {
+    layoutRefresh.setRefreshing(true);
+    callback.onRequestMarketStocks();
   }
 }

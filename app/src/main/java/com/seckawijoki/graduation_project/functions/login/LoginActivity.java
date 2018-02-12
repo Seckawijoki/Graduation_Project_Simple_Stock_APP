@@ -5,22 +5,15 @@ package com.seckawijoki.graduation_project.functions.login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.functions.main.MainActivity;
-import com.seckawijoki.graduation_project.util.ActivityUtils;
-import com.seckawijoki.graduation_project.util.ToastUtils;
-
-import cn.smssdk.EventHandler;
-import cn.smssdk.SMSSDK;
+import com.seckawijoki.graduation_project.utils.ActivityUtils;
 
 public class LoginActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
-
     LoginFragment fragment = (LoginFragment)
             getSupportFragmentManager().findFragmentById(R.id.layout_login_fragment);
     if ( fragment == null ) {

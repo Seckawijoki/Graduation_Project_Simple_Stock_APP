@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.seckawijoki.graduation_project.R;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
+import com.seckawijoki.graduation_project.constants.common.IntentKey;
 
 public class FavoriteFragment extends Fragment {
   private static final String TAG = "FavoriteFragment";
@@ -24,6 +25,14 @@ public class FavoriteFragment extends Fragment {
 
   public FavoriteContract.View getMvpView() {
     return view;
+  }
+
+  public void refreshQuotationLists(){
+    ( (FavoritesViewImpl) view ).getFavoriteAdapter().onQuotationListRefresh(null);
+  }
+
+  public FavoriteContract.Model getMvpModel() {
+    return model;
   }
 
   public static FavoriteFragment newInstance() {
@@ -50,22 +59,19 @@ public class FavoriteFragment extends Fragment {
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    Log.i(TAG, "onActivityResult(): ");
-    switch ( resultCode ){
-      case Activity.RESULT_OK:
-        if (requestCode == ActivityRequestCode.ADD_NEW_GROUP) {
-          /*
-          presenter = new FavoritePresenterImpl()
-                  .setView(view = new FavoritesViewImpl(this))
-                  .setModel(model = new FavoriteModelImpl())
-                  .initiate();
-          */
-          model.requestFavoriteGroups();
-        }
-        break;
-      default:
-
-        break;
+    super.onActivityResult(requestCode, resultCode, data);
+    Log.i(TAG, "onActivityResult()\n: ");
+    if ( resultCode == Activity.RESULT_OK && requestCode == ActivityRequestCode.GROUP_MANAGER ) {
+      boolean hasDeleted = data.getBooleanExtra(IntentKey.HAS_DELETED_GROUP, false);
+      boolean hasRenamed = data.getBooleanExtra(IntentKey.HAS_RENAMED_GROUP, false);
+      boolean hasAdded = data.getBooleanExtra(IntentKey.HAS_ADDED_NEW_GROUP, false);
+      Log.d(TAG, "onActivityResult():\n hasAdded = " + hasAdded);
+      Log.d(TAG, "onActivityResult():\n hasDeleted = " + hasDeleted);
+      Log.d(TAG, "onActivityResult():\n hasRenamed = " + hasRenamed);
+      if ( hasDeleted || hasRenamed || hasAdded ) {
+        Log.i(TAG, "onActivityResult()\n: ");
+        model.requestFavoriteGroups();
+      }
     }
   }
 

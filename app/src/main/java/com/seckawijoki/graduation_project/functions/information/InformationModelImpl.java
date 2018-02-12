@@ -1,14 +1,14 @@
 package com.seckawijoki.graduation_project.functions.information;
 
 /**
- * Created by 瑶琴频曲羽衣魂 on 2017/10/24.
+ * Created by 瑶琴频曲羽衣魂 on 2018/2/8 at 20:08.
  */
 
-class InformationModelImpl implements InformationContract.Model {
+final class InformationModelImpl implements InformationContract.Model {
   private DataCallback callback;
 
   @Override
-  public void initiate() {
+  public void onViewInitiate() {
 
   }
 

@@ -110,6 +110,9 @@ public class QuotationListAdapter extends RecyclerView.Adapter<QuotationListAdap
   public void onBindViewHolder(ViewHolder holder, int position) {
     if ( stockList != null ) {
       Stock stock = stockList.get(position);
+      if ( stock == null ) {
+        return;
+      }
 //      Log.d(TAG, "onBindViewHolder(): stockList.size() = " + stockList.size());
       holder.bind(context, stock);
       holder.layout.setOnClickListener(v -> {
@@ -175,7 +178,7 @@ public class QuotationListAdapter extends RecyclerView.Adapter<QuotationListAdap
         tvFluctuationRate.setBackgroundColor(
                 ContextCompat.getColor(context, R.color.bg_stock_fluctuation_rate_green));
         tvFluctuationRate.setText(
-                String.format(context.getString(R.string.format_fluctuation_rate_negative), fluctuation));
+                String.format(context.getString(R.string.format_fluctuation_rate), fluctuation));
       } else if (fluctuation > 0){
         tvCurrentPrice.setTextColor(
                 ContextCompat.getColor(context, R.color.tc_stock_red));

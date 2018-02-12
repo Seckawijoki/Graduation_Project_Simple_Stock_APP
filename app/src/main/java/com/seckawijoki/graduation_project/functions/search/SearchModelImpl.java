@@ -7,9 +7,8 @@ import android.util.Log;
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.client.SearchStock;
 import com.seckawijoki.graduation_project.db.server.FavoriteStock;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
-import com.seckawijoki.graduation_project.util.MyLogUtils;
-import com.seckawijoki.graduation_project.util.OkHttpUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.OkHttpUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,7 +63,7 @@ public final class SearchModelImpl implements SearchContract.Model {
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
-              .add("userId", GlobalVariableUtils.getUserId(activity))
+              .add("userId", GlobalVariableTools.getUserId(activity))
               .build();
       Request request = new Request.Builder()
               .url(ServerPath.GET_STOCK_SEARCH_HISTORY)
@@ -96,7 +95,7 @@ public final class SearchModelImpl implements SearchContract.Model {
         );
         searchStockList.add(searchStock);
       }
-      Log.d(TAG, "requestStockSearchHistory()\n: searchStockList = " + searchStockList);
+//      Log.d(TAG, "requestStockSearchHistory()\n: searchStockList = " + searchStockList);
       callback.onDisplayStockSearchHistory(searchStockList);
     } catch ( InterruptedException | JSONException | ExecutionException e ) {
       e.printStackTrace();
@@ -108,7 +107,7 @@ public final class SearchModelImpl implements SearchContract.Model {
     JSONArray result = OkHttpUtils.post()
             .url(ServerPath.SEARCH_FOR_MATCHED_STOCKS)
             .addParam("search", search)
-            .addParam("userId", GlobalVariableUtils.getUserId(activity))
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
             .execute()
             .jsonArray();
     List<SearchStock> searchStockList = new ArrayList<>();
@@ -136,7 +135,7 @@ public final class SearchModelImpl implements SearchContract.Model {
   public void requestClearStockSearchHistory() {
     Boolean result = OkHttpUtils.post()
             .url(ServerPath.CLEAR_STOCK_SEARCH_HISTORY)
-            .addParam("userId", GlobalVariableUtils.getUserId(activity))
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
             .execute()
             .bool();
     List<SearchStock> searchStockList;
@@ -161,7 +160,7 @@ public final class SearchModelImpl implements SearchContract.Model {
   public void requestAddFavoriteStock(SearchStock searchStock) {
     JSONObject jsonObject = OkHttpUtils.post()
             .url(ServerPath.ADD_FAVORITE_STOCK_FROM_SEARCH)
-            .addParam("userId", GlobalVariableUtils.getUserId(activity))
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
             .addParam("stockTableId", searchStock.getStockTableId() + "")
             .execute()
             .jsonObject();
@@ -195,7 +194,7 @@ public final class SearchModelImpl implements SearchContract.Model {
   public void requestDeleteFavoriteStock(SearchStock searchStock) {
     Boolean result = OkHttpUtils.post()
             .url(ServerPath.DELETE_FAVORITE_STOCK_FROM_SEARCH)
-            .addParam("userId", GlobalVariableUtils.getUserId(activity))
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
             .addParam("stockTableId", searchStock.getStockTableId() + "")
             .execute()
             .bool();
@@ -220,7 +219,7 @@ public final class SearchModelImpl implements SearchContract.Model {
     JSONObject result = OkHttpUtils.post()
             .url(ServerPath.SAVE_STOCK_SEARCH_HISTORY)
             .addParam("stockTableId", searchStock.getStockTableId() + "")
-            .addParam("userId", GlobalVariableUtils.getUserId(activity))
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
             .execute()
             .jsonObject();
     try {

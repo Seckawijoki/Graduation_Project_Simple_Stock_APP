@@ -12,7 +12,7 @@ import android.view.Menu;
 
 import com.seckawijoki.graduation_project.R;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
-import com.seckawijoki.graduation_project.util.ActivityUtils;
+import com.seckawijoki.graduation_project.utils.ActivityUtils;
 
 public class GroupManagerActivity extends AppCompatActivity {
   private static final String TAG = "GroupManagerActivity";
@@ -37,22 +37,7 @@ public class GroupManagerActivity extends AppCompatActivity {
             .initiate();
   }
 
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    Log.i(TAG, "onActivityResult(): ");
-    switch ( resultCode ){
-      case Activity.RESULT_OK:
-        if (requestCode == ActivityRequestCode.GROUP_EDITOR ) {
-          setIntent(data);
-          ( (GroupManagerPresenterImpl) presenter )
-                  .onRequestFavoriteGroups();
-        }
-        break;
-      default:
 
-        break;
-    }
-  }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+             style="@style/layout_alert_dialog"
+              android:layout_height="match_parent">
+
+    <EditText
+        style="@style/et_alert_dialog"
+        android:id="@+id/et_group_name"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/m_l_r_layout_alert_dialog_edit_text"
+        android:layout_marginRight="@dimen/m_l_r_layout_alert_dialog_edit_text"
+        android:layout_marginTop="@dimen/m_t_b_new_group_name"
+        android:layout_marginBottom="@dimen/m_t_b_new_group_name"
+        android:hint="@string/hint_add_new_group"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/btn_alert_dialog"
+            android:layout_alignParentRight="true"
+            android:text="@string/action_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            style="@style/btn_alert_dialog"
+            android:text="@string/action_cancel"
+            android:layout_alignBottom="@id/btn_confirm"
+            android:layout_toLeftOf="@id/btn_confirm"
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</FrameLayout>

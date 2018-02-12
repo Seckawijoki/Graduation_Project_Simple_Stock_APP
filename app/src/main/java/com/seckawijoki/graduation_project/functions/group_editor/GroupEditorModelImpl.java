@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.server.FavoriteGroupType;
-import com.seckawijoki.graduation_project.util.GlobalVariableUtils;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +60,7 @@ final class GroupEditorModelImpl implements GroupEditorContract.Model {
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       FormBody.Builder formBodyBuilder = new FormBody.Builder()
-              .add("userId", GlobalVariableUtils.getUserId(activity));
+              .add("userId", GlobalVariableTools.getUserId(activity));
       for ( int i = 0 ; i < groupNameList.size() ; i++ ) {
         String groupName = groupNameList.get(i);
         FavoriteGroupType favoriteGroupType =
@@ -114,7 +114,7 @@ final class GroupEditorModelImpl implements GroupEditorContract.Model {
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
-              .add("userId", GlobalVariableUtils.getUserId(activity))
+              .add("userId", GlobalVariableTools.getUserId(activity))
               .add("oldGroupName", oldGroupName)
               .add("newGroupName", newGroupName)
               .build();
@@ -142,11 +142,7 @@ final class GroupEditorModelImpl implements GroupEditorContract.Model {
               .find(FavoriteGroupType.class);
       callback.onDisplayFavoriteGroups(favoriteGroupTypeList);
       callback.onDisplayRenameFavoriteGroup(true);
-    } catch ( InterruptedException e ) {
-      e.printStackTrace();
-    } catch ( ExecutionException e ) {
-      e.printStackTrace();
-    } catch ( JSONException e ) {
+    } catch ( InterruptedException | ExecutionException | JSONException e ) {
       e.printStackTrace();
       callback.onDisplayRenameFavoriteGroup(false);
     }

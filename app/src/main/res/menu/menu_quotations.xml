@@ -3,7 +3,7 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="@string/action_search"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:orderInCategory="1"
         android:icon="@mipmap/ic_search_white"
         android:id="@+id/menu_search"/>
@@ -13,4 +13,10 @@
         android:orderInCategory="2"
         android:icon="@mipmap/ic_event_note_white"
         android:id="@+id/menu_message"/>
+    <item
+        android:title="@string/action_refresh"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="3"
+        android:icon="@mipmap/ic_refresh_white"
+        android:id="@+id/menu_refresh"/>
 </menu>

@@ -17,8 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.seckawijoki.graduation_project.R;
-import com.seckawijoki.graduation_project.constants.common.ActivityIntent;
-import com.seckawijoki.graduation_project.util.ToastUtils;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 public class MessageFragment extends Fragment {
   public static MessageFragment newInstance() {
@@ -62,7 +62,7 @@ public class MessageFragment extends Fragment {
         getActivity().finish();
         break;
       case R.id.menu_address_book:
-        startActivity(new Intent(ActivityIntent.ADDRESS_BOOK));
+        startActivity(new Intent(IntentAction.ADDRESS_BOOK));
         break;
       case R.id.menu_create_group:
         ToastUtils.show(getActivity(), R.string.msg_under_developing);

@@ -5,14 +5,25 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <RelativeLayout
+        android:paddingLeft="@dimen/p_l_r_layout_simulate_market"
+        android:paddingRight="@dimen/p_l_r_layout_simulate_market"
+        android:paddingTop="@dimen/p_t_b_layout_simulate_market"
+        android:paddingBottom="@dimen/p_t_b_layout_simulate_market"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <TextView
+        android:textColor="@color/black"
+        android:text="@string/label_shanghai_shenzhen_simulate_market"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     </RelativeLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/layout_refresh_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_transaction"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

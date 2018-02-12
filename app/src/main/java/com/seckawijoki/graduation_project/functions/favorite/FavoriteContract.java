@@ -25,6 +25,7 @@ public interface FavoriteContract {
     void destroy();
     void setDataCallback(DataCallback callback);
     void requestFavoriteGroups();
+    void requestFavoriteGroupsFromDatabase();
     interface DataCallback {
       void onDisplayFavoriteGroups(List<FavoriteGroupType> favoriteGroupTypeList);
     }

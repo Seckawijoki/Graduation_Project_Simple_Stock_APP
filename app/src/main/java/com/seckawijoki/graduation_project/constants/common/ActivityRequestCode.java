@@ -5,11 +5,11 @@ package com.seckawijoki.graduation_project.constants.common;
  */
 
 public interface ActivityRequestCode {
-  int LOGOUT = 0;
-  int ADD_NEW_GROUP = 1;
+  int SETTINGS = 0;
+  int GROUP_MANAGER = 1;
   int GROUP_EDITOR = 2;
   int SEARCH = 3;
-  int THE_QUOTATION = 4;
+  int SINGLE_QUOTATION = 4;
   int PERSONAL_INFO = 5;
   int IMAGE_PICKER = 6;
   int SYSTEM_CAMERA = 7;
