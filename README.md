@@ -9,8 +9,7 @@
 ### 展示：
 1.登录与注册：   
 
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/login.png)  
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/register.png)  
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/login.png)   ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/register.png)  
 
 2.股票收藏列表、股票详情与搜索：
 
@@ -23,9 +22,7 @@
 * 可更换4种K线图。点击图片可横屏观看。
 * 搜索股票，记录搜索历史。可在搜索的结果直接点击心形收藏该股票。
 
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/quotation_list.png)  
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/quotation_details.png)  
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/serach.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/quotation_list.png)   ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/quotation_details.png)   ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/serach.png)
 
 3.股票搜索：
 
