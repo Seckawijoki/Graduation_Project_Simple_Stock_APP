@@ -1,14 +1,14 @@
 # 毕业设计介绍
 ## 股票APP
 ### 主要功能：
-1.用户收藏自己喜欢的股票，并对股票进行分组管理。
-2.简单的模拟交易。
-3.阅读最新股票资讯。
-4.登录注册与个人信息、APP信息、APP更新等基础功能。
+1. 用户收藏自己喜欢的股票，并对股票进行分组管理。
+2. 简单的模拟交易。
+3. 阅读最新股票资讯。
+4. 登录注册与个人信息、APP信息、APP更新等基础功能。
 
 ### 展示：
 1.登录与注册：
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/login.png)![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/register.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/login.png)  ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/register.png)
 
 2.股票收藏列表：
 * 股票列表展示用户收藏股票的最新价与涨跌幅，数据每10秒更新一次。
