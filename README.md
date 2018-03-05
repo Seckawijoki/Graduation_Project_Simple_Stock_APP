@@ -26,6 +26,7 @@
 
 3.股票列表的管理：
 * 对股票列表进行新建、重命名与删除的管理
+
 ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/group_manager.png)    ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/group_editor.png)
 
 4.简单的模拟交易：
@@ -33,12 +34,14 @@
 * 从展示的交易列表中，可点击跟买/跟卖，直接跳转交易界面。
 * 点击股票可查看股票详情数据。
 * 交易中自行调整价格与数量。也可启动数字键盘更改。
+
 ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/transaction.png)  ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/trade.png)
 
 5.个人信息与基础功能：
 * 个人信息中修改头像、昵称。
 * 关于我们页面里，可升级APP，联系作者。
 * 点击下方链接可查看我的Github说明。
+
 ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/personal_info.png)   ![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/about_us.png)
 
 
