@@ -8,10 +8,10 @@
 
 ### 展示：
 1.登录：
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/login.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/login.png)
 
 2.注册：
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/register.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/register.png)
 
 3.股票收藏列表：
 * 股票列表展示用户收藏股票的最新价与涨跌幅，数据每10秒更新一次。
@@ -19,19 +19,19 @@
 * 从右上角可打开股票搜索页面，或者更新整个自选页面。
 * 从股票列表下拉更手动更新股票数据。
 * 从右上角打开股票的分组管理。
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/quotation_list.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/quotation_list.png)
 
 4.股票搜索：
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/serach.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/serach.png)
 
 1.登录：
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/login.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/login.png)
 
 1.登录：
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/login.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/login.png)
 
 1.登录：
-![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/login.png)
+![image](https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/login.png)
 
 
 
