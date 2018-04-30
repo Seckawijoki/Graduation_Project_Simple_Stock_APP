@@ -56,4 +56,13 @@ public interface IntentKey {
    * {@link String}
    */
   String FULL_SCREEN_IMAGE_URI = "fullScreenImageUri";
+  /**
+   * @value
+   * {@link com.seckawijoki.graduation_project.db.client.Information}
+   */
+  String INFORMATION_DETAILS = "informationDetails";
+  /**
+   * @value
+   */
+  String FAVORITE_GROUP_ID = "favoriteGroupId";
 }

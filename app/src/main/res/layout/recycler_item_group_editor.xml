@@ -29,6 +29,7 @@
     <ImageView
         android:contentDescription="@string/action_set_top"
         android:id="@+id/img_set_top"
+        android:visibility="invisible"
         android:scaleX="0.8"
         android:scaleY="0.8"
         android:src="@mipmap/ic_arrow_upward_white"
@@ -40,6 +41,7 @@
         android:scaleX="0.8"
         android:scaleY="0.8"
         android:id="@+id/img_reorder"
+        android:visibility="invisible"
         android:src="@mipmap/ic_reorder_white"
         android:layout_width="0dp"
         android:layout_weight="@integer/weight_img_reorder"

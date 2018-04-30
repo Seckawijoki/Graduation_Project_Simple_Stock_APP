@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.constants.app.UnderlineDecoration;
 import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
@@ -130,12 +131,12 @@ final class TradeViewImpl implements TradeContract.View, View.OnClickListener, V
       tvCurrentPoint.setTextColor(ContextCompat.getColor(activity, R.color.tc_stock_green));
       tvFluctuationRate.setTextColor(ContextCompat.getColor(activity, R.color.tc_stock_green));
       tvCurrentPoint.setText(
-              String.format(activity.getString(R.string.format_double_with_three_decimals_negative),
+              String.format(activity.getString(R.string.format_double_with_three_decimals),
                       stock.getCurrentPoint()
               )
       );
       tvFluctuationRate.setText(
-              String.format(activity.getString(R.string.format_percentage_with_two_decimals_negative),
+              String.format(activity.getString(R.string.format_percentage_with_two_decimals),
                       stock.getFluctuationRate()
               )
       );
@@ -169,7 +170,7 @@ final class TradeViewImpl implements TradeContract.View, View.OnClickListener, V
 
   @Override
   public void displayFollowingTransaction(UserTransaction transaction) {
-    callback.onRequestRefreshQuotation();
+    callback.onRequestRefreshQuotation(transaction.getStockTableId());
     ( (TextView) view.findViewById(R.id.tv_stock_id_and_district) ).setText(
             String.format(activity.getString(R.string.format_stock_id_and_china), transaction.getStockId())
     );
@@ -178,7 +179,8 @@ final class TradeViewImpl implements TradeContract.View, View.OnClickListener, V
             )
     );
     etTradeCount.setText(R.string.default_trade_count_hundred);
-    summaryAdapter.setTradePrice(transaction.getTradePrice())
+    summaryAdapter
+            .setTradePrice(transaction.getTradePrice())
             .notifyDataSetChanged();
   }
 

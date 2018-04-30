@@ -63,7 +63,7 @@ class GroupEditorAdapter extends RecyclerView.Adapter<GroupEditorAdapter.ViewHol
   }
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.list_item_group_editor, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.recycler_item_group_editor, parent, false);
     return new ViewHolder(view);
   }
 

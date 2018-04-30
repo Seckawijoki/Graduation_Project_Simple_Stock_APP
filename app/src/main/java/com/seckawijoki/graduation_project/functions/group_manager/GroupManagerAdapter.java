@@ -47,7 +47,7 @@ public class GroupManagerAdapter extends RecyclerView.Adapter<GroupManagerAdapte
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.list_item_group_manager, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.recycler_item_group_manager, parent, false);
     return new ViewHolder(view);
   }
 

@@ -85,6 +85,7 @@
 
             <ImageView
                 android:id="@+id/img_quotation_full_screen"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"

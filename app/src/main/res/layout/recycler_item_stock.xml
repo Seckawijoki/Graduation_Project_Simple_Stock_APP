@@ -57,6 +57,7 @@
                 android:layout_width="@dimen/w_h_star_with_special_attention"
                 android:layout_height="@dimen/w_h_star_with_special_attention"
                 android:layout_alignTop="@id/tv_stock_id"
+                android:visibility="invisible"
                 android:layout_toRightOf="@id/tv_stock_id"
                 android:contentDescription="@string/action_set_special_attention"
                 android:src="@mipmap/ic_star_gold"/>

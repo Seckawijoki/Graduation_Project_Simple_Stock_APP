@@ -67,6 +67,11 @@ final class TradePresenterImpl implements TradeContract.Presenter,
   }
 
   @Override
+  public void onRequestRefreshQuotation(long stockTableId) {
+    model.requestRefreshQuotation(stockTableId);
+  }
+
+  @Override
   public void onRequestBuying(double tradePrice, int tradeCount) {
     model.requestBuying(tradePrice, tradeCount);
   }

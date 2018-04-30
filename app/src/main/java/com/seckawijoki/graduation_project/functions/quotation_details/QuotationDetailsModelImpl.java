@@ -85,8 +85,9 @@ public final class QuotationDetailsModelImpl implements QuotationDetailsContract
 
   @Override
   public void requestQuotationDetails() {
+    requestQuotationDetailsFromServer();
     Runnable runnable = this::requestQuotationDetailsFromServer;
-    detailsThread.scheduleAtFixedRate(runnable, 0, 10, TimeUnit.SECONDS);
+    detailsThread.scheduleAtFixedRate(runnable, 1, 10, TimeUnit.SECONDS);
   }
 
   @Override
@@ -154,6 +155,7 @@ public final class QuotationDetailsModelImpl implements QuotationDetailsContract
             .addParam("stockTableId", stockTableId + "")
             .execute()
             .jsonArray();
+//    Log.d(TAG, "requestQuotationDetailsFromServer()\n: jsonArray = " + jsonArray);
     try {
       JSONObject jsonObject = jsonArray.getJSONObject(0);
       quotationDetails = new QuotationDetails()
@@ -162,8 +164,8 @@ public final class QuotationDetailsModelImpl implements QuotationDetailsContract
               .setStockType(jsonObject.getInt("stockType"))
               .setFavorite(jsonObject.getBoolean("favorite"))
               .setJsonArray(jsonObject.getJSONArray("values"));
-      quotationDetails.saveOrUpdate("stockTableId = ?", stockTableId + "");
       callback.onDisplayQuotationDetails(quotationDetails);
+      quotationDetails.saveOrUpdate("stockTableId = ?", stockTableId + "");
     } catch ( JSONException e ) {
       e.printStackTrace();
     }

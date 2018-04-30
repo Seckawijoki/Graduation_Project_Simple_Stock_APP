@@ -4,6 +4,7 @@
     <item
         android:title="@string/action_message"
         app:showAsAction="always"
+        android:visible="false"
         android:orderInCategory="1"
         android:icon="@mipmap/ic_event_note_white"
         android:id="@+id/menu_message"/>

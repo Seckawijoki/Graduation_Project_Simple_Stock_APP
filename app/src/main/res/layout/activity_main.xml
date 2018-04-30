@@ -5,18 +5,30 @@
               android:orientation="vertical">
 
     <FrameLayout
-        android:layout_width="match_parent"
         android:id="@+id/layout_main"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-    <View
-        android:background="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <net.lucode.hackware.magicindicator.MagicIndicator
-        android:id="@+id/indicator_main"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/h_common_navigator"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/black"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/indicator_main"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/h_common_navigator"
+            android:layout_centerHorizontal="true"/>
+        <View
+            android:background="@color/transparent"
+            android:onClick="openWebsiteActivity"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/h_common_navigator"
+            android:layout_height="@dimen/h_common_navigator"/>
+    </RelativeLayout>
 </LinearLayout>

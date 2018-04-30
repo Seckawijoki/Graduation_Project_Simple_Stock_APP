@@ -12,13 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Menu;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.seckawijoki.graduation_project.R;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.functions.assets.AssetsFragment;
 import com.seckawijoki.graduation_project.functions.information.InformationFragment;
-import com.seckawijoki.graduation_project.functions.latest_information.LatestInformationFragment;
 import com.seckawijoki.graduation_project.functions.mine.MineFragment;
 import com.seckawijoki.graduation_project.functions.quotations.QuotationsFragment;
 import com.seckawijoki.graduation_project.functions.recommendations.RecommendationsFragment;
@@ -39,19 +40,20 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPa
  * Created by 瑶琴频曲羽衣魂 on 2017/10/22.
  */
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
   private static final String TAG = "MainActivity";
   private FragmentContainerHelper fragmentContainerHelper;
   private SparseArray<Fragment> fragmentList;
+  private Fragment currentFragment;
   private String[] labels;
   private long firstExitClickTime;
+
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     Log.e(TAG, "onCreate: ");
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     labels = getResources().getStringArray(R.array.array_main_labels);
-    initFragments();
     MagicIndicator magicIndicator = findViewById(R.id.indicator_main);
     CommonNavigator commonNavigator = new CommonNavigator(this);
     commonNavigator.setAdapter(adapter);
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity{
     fragmentContainerHelper.attachMagicIndicator(magicIndicator);
     int position = GlobalVariableTools.getMainFragment(this);
     fragmentContainerHelper.handlePageSelected(position, true);
+    initFragments();
     switchPages(position);
   }
 
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity{
 
   @Override
   public void onBackPressed() {
-    if (System.currentTimeMillis() - firstExitClickTime <= 1000) {
+    if ( System.currentTimeMillis() - firstExitClickTime <= 1000 ) {
       super.onBackPressed();
     } else {
       firstExitClickTime = System.currentTimeMillis();
@@ -87,54 +90,89 @@ public class MainActivity extends AppCompatActivity{
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (resultCode != RESULT_OK)return;
-    if (requestCode == ActivityRequestCode.SINGLE_QUOTATION ){
-        fragmentList.get(3).onActivityResult(requestCode, resultCode, data);
+    if ( resultCode != RESULT_OK ) return;
+    if ( requestCode == ActivityRequestCode.SINGLE_QUOTATION ) {
+      fragmentList.get(3).onActivityResult(requestCode, resultCode, data);
     }
   }
 
-  private void initFragments(){
-      fragmentList = new SparseArray<>();
-      for ( int i = 0 ; i < 5 ; ++i ) {
-        Fragment fragment;
-        switch ( i ){
-          case 0:
-            fragment = RecommendationsFragment.getInstance();break;
-          case 1:
-            fragment = AssetsFragment.newInstance();break;
-          default:
-          case 2:
-            fragment = QuotationsFragment.newInstance();break;
-          case 3:
-            fragment = InformationFragment.newInstance();break;
-          case 4:
-            fragment = MineFragment.getInstance();break;
-        }
-        fragmentList.put(i, fragment);
+  private void initFragments() {
+//    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+    fragmentList = new SparseArray<>();
+    for ( int i = 0 ; i < 5 ; ++i ) {
+      Fragment fragment;
+      switch ( i ) {
+        case 0:
+          fragment = RecommendationsFragment.newInstance();
+          break;
+        case 1:
+          fragment = AssetsFragment.newInstance();
+          break;
+        default:
+        case 2:
+          fragment = QuotationsFragment.newInstance();
+          break;
+        case 3:
+          fragment = InformationFragment.newInstance();
+          break;
+        case 4:
+          fragment = MineFragment.getInstance();
+          break;
       }
+      fragmentList.put(i, fragment);
+//        ft.add(R.id.layout_main, fragment);
     }
+//    ft.commit();
+    int position = GlobalVariableTools.getMainFragment(this);
+//      ft.show(fragmentList.get(position)).commit();
+  }
 
   private void switchPages(int position) {
+    Log.d(TAG, "switchPages()\n: position = " + position);
+    GlobalVariableTools.setMainFragment(this, position);
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    Fragment fragment;
-    for (int i = 0, j = fragmentList.size(); i < j; i++) {
-      if (i == position) {
+    Fragment fragment = fragmentList.get(position);
+
+    if (currentFragment != null){
+      fragmentTransaction.hide(currentFragment);
+    }
+    if (currentFragment != fragment){
+      if (!fragment.isAdded()){
+        fragmentTransaction.add(R.id.layout_main, fragment);
+      } else {
+        fragmentTransaction.show(fragment);
+      }
+      fragmentTransaction.commit();
+      currentFragment = fragment;
+    }
+
+/*
+    fragmentTransaction
+            .replace(R.id.layout_main, fragment = fragmentList.get(position))
+            .addToBackStack(null)
+            .commit();
+*/
+
+
+    /*
+    for ( int i = 0, j = fragmentList.size() ; i < j ; i++ ) {
+      if ( i == position ) {
         continue;
       }
       fragment = fragmentList.get(i);
-      if (fragment.isAdded()) {
+      if ( fragment.isAdded() ) {
         fragmentTransaction.hide(fragment);
       }
     }
     fragment = fragmentList.get(position);
-    if (fragment.isAdded()) {
+    if ( fragment.isAdded() ) {
       fragmentTransaction.show(fragment);
     } else {
       fragmentTransaction.add(R.id.layout_main, fragment);
     }
-    GlobalVariableTools.setMainFragment(this, position);
-    fragmentTransaction.commitNow();
+    fragmentTransaction.commitNowAllowingStateLoss();
+    */
   }
 
   private CommonNavigatorAdapter adapter = new CommonNavigatorAdapter() {
@@ -170,4 +208,8 @@ public class MainActivity extends AppCompatActivity{
     }
   };
 
+  public void openWebsiteActivity(View view) {
+    if (0 == 0)return;
+    startActivity(new Intent(IntentAction.INFORMATION_WEBSITES));
+  }
 }

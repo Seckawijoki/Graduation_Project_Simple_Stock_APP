@@ -27,6 +27,9 @@ public class FavoriteFragment extends Fragment {
     return view;
   }
 
+  public long getFavoriteGroupId(){
+    return ( (FavoritesViewImpl) view ).getFavoriteGroupId();
+  }
   public void refreshQuotationLists(){
     ( (FavoritesViewImpl) view ).getFavoriteAdapter().onQuotationListRefresh(null);
   }
@@ -57,6 +60,7 @@ public class FavoriteFragment extends Fragment {
             .initiate();
   }
 
+
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
@@ -78,10 +82,6 @@ public class FavoriteFragment extends Fragment {
   @Override
   public void onDetach() {
     super.onDetach();
-    presenter.destroy();
-    view = null;
-    model = null;
-    presenter = null;
   }
 
 }

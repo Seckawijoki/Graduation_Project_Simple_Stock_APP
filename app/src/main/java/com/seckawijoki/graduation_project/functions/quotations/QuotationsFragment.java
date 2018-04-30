@@ -103,8 +103,11 @@ public class QuotationsFragment extends Fragment implements ViewPager.OnPageChan
   public boolean onOptionsItemSelected(MenuItem item) {
     switch ( item.getItemId() ) {
       case R.id.menu_search:
+        Intent intent =  new Intent(IntentAction.SEARCH);
+        long favoriteGroupId = adapter.getFavoriteFragment().getFavoriteGroupId();
+        intent.putExtra(IntentKey.FAVORITE_GROUP_ID, favoriteGroupId);
         startActivityForResult(
-                new Intent(IntentAction.SEARCH),
+                intent,
                 ActivityRequestCode.SEARCH
         );
         break;

@@ -25,7 +25,7 @@ class AssetsAdapter extends FragmentPagerAdapter implements OnFollowToBuyOrSellL
   }
   @Override
   public int getCount() {
-    return 3;
+    return 2;
   }
 
   @Override

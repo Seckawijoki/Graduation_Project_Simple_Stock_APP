@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,16 +16,18 @@ import com.seckawijoki.graduation_project.R;
 
 public class RecommendationsFragment extends Fragment {
   private RecommendationsContract.Presenter presenter;
-  private RecommendationsContract.View view;
-  private RecommendationsContract.Model model;
 
-  public static RecommendationsFragment getInstance(){
-    return new RecommendationsFragment();
+  public static RecommendationsFragment newInstance() {
+    Bundle args = new Bundle();
+    RecommendationsFragment fragment = new RecommendationsFragment();
+    fragment.setArguments(args);
+    return fragment;
   }
 
   @Nullable
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    setHasOptionsMenu(true);
     return inflater.inflate(R.layout.fragment_recommendations, container, false);
   }
 
@@ -32,11 +36,16 @@ public class RecommendationsFragment extends Fragment {
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
     presenter = new RecommendationsPresenterImpl();
-    view = new RecommendationsViewImpl(this);
-    model = new RecommendationsModelImpl();
-    presenter.setView(view);
-    presenter.setModel(model);
+    presenter.setView(new RecommendationsViewImpl(this));
+    presenter.setModel(new RecommendationsModelImpl(getActivity()));
     presenter.initiate();
   }
 
+
+
+  @Override
+  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    inflater.inflate(R.menu.menu_recommendations, menu);
+    super.onCreateOptionsMenu(menu, inflater);
+  }
 }

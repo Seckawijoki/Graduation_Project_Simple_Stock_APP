@@ -5,6 +5,7 @@
                 android:paddingTop="@dimen/p_t_b_layout_latest_information_rv_list_item"
                 android:paddingBottom="@dimen/p_t_b_layout_latest_information_rv_list_item"
                 android:layout_marginBottom="@dimen/m_b_layout_latest_information_rv_list_item"
+                android:id="@+id/layout_list_item_rv_latest_information"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 

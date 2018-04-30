@@ -39,6 +39,7 @@
                 android:textColor="@color/tc_open_or_close_k_line_chart"/>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/m_t_layout_unit_price_of_buying_and_selling"

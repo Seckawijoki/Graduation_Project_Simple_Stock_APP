@@ -88,16 +88,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <HorizontalScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/img_k_line_chart"
-                    android:contentDescription="@string/prompt_k_line_chart"
-                    android:scaleType="fitXY"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"/>
-            </HorizontalScrollView>
+            <ImageView
+                android:id="@+id/img_k_line_chart"
+                android:contentDescription="@string/prompt_k_line_chart"
+                android:scaleType="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

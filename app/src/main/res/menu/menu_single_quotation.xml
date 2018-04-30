@@ -9,6 +9,7 @@
         android:id="@+id/menu_search"/>
     <item
         android:title="@string/action_message"
+        android:visible="false"
         app:showAsAction="ifRoom"
         android:orderInCategory="2"
         android:icon="@mipmap/ic_event_note_white"

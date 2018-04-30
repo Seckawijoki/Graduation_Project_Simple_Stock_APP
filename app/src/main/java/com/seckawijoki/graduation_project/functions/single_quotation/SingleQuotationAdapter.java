@@ -1,4 +1,4 @@
-package com.seckawijoki.graduation_project.functions.the_quotation;
+package com.seckawijoki.graduation_project.functions.single_quotation;
 /**
  * Created by 瑶琴频曲羽衣魂 on 2018/1/15 at 23:45.
  */
@@ -21,7 +21,7 @@ class SingleQuotationAdapter extends FragmentPagerAdapter {
 
   @Override
   public int getCount() {
-    return 3;
+    return 1;
   }
 
   @Override

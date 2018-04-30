@@ -4,7 +4,6 @@ package com.seckawijoki.graduation_project.functions.search;
  */
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,8 +17,6 @@ import com.seckawijoki.graduation_project.constants.server.StockType;
 import com.seckawijoki.graduation_project.db.client.SearchStock;
 
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 class SearchStockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
   private List<SearchStock> searchStockList;
@@ -62,11 +59,11 @@ class SearchStockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         view = LayoutInflater.from(context).inflate(R.layout.tv_stock_search_history_label, parent, false);
         return new HeadTailViewHolder(view);
       } else if ( viewType == ViewType.NORMAL ) {
-        view = LayoutInflater.from(context).inflate(R.layout.list_item_stock_search, parent, false);
+        view = LayoutInflater.from(context).inflate(R.layout.recycler_item_stock_search, parent, false);
         return new ViewHolder(view);
       }
     } else {
-      view = LayoutInflater.from(context).inflate(R.layout.list_item_stock_search, parent, false);
+      view = LayoutInflater.from(context).inflate(R.layout.recycler_item_stock_search, parent, false);
       return new ViewHolder(view);
     }
     return null;

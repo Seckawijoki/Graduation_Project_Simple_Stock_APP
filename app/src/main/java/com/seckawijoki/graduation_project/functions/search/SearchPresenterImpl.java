@@ -66,6 +66,7 @@ final class SearchPresenterImpl implements SearchContract.Presenter,
     model.requestDeleteFavoriteStock(searchStock);
   }
 
+
   @Override
   public void onRequestSaveStockSearchHistory(SearchStock searchStock) {
     model.requestSaveStockSearchHistory(searchStock);

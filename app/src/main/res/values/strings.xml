@@ -34,10 +34,8 @@
     <string name="action_save">保存</string>
     <string name="error_sdcard_not_exist">SD卡未插入</string>
     <string name="format_double_with_two_decimals">%.2f</string>
-    <string name="format_double_with_two_decimals_negative">-%.2f</string>
     <string name="format_double_with_two_decimals_positive">+%.2f</string>
     <string name="format_double_with_three_decimals">%.3f</string>
-    <string name="format_double_with_three_decimals_negative">-%.3f</string>
     <string name="format_double_with_three_decimals_positive">+%.3f</string>
     <string name="format_percentage_with_two_decimals">%.2f%%</string>
     <string name="format_percentage_with_two_decimals_negative">-%.2f%%</string>
@@ -50,7 +48,7 @@
     <string name="msg_finish_downloading">下载完成</string>
 
     <!-- Strings in LoginActivity -->
-    <string name="prompt_user_name_phone_and_email">牛牛号/手机号/邮箱</string>
+    <string name="prompt_user_name_phone_and_email">手机号/用户ID</string>
     <string name="prompt_password">密码</string>
     <string name="action_login">登录</string>
     <string name="action_visitor_login">游客登录</string>
@@ -102,6 +100,7 @@
     <string name="title_activity_settings">Settings</string>
     <string name="msg_one_more_time_click_to_exit">再次点击退出APP</string>
 
+
     <!-- Strings in DataLoadingDialog -->
     <string name="msg_under_connecting_to_server">正在连接服务器……</string>
     <string name="msg_under_data_loading">正在加载数据……</string>
@@ -113,10 +112,17 @@
     <string name="msg_under_saving_in_database">正在保存数据……</string>
     <string name="error_failed_to_save_in_database">无法保存数据</string>
 
+    <!-- Strings in RecommendationsFragment -->
+    <string name="label_hot_stock_title">热搜榜</string>
+
     <!-- strings in AssetsFragment -->
 
     <!-- strings in TransactionFragment -->
+    <string name="msg_under_loading_transactions">正在加载交易列表……</string>
+    <string name="msg_succeeded_in_loading_transactions">交易列表加载成功</string>
     <string name="label_shanghai_shenzhen_simulate_market">沪深模拟盘</string>
+
+    <!-- strings in TradeFragment -->
     <string name="label_profit_and_loss">盈亏：</string>
     <string name="format_profit_and_loss">@string/format_double_with_three_decimals</string>
     <string name="label_buy">买入：</string>
@@ -150,6 +156,8 @@
     <string name="action_buy">买入</string>
     <string name="action_sell">卖出</string>
     <string name="default_trade_count_hundred">100</string>
+    <string name="msg_succeed_in_buying">买入成功</string>
+    <string name="msg_succeed_in_selling">卖出成功</string>
     <string name="error_failed_to_buy">买入失败</string>
     <string name="error_failed_to_sell">卖出失败</string>
 
@@ -270,6 +278,20 @@
     <string name="label_default_latest_information_title">最新资讯标题</string>
     <string name="label_default_latest_information_clock_time">最新资讯时间</string>
     <string name="label_default_latest_information_content">最新资讯内容</string>
+    <string name="label_information_websites">资讯网站</string>
+    <string name="label_information_details">资讯详情</string>
+    
+    <!-- strings in LatestInformationFragment -->
+    <string name="module_latest_information_under_loading">正在加载最新资讯……</string>
+    <string name="module_latest_information_finish_loading">加载完成</string>
+
+    <!-- strings in InformationDetailsFragment -->
+    <string name="default_information_details_title">资讯详情标题</string>
+    <string name="default_information_details_author">资讯详情作者</string>
+    <string name="default_information_details_content">资讯详情内容内容内容ないようないようないよう</string>
+    <string name="default_information_details_date_time">资讯详情时间</string>
+    <string name="action_increase_font_size">增大字体</string>
+    <string name="action_decrease_font_size">缩小字体</string>
 
     <!-- strings in MineFragment -->
     <string name="label_user_portrait">头像</string>
@@ -307,7 +329,7 @@
     <!-- Strings in AboutUsFragment -->
     <string name="label_about">关于</string>
     <string name="format_app_name_and_version">%1$s（V%2$s）</string>
-    <string name="action_official_website">https://github.com/Seckawijoki</string>
+    <string name="action_official_website">https://github.com/Seckawijoki/Graduation_Project_Simple_Stock_APP/blob/master/README.md</string>
     <string name="label_copyright">Copyright©2017 ??? All Rights Reserved</string>
     <string name="label_version_update">版本更新</string>
     <string name="label_find_latest_version">发现新版本</string>
@@ -317,6 +339,7 @@
     <string name="action_put_aside">暂不</string>
     <string name="action_update_right_now">立即升级</string>
     <string name="label_grade_my_app">给我的APP评分</string>
+    <string name="msg_has_not_appeared_on_the_market">我们的软件暂未上市</string>
     <string name="label_disclaimer_and_privacy_statement">免责及隐私声明</string>
     <string name="label_contact_us">联系我们</string>
     <string name="label_please_select">请选择</string>
@@ -330,6 +353,7 @@
 
     <!-- Strings in BrowserFragment -->
     <string name="label_browser">网页浏览器</string>
+    <string name="label_home_page">主页</string>
     <string name="msg_succeed_in_copying">复制成功</string>
 
     <!-- Strings in TestActivity -->

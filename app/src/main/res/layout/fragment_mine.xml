@@ -99,6 +99,7 @@
                     style="@style/tv_personal_information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="invisible"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="@string/action_sign_up"/>

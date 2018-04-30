@@ -11,11 +11,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.constants.app.UnderlineDecoration;
 import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.db.client.UserTransaction;
 import com.seckawijoki.graduation_project.functions.assets.OnFollowToBuyOrSellListener;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 import java.util.List;
 
@@ -44,8 +46,18 @@ final class TransactionViewImpl implements TransactionContract.View, OnTransacti
     rv.setLayoutManager(new LinearLayoutManager(activity));
     adapter = new TransactionAdapter(activity).setOnTransactionClickListener(this);
     rv.setAdapter(adapter);
-    rv.setItemAnimator(new DefaultItemAnimator());
+    rv.addItemDecoration(
+            new UnderlineDecoration.Builder(activity)
+                    .setPaddingLeft(
+                            activity.getResources().getDimension(R.dimen.w_h_transaction_user_portrait)
+                            + activity.getResources().getDimension(R.dimen.p_l_r_layout_list_item_transaction)
+                            + activity.getResources().getDimension(R.dimen.m_l_transaction_user_nickname)
+                    )
+                    .setLineSizeRes(R.dimen.h_transaction_list_item_divider)
+                    .build()
+    );
     callback.onRequestAllTransactions();
+    ToastUtils.show(activity, R.string.msg_under_loading_transactions);
   }
 
   @Override
@@ -67,6 +79,7 @@ final class TransactionViewImpl implements TransactionContract.View, OnTransacti
       adapter = new TransactionAdapter(activity).setOnTransactionClickListener(this);
       ( (RecyclerView) view.findViewById(R.id.rv_transaction) ).setAdapter(adapter);
     }
+    ToastUtils.show(activity, R.string.msg_succeeded_in_loading_transactions);
     adapter.setTransactionList(transactionList).notifyDataSetChanged();
   }
 
@@ -102,5 +115,6 @@ final class TransactionViewImpl implements TransactionContract.View, OnTransacti
   public void onRefresh() {
     layoutRefresh.setRefreshing(true);
     callback.onRequestAllTransactions();
+    ToastUtils.show(activity, R.string.msg_under_loading_transactions);
   }
 }

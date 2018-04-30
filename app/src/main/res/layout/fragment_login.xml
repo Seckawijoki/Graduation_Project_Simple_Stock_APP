@@ -133,6 +133,7 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:visibility="invisible"
                     android:textColor="@color/black"
                     android:id="@+id/tv_visitor_login"
                     android:layout_width="wrap_content"
@@ -143,6 +144,7 @@
                     android:textAllCaps="false"/>
 
                 <TextView
+                    android:visibility="invisible"
                     android:textColor="@color/black"
                     android:id="@+id/tv_forget_password"
                     android:layout_width="wrap_content"

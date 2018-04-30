@@ -1,6 +1,6 @@
 <litepal>
     <dbname value="Graduation_Project"/>
-    <version value="41"/>
+    <version value="42"/>
     <list>
         <mapping class="com.seckawijoki.graduation_project.db.AccessibleChuangYeBan"/>
         <mapping class="com.seckawijoki.graduation_project.db.AccessibleSh"/>
@@ -11,6 +11,8 @@
         <mapping class="com.seckawijoki.graduation_project.db.client.LoggedInUsers"/>
         <mapping class="com.seckawijoki.graduation_project.db.client.MarketStock"/>
         <mapping class="com.seckawijoki.graduation_project.db.client.SearchStock"/>
+        <mapping class="com.seckawijoki.graduation_project.db.client.SimpleInformation"/>
+        <mapping class="com.seckawijoki.graduation_project.db.client.Information"/>
         <mapping class="com.seckawijoki.graduation_project.db.client.UserTransaction"/>
         <mapping class="com.seckawijoki.graduation_project.db.client.User"/>
         <mapping class="com.seckawijoki.graduation_project.db.Stock"/>

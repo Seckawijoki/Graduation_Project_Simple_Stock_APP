@@ -29,7 +29,7 @@ class QuotationDetailsAdapter extends RecyclerView.Adapter<QuotationDetailsAdapt
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     LayoutInflater inflater = LayoutInflater.from(context);
-    View view = inflater.inflate(R.layout.list_item_quotation_details, parent, false);
+    View view = inflater.inflate(R.layout.recycler_item_quotation_details, parent, false);
     return new ViewHolder(view);
   }
 
@@ -40,7 +40,7 @@ class QuotationDetailsAdapter extends RecyclerView.Adapter<QuotationDetailsAdapt
 
   @Override
   public int getItemCount() {
-    return 13;
+    return QuotationDetailsViewType.count;
   }
 
   static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -92,10 +92,10 @@ class QuotationDetailsAdapter extends RecyclerView.Adapter<QuotationDetailsAdapt
         case QuotationDetailsViewType.PRICE_DIFFERENCE:
           if (priceDifference <= 0) {
             tvLabel.setText(
-                    String.format(context.getString(R.string.format_stock_price_negative), priceDifference)
+                    String.format(context.getString(R.string.format_percentage_with_two_decimals), priceDifference)
             );
             tvValue.setText(
-                    String.format(context.getString(R.string.format_price_difference_rate_negative), details.getPriceDifferenceRate())
+                    String.format(context.getString(R.string.format_percentage_with_two_decimals), details.getPriceDifferenceRate())
             );
             tvLabel.setTextColor(ContextCompat.getColor(context, R.color.tc_stock_green));
             tvValue.setTextColor(ContextCompat.getColor(context, R.color.tc_stock_green));

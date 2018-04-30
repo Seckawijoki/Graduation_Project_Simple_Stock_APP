@@ -4,6 +4,7 @@ package com.seckawijoki.graduation_project.constants.app;
  * Created by 瑶琴频曲羽衣魂 on 2017/12/14 at 15:49.
  */
 public interface QuotationDetailsViewType {
+  int count = 10;
   int CURRENT_PRICE = 0;
   int HIGHEST_PRICE_TODAY = 1;
   int OPENING_PRICE_TODAY = 2;
@@ -13,8 +14,8 @@ public interface QuotationDetailsViewType {
   int VOLUME = 6;
   int TURNOVER = 7;
   int FLUCTUATION_RATE = 8;
-  int INCREMENT = 9;
-  int FLAT_PLATE = 10;
-  int DECREMENT = 11;
-  int AVERAGE_PRICE = 12;
+  int INCREMENT = 10;
+  int FLAT_PLATE = 11;
+  int DECREMENT = 12;
+  int AVERAGE_PRICE = 9;
 }

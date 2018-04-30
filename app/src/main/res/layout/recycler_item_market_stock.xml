@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/layout_list_item_market_stock"
+                android:background="@drawable/selector_bg_quotation_list_item"
                 android:layout_width="@dimen/w_layout_market_stock"
                 android:paddingTop="@dimen/p_t_layout_market_stock"
                 android:layout_height="@dimen/h_layout_market_stock"

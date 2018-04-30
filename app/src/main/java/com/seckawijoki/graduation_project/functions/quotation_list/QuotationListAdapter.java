@@ -6,7 +6,6 @@ package com.seckawijoki.graduation_project.functions.quotation_list;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,7 +101,7 @@ public class QuotationListAdapter extends RecyclerView.Adapter<QuotationListAdap
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.list_item_stock, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.recycler_item_stock, parent, false);
     return new ViewHolder(view);
   }
 

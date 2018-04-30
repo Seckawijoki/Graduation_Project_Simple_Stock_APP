@@ -2,6 +2,8 @@ package com.seckawijoki.graduation_project.functions.quotation_list;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -44,8 +46,9 @@ import static org.litepal.crud.DataSupport.where;
  * Created by 瑶琴频曲羽衣魂 on 2017/12/4 at 16:37.
  */
 
-final class QuotationListModelImpl implements QuotationListContract.Model {
+final class QuotationListModelImpl extends Handler implements QuotationListContract.Model {
   private static final String TAG = QuotationListModelImpl.class.getSimpleName();
+  private static final int MSG_WHAT_REQUEST_FROM_DATABASE = 0;
   private OnQuotationListRefreshListener listener;
   private DataCallback callback;
   private Activity activity;
@@ -53,7 +56,6 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
   private long favoriteGroupId;
   private ExecutorService singleThread = Executors.newFixedThreadPool(1);
   private ScheduledExecutorService cyclicThread = Executors.newSingleThreadScheduledExecutor();
-
   QuotationListModelImpl(Activity activity, String favoriteGroupName,
                          OnQuotationListRefreshListener listener) {
     this.activity = activity;
@@ -85,6 +87,14 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
   @Override
   public void pause() {
     cyclicThread.shutdown();
+  }
+
+  @Override
+  public void handleMessage(Message msg) {
+    super.handleMessage(msg);
+    if ( msg.what == MSG_WHAT_REQUEST_FROM_DATABASE ) {
+      requestStockListFromDb();
+    }
   }
 
   @Override
@@ -209,19 +219,27 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
       JSONArray jsonArray = jsonObject.getJSONArray("stockTableId");
       for ( int i = 0 ; i < jsonArray.length() ; ++i ) {
         String stockTableId = jsonArray.getString(i);
-        DataSupport.deleteAll(
-                FavoriteStock.class,
-                "favoriteGroupId = ? and stockTableId = ?",
-                favoriteGroupId + "",
-                stockTableId
-        );
+        if (favoriteGroupId != 0) {
+          DataSupport.deleteAll(
+                  FavoriteStock.class,
+                  "favoriteGroupId = ? and stockTableId = ?",
+                  favoriteGroupId + "",
+                  stockTableId
+          );
+        } else {
+          DataSupport.deleteAll(
+                  FavoriteStock.class,
+                  "stockTableId = ?",
+                  stockTableId
+          );
+        }
       }
       DataSupport.where("favoriteGroupId = ?", favoriteGroupId + "")
               .findFirst(FavoriteGroupType.class)
               .decreaseStockCount(jsonArray.length())
               .saveOrUpdate("favoriteGroupId = ?", favoriteGroupId + "");
 //      callback.onDisplayDeleteFavoriteStock(stock);
-      requestStockListFromDatabase();
+      sendEmptyMessage(MSG_WHAT_REQUEST_FROM_DATABASE);
       listener.onQuotationListRefresh(favoriteGroupName);
       callback.onDisplayToast(R.string.msg_succeed_in_deleting);
     } catch ( InterruptedException | ExecutionException | JSONException e ) {
@@ -388,6 +406,10 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
 
   @Override
   public void requestStockListFromDatabase() {
+    sendEmptyMessage(MSG_WHAT_REQUEST_FROM_DATABASE);
+  }
+
+  private void requestStockListFromDb(){
     List<FavoriteStock> favoriteStockList = getFavoriteStockList();
     List<Stock> stockList = new ArrayList<>();
     for ( int i = 0 ; i < favoriteStockList.size() ; i++ ) {
@@ -397,8 +419,7 @@ final class QuotationListModelImpl implements QuotationListContract.Model {
                       .findFirst(Stock.class)
       );
     }
-    Log.d(TAG, "requestStockListFromDatabase()\n: stockList = " + stockList);
+//    Log.d(TAG, "requestStockListFromDatabase()\n: stockList = " + stockList);
     callback.onDisplayQuotationList(stockList);
   }
-
 }

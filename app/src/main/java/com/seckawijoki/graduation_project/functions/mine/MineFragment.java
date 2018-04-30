@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import com.seckawijoki.graduation_project.R;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
+import com.seckawijoki.graduation_project.functions.login.LoginActivity;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
 
 public class MineFragment extends Fragment {
   private MineContract.Presenter presenter;
@@ -52,8 +54,12 @@ public class MineFragment extends Fragment {
     if ( resultCode == Activity.RESULT_OK ) {
       if ( requestCode == ActivityRequestCode.SETTINGS ) {
         boolean hasLoggedOut = data.getBooleanExtra(IntentKey.HAS_LOGGED_OUT, false);
-        view.displayShowUserInfo(!hasLoggedOut);
-
+//        view.displayShowUserInfo(!hasLoggedOut);
+        if (hasLoggedOut){
+          getActivity().finish();
+          GlobalVariableTools.setAutoLogin(getActivity(), false);
+          startActivity(new Intent(getActivity(), LoginActivity.class));
+        }
       } else if ( requestCode == ActivityRequestCode.PERSONAL_INFO ) {
         model.requestUserInfo();
         model.requestUserPortrait();

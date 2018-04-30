@@ -33,8 +33,16 @@
     <dimen name="p_data_loading_dialog">16dp</dimen>
     <dimen name="m_t_tv_data_loading_tips">16dp</dimen>
 
-    <!-- dimensions in AssetsFragment -->
+    <!-- dimensions in RegisterActivity -->
+    <dimen name="p_l_r_layout_top_stock_group_type">12dp</dimen>
+    <dimen name="p_t_b_layout_top_stock_group_type">8dp</dimen>
 
+    <!-- dimensions in RecommendationsFragment -->
+    <dimen name="padding_shape_bg_stock">3dp</dimen>
+    <dimen name="strike_shape_bg_stock">3px</dimen>
+    <dimen name="radius_shape_bg_stock">2dp</dimen>
+
+    <!-- dimensions in AssetsFragment -->
 
     <!-- dimensions in TransactionFragment -->
     <dimen name="p_l_r_layout_simulate_market">8dp</dimen>
@@ -51,6 +59,7 @@
     <dimen name="m_t_transaction_date_time">16dp</dimen>
     <dimen name="w_follow_to_buy_or_sell">64dp</dimen>
     <dimen name="h_follow_to_buy_or_sell">28dp</dimen>
+    <dimen name="h_transaction_list_item_divider">1px</dimen>
 
     <!-- dimensions in TradeFragment -->
     <dimen name="h_layout_trade_stock_info">56dp</dimen>
@@ -76,8 +85,11 @@
     <dimen name="m_t_trade_price_or_count">1px</dimen>
 
     <!-- dimensions in LatestInformationFragment -->
+    <dimen name="p_l_vp_latest_information_title">8dp</dimen>
     <dimen name="h_vp_latest_information">160dp</dimen>
     <dimen name="h_tv_vp_latest_information">24dp</dimen>
+    <dimen name="m_b_vp_latest_information_indicator">32dp</dimen>
+    <dimen name="m_r_vp_latest_information_indicator">4dp</dimen>
     <dimen name="w_img_rv_latest_information">70dp</dimen>
     <dimen name="p_l_r_layout_latest_information_rv_list_item">8dp</dimen>
     <dimen name="p_t_b_layout_latest_information_rv_list_item">8dp</dimen>
@@ -86,6 +98,15 @@
     <dimen name="stroke_information_indicator">1dp</dimen>
     <dimen name="h_information_indicator">40dp</dimen>
     <dimen name="radius_information_indicator">20dp</dimen>
+
+    <!-- dimensions in LatestInformationFragment -->
+    <dimen name="p_l_r_layout_information_details">14dp</dimen>
+    <dimen name="p_t_b_layout_information_details">6dp</dimen>
+    <dimen name="m_b_information_details_title">12dp</dimen>
+    <dimen name="m_b_information_details_date_time">16dp</dimen>
+    <dimen name="m_r_information_details_date_time">12dp</dimen>
+    <dimen name="m_b_information_details_image">16dp</dimen>
+    <dimen name="m_t_information_details_content">16dp</dimen>
 
     <!-- dimension in SearchFragment -->
 

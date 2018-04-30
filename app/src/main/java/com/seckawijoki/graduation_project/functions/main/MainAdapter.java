@@ -7,7 +7,6 @@ import android.util.Log;
 
 import com.seckawijoki.graduation_project.functions.assets.AssetsFragment;
 import com.seckawijoki.graduation_project.functions.information.InformationFragment;
-import com.seckawijoki.graduation_project.functions.latest_information.LatestInformationFragment;
 import com.seckawijoki.graduation_project.functions.mine.MineFragment;
 import com.seckawijoki.graduation_project.functions.quotations.QuotationsFragment;
 import com.seckawijoki.graduation_project.functions.recommendations.RecommendationsFragment;
@@ -27,7 +26,7 @@ class MainAdapter extends FragmentPagerAdapter {
     Log.e(TAG, "getItem: position = " + position);
     switch (position){
       case 0:
-        return RecommendationsFragment.getInstance();
+        return RecommendationsFragment.newInstance();
       case 1:
         return AssetsFragment.newInstance();
       default:

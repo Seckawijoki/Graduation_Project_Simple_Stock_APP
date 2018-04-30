@@ -37,10 +37,12 @@ public final class SearchModelImpl implements SearchContract.Model {
   private static final String TAG = "SearchModelImpl";
   private DataCallback callback;
   private Activity activity;
+  private long favoriteGroupId;
   private ExecutorService pool = Executors.newFixedThreadPool(3);
 
-  public SearchModelImpl(Activity activity) {
+  public SearchModelImpl(Activity activity, long favoriteGroupId) {
     this.activity = activity;
+    this.favoriteGroupId = favoriteGroupId;
   }
 
   @Override
@@ -64,6 +66,7 @@ public final class SearchModelImpl implements SearchContract.Model {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
               .add("userId", GlobalVariableTools.getUserId(activity))
+              .add("favoriteGroupId", favoriteGroupId+"")
               .build();
       Request request = new Request.Builder()
               .url(ServerPath.GET_STOCK_SEARCH_HISTORY)
@@ -108,6 +111,7 @@ public final class SearchModelImpl implements SearchContract.Model {
             .url(ServerPath.SEARCH_FOR_MATCHED_STOCKS)
             .addParam("search", search)
             .addParam("userId", GlobalVariableTools.getUserId(activity))
+            .addParam("favoriteGroupId", favoriteGroupId+"")
             .execute()
             .jsonArray();
     List<SearchStock> searchStockList = new ArrayList<>();
@@ -157,45 +161,12 @@ public final class SearchModelImpl implements SearchContract.Model {
   }
 
   @Override
-  public void requestAddFavoriteStock(SearchStock searchStock) {
-    JSONObject jsonObject = OkHttpUtils.post()
-            .url(ServerPath.ADD_FAVORITE_STOCK_FROM_SEARCH)
-            .addParam("userId", GlobalVariableTools.getUserId(activity))
-            .addParam("stockTableId", searchStock.getStockTableId() + "")
-            .execute()
-            .jsonObject();
-    try {
-      new FavoriteStock()
-              .setStockTableId(searchStock.getStockTableId())
-              .setSpecialAttention(false)
-              .setFavoriteGroupId(jsonObject.getLong("favoriteGroupId"))
-              .setRankWeight(jsonObject.getInt("rankWeight"))
-              .save();
-      new FavoriteStock()
-              .setStockTableId(searchStock.getStockTableId())
-              .setSpecialAttention(false)
-              .setFavoriteGroupId(0)
-              .setRankWeight(jsonObject.getInt("rankWeight"))
-              .save();
-      ContentValues contentValues = new ContentValues();
-      contentValues.put("favorite", true);
-      DataSupport.updateAll(
-              SearchStock.class,
-              contentValues,
-              "stockTableId = ?", searchStock.getStockTableId()+"");
-      callback.onDisplayAddFavoriteStock(true);
-    } catch ( JSONException e ) {
-      Log.w(TAG, "requestAddFavoriteStock()\n: ", e);
-      callback.onDisplayAddFavoriteStock(false);
-    }
-  }
-
-  @Override
   public void requestDeleteFavoriteStock(SearchStock searchStock) {
     Boolean result = OkHttpUtils.post()
             .url(ServerPath.DELETE_FAVORITE_STOCK_FROM_SEARCH)
             .addParam("userId", GlobalVariableTools.getUserId(activity))
             .addParam("stockTableId", searchStock.getStockTableId() + "")
+            .addParam("favoriteGroupId", favoriteGroupId+"")
             .execute()
             .bool();
     if ( result ) {
@@ -234,6 +205,42 @@ public final class SearchModelImpl implements SearchContract.Model {
       e.printStackTrace();
     }
   }
+
+  @Override
+  public void requestAddFavoriteStock(SearchStock searchStock) {
+    JSONObject jsonObject = OkHttpUtils.post()
+            .url(ServerPath.ADD_FAVORITE_STOCK_FROM_SEARCH)
+            .addParam("userId", GlobalVariableTools.getUserId(activity))
+            .addParam("favoriteGroupId", favoriteGroupId+"")
+            .addParam("stockTableId", searchStock.getStockTableId() + "")
+            .execute()
+            .jsonObject();
+    try {
+      new FavoriteStock()
+              .setStockTableId(searchStock.getStockTableId())
+              .setSpecialAttention(false)
+              .setFavoriteGroupId(jsonObject.getLong("favoriteGroupId"))
+              .setRankWeight(jsonObject.getInt("rankWeight"))
+              .save();
+      new FavoriteStock()
+              .setStockTableId(searchStock.getStockTableId())
+              .setSpecialAttention(false)
+              .setFavoriteGroupId(0)
+              .setRankWeight(jsonObject.getInt("rankWeight"))
+              .save();
+      ContentValues contentValues = new ContentValues();
+      contentValues.put("favorite", true);
+      DataSupport.updateAll(
+              SearchStock.class,
+              contentValues,
+              "stockTableId = ?", searchStock.getStockTableId()+"");
+      callback.onDisplayAddFavoriteStock(true);
+    } catch ( JSONException e ) {
+      Log.w(TAG, "requestAddFavoriteStock()\n: ", e);
+      callback.onDisplayAddFavoriteStock(false);
+    }
+  }
+
 
 
 }

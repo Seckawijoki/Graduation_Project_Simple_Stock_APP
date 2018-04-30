@@ -1,4 +1,4 @@
-package com.seckawijoki.graduation_project.functions.the_quotation;
+package com.seckawijoki.graduation_project.functions.single_quotation;
 /**
  * Created by 瑶琴频曲羽衣魂 on 2018/1/15 at 22:58.
  */
@@ -57,7 +57,7 @@ public class SingleQuotationFragment extends Fragment{
     MagicIndicator mi = view.findViewById(R.id.indicator_single_quotation);
 
     activity.setSupportActionBar(tb);
-    vp.setOffscreenPageLimit(3);
+    vp.setOffscreenPageLimit(1);
     SingleQuotationAdapter adapter = new SingleQuotationAdapter(
             getFragmentManager(),
             getActivity().getIntent().getLongExtra(IntentKey.STOCK_TABLE_ID, 1)

@@ -13,6 +13,9 @@
     <!-- textSizes in DataLoadingDialog -->
 
     <!-- textSizes in TransactionFragment -->
+    <dimen name="ts_top_stock_group_type">16sp</dimen>
+
+    <!-- textSizes in TransactionFragment -->
     <dimen name="ts_follow_to_buy_or_sell">16sp</dimen>
     <dimen name="ts_transaction_date_time">12sp</dimen>
 
@@ -60,7 +63,14 @@
     <dimen name="ts_quotation_details_value">12sp</dimen>
     <dimen name="ts_quotation_details_current_price">18sp</dimen>
 
-    <!-- textSizesLatestInformationFragmentment -->
+    <!-- textSizes in LatestInformationFragment -->
+
+    <!-- textSizes in InformationDetailsFragment -->
+    <dimen name="ts_information_details_title">28sp</dimen>
+    <dimen name="ts_information_details_date_time">12sp</dimen>
+    <dimen name="ts_information_details_author">12sp</dimen>
+    <dimen name="ts_information_details_content_large">20sp</dimen>
+    <dimen name="ts_information_details_content_small">16sp</dimen>
 
     <!-- textSizes in MineFragment -->
     <dimen name="ts_tv_personal_information">16sp</dimen>

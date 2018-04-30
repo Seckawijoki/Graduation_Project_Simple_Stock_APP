@@ -214,6 +214,9 @@ public class LoginFragment extends Fragment
         imgClearAccount.setVisibility(View.GONE);
         break;
       case R.id.img_clear_login_password:
+        Log.d(TAG, "onClick()\n: v.getId() == R.id.img_clear_login_password = "
+                + (v.getId() == R.id.img_clear_login_password));
+        actvPassword = activity.findViewById(R.id.actv_login_password);
         actvPassword.setText("");
         imgClearPassword.setVisibility(View.GONE);
         break;
@@ -232,11 +235,7 @@ public class LoginFragment extends Fragment
         attemptLogin();
         break;
       case R.id.tv_visitor_login:
-        // TODO: 2017/11/17 debugging
-        DataLoadingDialog dataLoadingDialog = DataLoadingDialog.newInstance(this);
-        dataLoadingDialog.show(getFragmentManager(), FragmentTag.DATA_LOADING);
-//        startActivity(new Intent(IntentAction.MAIN));
-        activity.finish();
+        startActivity(new Intent(IntentAction.VISITOR));
         break;
       case R.id.tv_forget_password:
         ToastUtils.show(activity, "TODO");

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.utils.ActivityUtils;
 
 public class SearchActivity extends AppCompatActivity {
@@ -28,7 +29,8 @@ public class SearchActivity extends AppCompatActivity {
       );
     }
     presenter = new SearchPresenterImpl()
-            .setModel(new SearchModelImpl(this))
+            .setModel(new SearchModelImpl(this,
+                    getIntent().getLongExtra(IntentKey.FAVORITE_GROUP_ID, -1L)))
             .setView(fragment)
             .initiate();
   }

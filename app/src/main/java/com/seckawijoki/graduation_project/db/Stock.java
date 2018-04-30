@@ -1,5 +1,8 @@
 package com.seckawijoki.graduation_project.db;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.litepal.crud.DataSupport;
@@ -8,7 +11,7 @@ import org.litepal.crud.DataSupport;
  * Created by 瑶琴频曲羽衣魂 on 2017/11/13 at 16:09.
  */
 
-public class Stock extends DataSupport{
+public class Stock extends DataSupport implements Parcelable{
   private static final String TAG = "Stock";
   private long stockTableId;
   String stockId;
@@ -40,6 +43,10 @@ public class Stock extends DataSupport{
   boolean specialAttention;
   boolean favorite;
 
+  public Stock(){
+
+  }
+
   public boolean isFavorite() {
     return favorite;
   }
@@ -48,7 +55,6 @@ public class Stock extends DataSupport{
     this.favorite = favorite;
     return this;
   }
-
 
   public boolean isSpecialAttention() {
     return specialAttention;
@@ -70,10 +76,42 @@ public class Stock extends DataSupport{
     this.stockType = stockType;
     return this;
   }
+
+  public Stock setStockName(String stockName) {
+    this.stockName = stockName;
+    return this;
+  }
+
   public Stock setStockId(String stockId) {
     this.stockId = stockId;
     return this;
   }
+
+  public Stock setCurrentPrice(double currentPrice) {
+    this.currentPrice = currentPrice;
+    return this;
+  }
+
+  public Stock setCurrentPoint(double currentPoint) {
+    this.currentPoint = currentPoint;
+    return this;
+  }
+
+  public Stock setFluctuationRate(double fluctuationRate) {
+    this.fluctuationRate = fluctuationRate;
+    return this;
+  }
+
+  public Stock setTurnover(double turnover) {
+    this.turnover = turnover;
+    return this;
+  }
+
+  public Stock setVolume(long volume) {
+    this.volume = volume;
+    return this;
+  }
+
   public Stock setValues(String[] values){
     stockName = values[0];
     currentPrice = Float.valueOf(values[1]);
@@ -160,4 +198,50 @@ public class Stock extends DataSupport{
             ", favorite=" + favorite +
             '}';
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeLong(stockTableId);
+    dest.writeString(stockName);
+    dest.writeString(stockId);
+    dest.writeInt(stockType);
+    dest.writeDouble(currentPrice);
+    dest.writeDouble(currentPoint);
+    dest.writeDouble(fluctuationRate);
+    dest.writeLong(volume);
+    dest.writeDouble(turnover);
+    dest.writeByte((byte) (specialAttention ? 1 : 0));
+    dest.writeByte((byte) (favorite ? 1 : 0));
+  }
+
+  private Stock(Parcel source) {
+    stockTableId = source.readLong();
+    stockName = source.readString();
+    stockId = source.readString();
+    stockType = source.readInt();
+    currentPrice = source.readDouble();
+    currentPoint = source.readDouble();
+    fluctuationRate = source.readDouble();
+    volume = source.readLong();
+    turnover = source.readDouble();
+    specialAttention = source.readByte() != 0;
+    favorite = source.readByte() != 0;
+  }
+
+  public static final Parcelable.Creator<Stock> CREATOR = new Creator<Stock>() {
+    @Override
+    public Stock createFromParcel(Parcel source) {
+      return new Stock(source);
+    }
+
+    @Override
+    public Stock[] newArray(int size) {
+      return new Stock[size];
+    }
+  };
 }

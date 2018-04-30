@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.seckawijoki.graduation_project.R;
 import com.seckawijoki.graduation_project.constants.app.UnderlineDecoration;
 import com.seckawijoki.graduation_project.constants.app.QuotationListSortType;
+import com.seckawijoki.graduation_project.constants.common.BundleKey;
 import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.ActivityRequestCode;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
@@ -220,7 +221,10 @@ final class QuotationListViewImpl implements QuotationListContract.View,
 
         break;
       case R.id.tv_add_new_stock:
-
+        Intent intent = new Intent(IntentAction.SEARCH);
+        intent.putExtra(IntentKey.FAVORITE_GROUP_ID, fragment.getArguments().getLong(BundleKey.FAVORITE_GROUP_ID, -1L));
+//        fragment.startActivityForResult(intent, ActivityRequestCode.SEARCH);
+        fragment.startActivity(intent);
         break;
       case R.id.tv_delete:
         longClickDialog.dismiss();

@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 
 public class TradeSummaryAdapter extends RecyclerView.Adapter<TradeSummaryAdapter.ViewHolder> {
   private Context context;
-  private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("###,###,###.###");
+  private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("###,###,###.000");
   private double tradePrice;
   private int tradeCount;
   TradeSummaryAdapter setTradeCount(int tradeCount) {
@@ -36,7 +36,7 @@ public class TradeSummaryAdapter extends RecyclerView.Adapter<TradeSummaryAdapte
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.list_item_trade_summary, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.recycler_item_trade_summary, parent, false);
     return new ViewHolder(view);
   }
 
@@ -80,7 +80,7 @@ public class TradeSummaryAdapter extends RecyclerView.Adapter<TradeSummaryAdapte
   }
 
   interface TradeSummaryType {
-    int count = 4;
+    int count = 1;
     int ORDER_OF_MAGNITUDE = 0;
     int PURCHASING_POWER = 1;
     int MAX_AVAILABLE_BUYING_COUNT = 2;

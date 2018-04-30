@@ -1,5 +1,10 @@
 package com.seckawijoki.graduation_project.functions.recommendations;
 
+import com.seckawijoki.graduation_project.db.Stock;
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
+
+import java.util.List;
+
 /**
  * Created by 瑶琴频曲羽衣魂 on 2017/10/24.
  */
@@ -32,5 +37,25 @@ class RecommendationsPresenterImpl implements RecommendationsContract.Presenter,
   public void destroy() {
     view.destroy();
     model.destroy();
+  }
+
+  @Override
+  public void onRequestTopStocks() {
+    model.requestTopStocks();
+  }
+
+  @Override
+  public void onRequestHotStocks() {
+    model.requestHotStocks();
+  }
+
+  @Override
+  public void onDisplayTopStocks(List<ExpandableGroup> expandableGroupList) {
+    view.displayTopStocks(expandableGroupList);
+  }
+
+  @Override
+  public void onDisplayHotStocks(List<Stock> stockList) {
+    view.displayHotStocks(stockList);
   }
 }

@@ -1,6 +1,8 @@
 package com.seckawijoki.graduation_project.functions.favorite;
 
 import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
@@ -21,7 +23,7 @@ import java.util.concurrent.Executors;
  * Created by 瑶琴频曲羽衣魂 on 2017/12/4 at 16:30.
  */
 
-public final class FavoriteModelImpl implements FavoriteContract.Model {
+public final class FavoriteModelImpl extends Handler implements FavoriteContract.Model {
   private static final String TAG = "FavoriteModelImpl";
   private DataCallback callback;
   private Activity activity;
@@ -34,6 +36,11 @@ public final class FavoriteModelImpl implements FavoriteContract.Model {
   @Override
   public void onViewInitiate() {
 
+  }
+
+  @Override
+  public void handleMessage(Message msg) {
+    requestFavoriteGroupsFromDatabase();
   }
 
   @Override
@@ -68,10 +75,10 @@ public final class FavoriteModelImpl implements FavoriteContract.Model {
                 .setStockCount(jsonObject.getInt("stockCount"))
                 .saveOrUpdate("favoriteGroupId = ?", jsonObject.getString("favoriteGroupId"));
       }
-      requestFavoriteGroupsFromDatabase();
     } catch ( JSONException e ) {
-      requestFavoriteGroupsFromDatabase();
+
     }
+    sendEmptyMessage(0);
   }
 
   @Override

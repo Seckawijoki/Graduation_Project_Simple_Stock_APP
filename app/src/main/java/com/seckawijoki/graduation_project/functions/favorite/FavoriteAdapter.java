@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.text.TextUtils;
 
+import com.seckawijoki.graduation_project.constants.app.DefaultFavoriteGroups;
 import com.seckawijoki.graduation_project.constants.common.BundleKey;
 import com.seckawijoki.graduation_project.db.server.FavoriteGroupType;
 import com.seckawijoki.graduation_project.functions.quotation_list.QuotationListFragment;
@@ -29,10 +30,17 @@ class FavoriteAdapter extends FragmentPagerAdapter implements OnQuotationListRef
       bundle.putString(
               BundleKey.FAVORITE_GROUP_NAME,
               favoriteGroupTypeList.get(i).getFavoriteGroupName());
+      bundle.putLong(
+              BundleKey.FAVORITE_GROUP_ID,
+              favoriteGroupTypeList.get(i).getFavoriteGroupId());
       fragment.setArguments(bundle);
       fragmentList.add(fragment);
     }
     return this;
+  }
+
+  public long getFavoriteGroupId(int position){
+    return fragmentList.get(position).getArguments().getLong(BundleKey.FAVORITE_GROUP_ID, 0);
   }
 
   FavoriteAdapter(FragmentManager fm) {

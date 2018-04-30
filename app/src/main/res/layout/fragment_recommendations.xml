@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-  <TextView
-      style="@style/tv_main_fragments_title"
-      android:text="@string/label_recommendations"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_recommendations"
+        app:title="@string/label_recommendations"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@color/tc_tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ScrollView
+        android:layout_below="@id/tb_recommendations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_hot_stock"
+            android:text="@string/label_hot_stock_title"
+            android:paddingTop="@dimen/p_t_b_layout_top_stock_group_type"
+            android:paddingBottom="@dimen/p_t_b_layout_top_stock_group_type"
+            android:paddingLeft="@dimen/p_l_r_layout_top_stock_group_type"
+            android:paddingRight="@dimen/p_l_r_layout_top_stock_group_type"
+            android:textColor="@color/tc_top_stock_group_type"
+            android:textSize="@dimen/ts_top_stock_group_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_hot_stock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_top_stock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

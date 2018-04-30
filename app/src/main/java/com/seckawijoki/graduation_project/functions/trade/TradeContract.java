@@ -22,6 +22,7 @@ interface TradeContract {
     void displayFollowingTransaction(UserTransaction transaction);
     interface ActionCallback {
       void onRequestRefreshQuotation();
+      void onRequestRefreshQuotation(long stockTableId);
       void onRequestBuying(double tradePrice, int tradeCount);
       void onRequestSelling(double tradePrice, int tradeCount);
       void onRequestKLineChart(int kLineType);
@@ -33,6 +34,7 @@ interface TradeContract {
     void destroy();
     void setDataCallback(DataCallback callback);
     void requestRefreshQuotation();
+    void requestRefreshQuotation(long stockTableId);
     void requestBuying(double tradePrice, int tradeCount);
     void requestSelling(double tradePrice, int tradeCount);
     void requestKLineChart(int kLineType);

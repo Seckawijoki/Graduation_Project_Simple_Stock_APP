@@ -10,16 +10,16 @@
     <string-array name="array_assets">
         <item>动态</item>
         <item>交易</item>
-        <item>资产</item>
+        <!--<item>资产</item>-->
     </string-array>
     <string-array name="array_quotations">
         <item>自选</item>
-        <item>市场</item>
+        <!--<item>市场</item>-->
     </string-array>
     <string-array name="array_single_quotation">
         <item>报价</item>
-        <item>新闻</item>
-        <item>评论</item>
+        <!--<item>新闻</item>-->
+        <!--<item>评论</item>-->
     </string-array>
     <string-array name="array_k_line_choice_labels">
         <item>分时</item>
@@ -32,7 +32,12 @@
         <item>百度股市通</item>
         <item>腾讯证券</item>
     </string-array>
-    <string-array name="array_information">
+    <string-array name="array_information_title">
+        <item>要闻</item>
+        <!--<item>日历</item>-->
+        <!--<item>其它</item>-->
+    </string-array>
+    <string-array name="array_information_websites_title">
         <item>最新</item>
         <item>新浪财经</item>
         <item>同花顺财经</item>
@@ -40,11 +45,18 @@
         <item>京东股票</item>
         <item>东方财富网</item>
     </string-array>
-    <string-array name="array_information_url">
+    <string-array name="array_information_websites_url">
         <item>http://finance.sina.com.cn/</item>
         <item>http://www.10jqka.com.cn/</item>
         <item>http://stock.qq.com/</item>
         <item>http://gupiao.jd.com/</item>
         <item>http://www.eastmoney.com/</item>
+    </string-array>
+    <string-array name="array_top_stock_title">
+        <item>成交额榜</item>
+        <item>成交量榜</item>
+        <item>涨幅榜</item>
+        <item>跌幅榜</item>
+        <item>价格榜</item>
     </string-array>
 </resources>

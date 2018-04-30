@@ -6,6 +6,7 @@ package com.seckawijoki.graduation_project.functions.quotation_details;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.seckawijoki.graduation_project.R;
+import com.seckawijoki.graduation_project.constants.common.IntentAction;
 import com.seckawijoki.graduation_project.constants.common.IntentKey;
 import com.seckawijoki.graduation_project.constants.server.KLineType;
 import com.seckawijoki.graduation_project.db.QuotationDetails;
@@ -83,6 +85,10 @@ public class QuotationDetailsViewImpl implements
 
   @Override
   public void displayQuotationDetails(QuotationDetails details) {
+    Log.d(TAG, "displayQuotationDetails()\n: details = " + details);
+    if ( details == null ) {
+      return;
+    }
     chbFavor.setOnCheckedChangeListener(null);
     chbFavor.setChecked(details.isFavorite());
     chbFavor.setOnCheckedChangeListener(this);
@@ -96,7 +102,7 @@ public class QuotationDetailsViewImpl implements
     Date today9OClock = calendar.getTime();
     Time clockTime = details.getClockTime();
     java.sql.Date dateTime = details.getDateTime();
-    activity.runOnUiThread(() -> {
+//    activity.runOnUiThread(() -> {
       ( (TextView) view.findViewById(R.id.tv_quotation_details_id) )
               .setText(details.getStockId());
       ( (TextView) view.findViewById(R.id.tv_quotation_details_name) )
@@ -115,9 +121,8 @@ public class QuotationDetailsViewImpl implements
               .setText(dateTime.toString().substring(5)
                       + "  "
                       + clockTime.toString().substring(0, 5));
-
       detailsAdapter.setQuotationDetails(details).notifyDataSetChanged();
-    });
+//    });
     callback.onRequestKLine(kLineType);
   }
 
@@ -155,15 +160,21 @@ public class QuotationDetailsViewImpl implements
   public void displayKLine(File chartFile) {
     final Bitmap bitmap = BitmapFactory.decodeFile(chartFile.getPath());
     activity.runOnUiThread(()->{
-      kLineChoiceAdapter.notifyDataSetChanged();
       ImageView img = view.findViewById(R.id.img_k_line_chart);
       img.setImageBitmap(bitmap);
+      img.setOnClickListener(v -> {
+        Intent intent = new Intent(IntentAction.FULL_SCREEN_IMAGE);
+        intent.putExtra(IntentKey.FULL_SCREEN_IMAGE_URI, chartFile.getPath());
+        fragment.startActivity(intent);
+      });
     });
   }
 
   @Override
   public void onKLineChoose(int kLineType) {
     this.kLineType = kLineType;
+    new Handler().post(() -> kLineChoiceAdapter.notifyDataSetChanged());
+//    kLineChoiceAdapter.notifyDataSetChanged();
     callback.onRequestKLine(kLineType);
   }
 

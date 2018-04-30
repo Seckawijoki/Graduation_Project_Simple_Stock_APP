@@ -6,13 +6,13 @@ package com.seckawijoki.graduation_project.constants.server;
 
 public interface ServerPath {
   String WITH_LAPTOP_WIFI_CONNECTION = "http://192.168.191.1:80/";
-  String WITH_WHOLESALE_DEPARTMENT_WIFI_CONNECTION = "http://192.168.0.107:80/";
   String IN_THE_DORMITORY = "http://172.29.25.78:80/";
   String IN_THE_LIBRARY = "http://172.27.10.123:80/";
   String AT_HOME = "http://192.168.1.105:80/";
-//  String BASE_PATH = WITH_WIFI_CONNECTION;
+  String WITH_WHOLESALE_DEPARTMENT_WIFI_CONNECTION = "http://192.168.0.107:80/";
+  String BASE_PATH = WITH_LAPTOP_WIFI_CONNECTION;
 //  String BASE_PATH = IN_THE_DORMITORY;
-  String BASE_PATH = AT_HOME;
+//  String BASE_PATH = AT_HOME;
 //  String BASE_PATH = WITH_WHOLESALE_DEPARTMENT_WIFI_CONNECTION;
   /**
    * @Param
@@ -482,4 +482,34 @@ public interface ServerPath {
    * @return an APK file
    */
   String GET_LATEST_APK = BASE_PATH + "app/getLatestApk";
+  /**
+   * @Param
+   * topStockType {@link Integer}
+   * topStockOrder {@link Boolean}
+   * topStockCount {@link Integer}
+   * @return a {@link org.json.JSONArray}
+   * in which the element as {@link org.json.JSONObject} containing
+   * {@link Long} by the key "stockTableId"
+   * {@link String} by the key "stockId"
+   * {@link String} by the key "stockName"
+   * {@link Double} by the key "currentPrice"
+   * {@link Double} by the key "fluctuationRate"
+   * {@link Long} by the key "turnover"
+   * {@link Long} by the key "volume"
+   */
+  String GET_TOP_SEVERAL_STOCKS = BASE_PATH + "recommendations/getTopSeveralStocks";
+  /**
+   * @Param
+   * hotStockCount {@link Integer}
+   * @return a {@link org.json.JSONArray}
+   * in which the element as {@link org.json.JSONObject} containing
+   * {@link Long} by the key "stockTableId"
+   * {@link String} by the key "stockId"
+   * {@link String} by the key "stockName"
+   * {@link Double} by the key "currentPrice"
+   * {@link Double} by the key "fluctuationRate"
+   * {@link Long} by the key "turnover"
+   * {@link Long} by the key "volume"
+   */
+  String GET_HOT_STOCKS = BASE_PATH + "recommendations/getHotStocks";
 }

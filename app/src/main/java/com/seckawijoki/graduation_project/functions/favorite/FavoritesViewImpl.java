@@ -65,6 +65,10 @@ final class FavoritesViewImpl implements FavoriteContract.View, View.OnClickList
     callback = null;
   }
 
+  public long getFavoriteGroupId(){
+    return vpAdapter.getFavoriteGroupId(vp.getCurrentItem());
+  }
+
   @Override
   public void setActionCallback(ActionCallback callback) {
     this.callback = callback;

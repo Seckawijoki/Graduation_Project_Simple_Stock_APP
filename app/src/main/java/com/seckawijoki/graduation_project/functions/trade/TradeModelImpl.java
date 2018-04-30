@@ -51,7 +51,11 @@ final class TradeModelImpl implements TradeContract.Model {
 
   @Override
   public void requestRefreshQuotation() {
-    this.stockTableId = GlobalVariableTools.getTradeStockTableId(activity);
+    requestRefreshQuotation(this.stockTableId = GlobalVariableTools.getTradeStockTableId(activity));
+  }
+
+  @Override
+  public void requestRefreshQuotation(long stockTableId) {
     JSONArray jsonArray = OkHttpUtils.post()
             .addParam(MoJiReTsu.USER_ID, GlobalVariableTools.getUserId(activity))
             .addParam(MoJiReTsu.STOCK_TABLE_ID, stockTableId+"")
@@ -85,9 +89,10 @@ final class TradeModelImpl implements TradeContract.Model {
             .execute()
             .jsonObject();
     try {
+      Log.i(TAG, "requestBuying()\n: ");
       boolean result = jsonObject.getBoolean(MoJiReTsu.RESULT);
       if (result){
-
+        ToastUtils.show(activity, R.string.msg_succeed_in_buying);
       } else {
         ToastUtils.show(activity, R.string.error_failed_to_buy);
       }
@@ -98,7 +103,25 @@ final class TradeModelImpl implements TradeContract.Model {
 
   @Override
   public void requestSelling(double tradePrice, int tradeCount) {
-
+    JSONObject jsonObject = OkHttpUtils.post()
+            .url(ServerPath.ADD_TRANSACTION)
+            .addParam(MoJiReTsu.STOCK_TABLE_ID, stockTableId+"")
+            .addParam(MoJiReTsu.USER_ID, GlobalVariableTools.getUserId(activity))
+            .addParam(MoJiReTsu.TRADE_PRICE, tradePrice+"")
+            .addParam(MoJiReTsu.TRADE_COUNT, (-tradeCount)+"")
+            .execute()
+            .jsonObject();
+    try {
+      Log.i(TAG, "requestSelling()\n: ");
+      boolean result = jsonObject.getBoolean(MoJiReTsu.RESULT);
+      if (result){
+        ToastUtils.show(activity, R.string.msg_succeed_in_selling);
+      } else {
+        ToastUtils.show(activity, R.string.error_failed_to_sell);
+      }
+    } catch ( JSONException e ) {
+      e.printStackTrace();
+    }
   }
 
   private String requestKLineChartFileName(int kLineType) {

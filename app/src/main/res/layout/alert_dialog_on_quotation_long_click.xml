@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
+        android:visibility="gone"
         style="@style/tv_alert_dialog_options_item"
         android:id="@+id/tv_bulk_edition"
         android:text="@string/action_bulk_edition"

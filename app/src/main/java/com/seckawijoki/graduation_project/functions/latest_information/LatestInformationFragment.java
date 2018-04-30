@@ -6,7 +6,6 @@ package com.seckawijoki.graduation_project.functions.latest_information;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import com.seckawijoki.graduation_project.R;
 
 public class LatestInformationFragment extends Fragment {
   private LatestInformationContract.Presenter presenter;
+  private LatestInformationContract.Model model;
   public static LatestInformationFragment newInstance() {
     return new LatestInformationFragment();
   }
@@ -25,12 +25,16 @@ public class LatestInformationFragment extends Fragment {
     return inflater.inflate(R.layout.fragment_latest_information, container, false);
   }
 
+  public LatestInformationContract.Model getModel() {
+    return model;
+  }
+
   @Override
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
     presenter = new LatestInformationPresenterImpl()
             .setView(new LatestInformationViewImpl(this))
-            .setModel(new LatestInformationModelImpl())
+            .setModel(model = new LatestInformationModelImpl())
             .initiate();
   }
 

@@ -5,6 +5,8 @@
 
     <ImageView
         android:id="@+id/img_vp_information"
+        android:contentDescription="@string/label_latest_information"
+        android:src="@mipmap/ic_top_latest_information_foreground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
@@ -12,9 +14,8 @@
         android:id="@+id/tv_vp_information"
         android:background="@color/bg_tv_vp_information"
         android:textColor="@color/black"
-        android:text="title"
         android:gravity="center_vertical"
-        android:paddingStart="8dp"
+        android:paddingStart="@dimen/p_l_vp_latest_information_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h_tv_vp_latest_information"
         android:layout_alignParentBottom="true"

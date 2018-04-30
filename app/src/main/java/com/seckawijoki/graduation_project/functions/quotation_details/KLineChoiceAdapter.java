@@ -17,6 +17,7 @@ class KLineChoiceAdapter extends RecyclerView.Adapter<KLineChoiceAdapter.ViewHol
   private Context context;
   private int currentChoice = 0;
   private String[] kLineChoiceLabels;
+
   KLineChoiceAdapter(Context context) {
     this.context = context;
     kLineChoiceLabels = context.getResources().getStringArray(R.array.array_k_line_choice_labels);
@@ -29,21 +30,21 @@ class KLineChoiceAdapter extends RecyclerView.Adapter<KLineChoiceAdapter.ViewHol
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.list_item_k_line_choice, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.recycler_item_k_line_choice, parent, false);
     return new ViewHolder(view);
   }
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    CheckBox chbChoice = holder.chbChoice;
-    if (position < kLineChoiceLabels.length) {
-      chbChoice.setText(kLineChoiceLabels[position]);
+    if ( position < kLineChoiceLabels.length ) {
+      holder.chbChoice.setText(kLineChoiceLabels[position]);
     }
-    chbChoice.setChecked(currentChoice == position);
-    chbChoice.setOnClickListener(v -> {
-              currentChoice = position;
+    holder.chbChoice.setChecked(currentChoice == position);
+    final int p = position;
+    holder.chbChoice.setOnClickListener(v -> {
+              currentChoice = p;
               if ( listener != null ) {
-                listener.onKLineChoose(position);
+                listener.onKLineChoose(p);
               }
             }
     );

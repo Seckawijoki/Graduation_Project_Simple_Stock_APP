@@ -6,7 +6,6 @@ package com.seckawijoki.graduation_project.functions.market;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ class MarketStockAdapter extends RecyclerView.Adapter<MarketStockAdapter.ViewHol
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //    Log.i(TAG, "onCreateViewHolder()\n: ");
-    View view = LayoutInflater.from(context).inflate(R.layout.list_item_market_stock, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.recycler_item_market_stock, parent, false);
     return new ViewHolder(view);
   }
 
@@ -56,6 +55,7 @@ class MarketStockAdapter extends RecyclerView.Adapter<MarketStockAdapter.ViewHol
     ViewHolder(View view) {
       super(view);
       layout = view.findViewById(R.id.layout_list_item_market_stock);
+      layout.setClickable(false);
       tvStockName = view.findViewById(R.id.tv_stock_name);
       tvCurrentPrice = view.findViewById(R.id.tv_stock_current_price);
       tvCurrentPoint = view.findViewById(R.id.tv_stock_current_point);

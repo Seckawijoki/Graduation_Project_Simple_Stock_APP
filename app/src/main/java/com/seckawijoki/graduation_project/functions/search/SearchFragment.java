@@ -45,6 +45,7 @@ public final class SearchFragment extends Fragment
   private SearchStockAdapter searchAdapter;
   private boolean hasFavored;
   private String search;
+  private long favoriteGroupId;
 
   public static SearchFragment newInstance() {
     Bundle args = new Bundle();
@@ -88,6 +89,7 @@ public final class SearchFragment extends Fragment
     rvHistory.setAdapter(historyAdapter);
     rvSearch.setAdapter(searchAdapter);
     callback.onRequestStockSearchHistory();
+    ToastUtils.show(activity, activity.getIntent().getLongExtra(IntentKey.FAVORITE_GROUP_ID, -1L)+"");
   }
 
   @Override
@@ -224,11 +226,11 @@ public final class SearchFragment extends Fragment
 
   @Override
   public void onSearchStockFavor(SearchStock searchStock) {
-    if ( searchStock.isFavorite() ) {
-      callback.onRequestDeleteFavoriteStock(searchStock);
-    } else {
-      callback.onRequestAddFavoriteStock(searchStock);
-    }
+      if ( searchStock.isFavorite() ) {
+        callback.onRequestDeleteFavoriteStock(searchStock);
+      } else {
+        callback.onRequestAddFavoriteStock(searchStock);
+      }
   }
 
   @Override

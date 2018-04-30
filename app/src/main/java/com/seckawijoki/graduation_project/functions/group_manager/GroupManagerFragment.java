@@ -134,14 +134,7 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
     final EditText et = v.findViewById(R.id.et_group_name);
     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity)
             .setView(v)
-            .setTitle(R.string.label_input_group_name)
-            .setPositiveButton(R.string.action_confirm, (dialog, which) -> {
-              callback.onRequestAddNewGroup(
-                      et.getText().toString());
-            })
-            .setNegativeButton(R.string.action_cancel, (dialog, which) -> {
-
-            });
+            .setTitle(R.string.label_input_group_name);
     AlertDialog alertDialog = dialogBuilder.create();
     alertDialog.show();
     et.requestFocus();
