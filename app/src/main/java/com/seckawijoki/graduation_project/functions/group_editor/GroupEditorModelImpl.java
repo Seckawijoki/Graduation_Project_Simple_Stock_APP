@@ -57,6 +57,7 @@ final class GroupEditorModelImpl implements GroupEditorContract.Model {
   @Override
   public void requestDeleteFavoriteGroups(List<String> groupNameList) {
     Log.i(TAG, "requestDeleteFavoriteGroups(): ");
+    if (groupNameList == null || groupNameList.size() <= 0)return;
     Callable<String> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       FormBody.Builder formBodyBuilder = new FormBody.Builder()

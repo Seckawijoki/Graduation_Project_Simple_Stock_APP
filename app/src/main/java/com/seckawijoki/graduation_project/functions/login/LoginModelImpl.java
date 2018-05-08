@@ -9,6 +9,7 @@ import com.seckawijoki.graduation_project.constants.server.LoginStatus;
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.client.LoggedInUsers;
 import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.OkHttpUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ class LoginModelImpl implements LoginContract.Model {
   private static final String TAG = "LoginModelImpl";
   private DataCallback callback;
   private LoginAsyncTask loginAsyncTask;
-  private OkHttpClient okHttpClient = new OkHttpClient();
+  private OkHttpClient okHttpClient = OkHttpUtils.newOkHttpClient();
   LoginModelImpl(Activity activity) {
     this.activity = activity;
   }
@@ -159,14 +160,16 @@ class LoginModelImpl implements LoginContract.Model {
       if ( jsonObject == null ) {
         callback.onDisplayLogin(false, R.string.error_server_disconnected);
       } else {
+        int loginStatus = -1;
         try {
-          int loginStatus = jsonObject.getInt(LoginStatus.KEY);
+          loginStatus = jsonObject.getInt(LoginStatus.KEY);
           long userId = jsonObject.getLong("userId");
           GlobalVariableTools.setUserId(activity, userId);
-          checkLoginStatus(loginStatus);
           saveLoggedInUsers(mAccount, mPassword, loginStatus);
         } catch ( JSONException e ) {
           e.printStackTrace();
+        } finally {
+          checkLoginStatus(loginStatus);
         }
       }
     }

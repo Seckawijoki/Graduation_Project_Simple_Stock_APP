@@ -7,7 +7,7 @@ import com.seckawijoki.graduation_project.db.client.SearchStock;
  */
 
 public interface OnSearchStockListener {
-  void onSearchStockFavor(SearchStock searchStock);
+  void onSearchStockFavor(SearchStock searchStock, int favorPosition, boolean isHistory);
   void onSearchStockClick(SearchStock searchStock);
   void onSearchStockHistoryClear();
 }

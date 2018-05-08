@@ -33,7 +33,7 @@ import java.util.List;
  * Created by 瑶琴频曲羽衣魂 on 2017/12/10 at 15:02.
  */
 
-public class GroupManagerFragment extends Fragment implements GroupManagerContract.View,OnGroupManagerClickListener {
+public class GroupManagerFragment extends Fragment implements GroupManagerContract.View,OnGroupManagerClickListener, View.OnClickListener {
   private static final String TAG = "GroupManagerFragment";
   private GroupManagerContract.View.ActionCallback callback;
   private AppCompatActivity activity;
@@ -41,6 +41,9 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
   private RecyclerView rv;
   private GroupManagerAdapter adapter;
   private boolean hasAdded = false;
+  private AlertDialog alertDialog;
+  private EditText etNewGroupName;
+
   public static GroupManagerFragment newInstance() {
     Bundle args = new Bundle();
     GroupManagerFragment fragment = new GroupManagerFragment();
@@ -131,13 +134,15 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
   public void onAddNewGroup() {
     // TODO: 2017/12/10
     View v = activity.getLayoutInflater().inflate(R.layout.alert_dialog_on_group_name_change, null);
-    final EditText et = v.findViewById(R.id.et_group_name);
+    etNewGroupName = v.findViewById(R.id.et_group_name);
+    v.findViewById(R.id.btn_confirm).setOnClickListener(this);
+    v.findViewById(R.id.btn_cancel).setOnClickListener(this);
     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity)
             .setView(v)
             .setTitle(R.string.label_input_group_name);
-    AlertDialog alertDialog = dialogBuilder.create();
+    alertDialog = dialogBuilder.create();
     alertDialog.show();
-    et.requestFocus();
+    etNewGroupName.requestFocus();
   }
 
   @Override
@@ -171,5 +176,18 @@ public class GroupManagerFragment extends Fragment implements GroupManagerContra
             adapter = new GroupManagerAdapter(activity)
                     .setFavoriteGroupTypeList(favoriteGroupTypeList)
                     .setOnGroupManagerClickListener(this));
+  }
+
+  @Override
+  public void onClick(View v) {
+    switch ( v.getId() ){
+      case R.id.btn_confirm:
+        alertDialog.dismiss();
+        callback.onRequestAddNewGroup(etNewGroupName.getText().toString());
+        break;
+      case R.id.btn_cancel:
+        alertDialog.dismiss();
+        break;
+    }
   }
 }

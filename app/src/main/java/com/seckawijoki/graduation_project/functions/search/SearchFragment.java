@@ -46,6 +46,8 @@ public final class SearchFragment extends Fragment
   private boolean hasFavored;
   private String search;
   private long favoriteGroupId;
+  private int favorPosition;
+  private boolean isHistoryStockOperation;
 
   public static SearchFragment newInstance() {
     Bundle args = new Bundle();
@@ -89,7 +91,7 @@ public final class SearchFragment extends Fragment
     rvHistory.setAdapter(historyAdapter);
     rvSearch.setAdapter(searchAdapter);
     callback.onRequestStockSearchHistory();
-    ToastUtils.show(activity, activity.getIntent().getLongExtra(IntentKey.FAVORITE_GROUP_ID, -1L)+"");
+//    ToastUtils.show(activity, activity.getIntent().getLongExtra(IntentKey.FAVORITE_GROUP_ID, -1L)+"");
   }
 
   @Override
@@ -199,7 +201,7 @@ public final class SearchFragment extends Fragment
     ToastUtils.show(activity, successful ?
             R.string.msg_succeed_in_adding_favorite_stock
             : R.string.error_failed_to_add_favorite_stock);
-    searchAdapter.notifyDataSetChanged();
+    notifyItemChanged();
   }
 
   @Override
@@ -208,7 +210,17 @@ public final class SearchFragment extends Fragment
     ToastUtils.show(activity, successful ?
             R.string.msg_succeed_in_cancelling_favorite_stock
             : R.string.error_failed_to_cancel_favorite_stock);
-    searchAdapter.notifyDataSetChanged();
+    notifyItemChanged();
+
+  }
+
+  private void notifyItemChanged(){
+    if (isHistoryStockOperation) {
+      historyAdapter.notifyItemChanged(favorPosition);
+    } else {
+      callback.onRequestStockSearch(search);
+//      searchAdapter.notifyDataSetChanged();
+    }
   }
 
   @Override
@@ -225,7 +237,9 @@ public final class SearchFragment extends Fragment
   }
 
   @Override
-  public void onSearchStockFavor(SearchStock searchStock) {
+  public void onSearchStockFavor(SearchStock searchStock, int favorPosition, boolean isHistory) {
+    isHistoryStockOperation = isHistory;
+    this.favorPosition = favorPosition;
       if ( searchStock.isFavorite() ) {
         callback.onRequestDeleteFavoriteStock(searchStock);
       } else {

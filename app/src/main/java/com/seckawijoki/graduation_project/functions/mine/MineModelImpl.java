@@ -61,8 +61,8 @@ class MineModelImpl implements MineContract.Model {
             .executeForFile();
     new User()
             .setUserId(Long.parseLong(userId))
-            .setPortraitUri(portraitFile.getPath())
-            .setPortraitFileName(portraitFile.getName())
+            .setPortraitUri(portraitFile != null ? portraitFile.getPath() : null)
+            .setPortraitFileName(portraitFile != null ? portraitFile.getName() : null)
             .saveOrUpdate("userId = ?", userId);
     Log.d(TAG, "requestUserPortrait()\n: portraitFile = " + portraitFile);
     callback.onDisplayUserPortrait(portraitFile);

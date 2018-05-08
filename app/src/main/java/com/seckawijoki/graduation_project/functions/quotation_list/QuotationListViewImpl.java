@@ -106,8 +106,13 @@ final class QuotationListViewImpl implements QuotationListContract.View,
       }
       if (stockList == null || stockList.size() <= 0) {
         rv.setVisibility(View.GONE);
-        layoutAddNewStock.setVisibility(View.VISIBLE);
-        tvAddNewStock.setOnClickListener(this);
+        if (groupName.equals(DefaultGroups.SPECIAL_ATTENTION)){
+          layoutAddNewStock.setVisibility(View.INVISIBLE);
+          tvAddNewStock.setOnClickListener(null);
+        } else {
+          layoutAddNewStock.setVisibility(View.VISIBLE);
+          tvAddNewStock.setOnClickListener(this);
+        }
       } else {
         rv.setVisibility(View.VISIBLE);
         layoutAddNewStock.setVisibility(View.GONE);

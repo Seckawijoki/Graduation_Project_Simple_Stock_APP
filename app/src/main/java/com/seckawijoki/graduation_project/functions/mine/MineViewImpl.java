@@ -116,8 +116,12 @@ class MineViewImpl implements MineContract.View,
   @Override
   public void displayUserPortrait(File portraitFile) {
     activity.runOnUiThread(() -> {
-      Bitmap bitmap = BitmapFactory.decodeFile(portraitFile.getPath());
-      ( (ImageView) view.findViewById(R.id.img_portrait) ).setImageBitmap(bitmap);
+      if (portraitFile != null) {
+        Bitmap bitmap = BitmapFactory.decodeFile(portraitFile.getPath());
+        ( (ImageView) view.findViewById(R.id.img_portrait) ).setImageBitmap(bitmap);
+      } else {
+        ( (ImageView) view.findViewById(R.id.img_portrait) ).setImageResource(R.drawable.ic_default_image);
+      }
     });
   }
 

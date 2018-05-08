@@ -160,6 +160,8 @@ public class QuotationDetailsViewImpl implements
   public void displayKLine(File chartFile) {
     final Bitmap bitmap = BitmapFactory.decodeFile(chartFile.getPath());
     activity.runOnUiThread(()->{
+//      kLineChoiceAdapter.notifyDataSetChanged();
+//      kLineChoiceAdapter.updateKLineChoice();
       ImageView img = view.findViewById(R.id.img_k_line_chart);
       img.setImageBitmap(bitmap);
       img.setOnClickListener(v -> {
@@ -173,7 +175,6 @@ public class QuotationDetailsViewImpl implements
   @Override
   public void onKLineChoose(int kLineType) {
     this.kLineType = kLineType;
-    new Handler().post(() -> kLineChoiceAdapter.notifyDataSetChanged());
 //    kLineChoiceAdapter.notifyDataSetChanged();
     callback.onRequestKLine(kLineType);
   }

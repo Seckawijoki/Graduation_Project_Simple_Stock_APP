@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
       );
     }
     presenter = new RegisterPresenterImpl();
-    RegisterContract.Model model = new RegisterModelImpl();
+    RegisterContract.Model model = new RegisterModelImpl(this);
     presenter.setModel(model).setView(fragment).initiate();
   }
 

@@ -1,10 +1,13 @@
 package com.seckawijoki.graduation_project.functions.register;
 
+import android.app.Activity;
 import android.util.Log;
 
 import com.seckawijoki.graduation_project.R;
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.client.LoggedInUsers;
+import com.seckawijoki.graduation_project.tools.GlobalVariableTools;
+import com.seckawijoki.graduation_project.utils.ToastUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +36,10 @@ class RegisterModelImpl extends EventHandler implements RegisterContract.Model {
   private DataCallback callback;
   private ExecutorService pool = Executors.newFixedThreadPool(2);
   private String phone;
+  private Activity context;
+  RegisterModelImpl(Activity context) {
+    this.context = context;
+  }
 
   @Override
   public void onViewInitiate() {
@@ -95,14 +102,14 @@ class RegisterModelImpl extends EventHandler implements RegisterContract.Model {
   }
 
   @Override
-  public void requestRegister(final String password, final String mac) {
-    Log.d(TAG, "requestRegister(): phone = " + phone);
+  public void requestRegister(String phone, final String password, final String mac) {
+    Log.d(TAG, "requestRegister(): phone = " + (this.phone = phone));
     Log.d(TAG, "requestRegister(): password = " + password);
     Log.d(TAG, "requestRegister(): mac = " + mac);
-    Callable<Boolean> callable = () -> {
+    Callable<JSONObject> callable = () -> {
       OkHttpClient okHttpClient = new OkHttpClient();
       RequestBody requestBody = new FormBody.Builder()
-              .add("phone", phone)
+              .add("phone", this.phone)
               .add("password", password)
               .add("mac", mac)
               .build();
@@ -111,30 +118,27 @@ class RegisterModelImpl extends EventHandler implements RegisterContract.Model {
               .post(requestBody)
               .build();
       Response response = okHttpClient.newCall(request).execute();
-      if ( response.isSuccessful() ) {
         ResponseBody responseBody = response.body();
-        Boolean result = Boolean.valueOf(responseBody.string());
-        Log.d(TAG, "register(): result = " + result);
-        return result;
-      } else {
-        return false;
-      }
+        return new JSONObject(responseBody.string());
     };
-    Future<Boolean> future = pool.submit(callable);
+    Future<JSONObject> future = pool.submit(callable);
     try {
-      boolean successful = future.get();
+      JSONObject jsonObject = future.get();
+      boolean successful = jsonObject.getBoolean("result");
       if ( successful ) {
         new LoggedInUsers()
-                .setAccount(phone)
+                .setAccount(this.phone)
                 .setPassword(password)
                 .setLastLoginTime(System.currentTimeMillis())
                 .save();
+        GlobalVariableTools.setUserId(context, jsonObject.getInt("userId"));
         callback.onDisplayRegister(true, R.string.msg_register_succeeded);
       } else {
         callback.onDisplayRegister(false, R.string.error_register_failed);
       }
-    } catch ( InterruptedException | ExecutionException e ) {
+    } catch ( InterruptedException | ExecutionException | JSONException e ) {
       Log.e(TAG, "register(): ", e);
+      ToastUtils.show(context, R.string.error_server_disconnected);
     }
   }
 

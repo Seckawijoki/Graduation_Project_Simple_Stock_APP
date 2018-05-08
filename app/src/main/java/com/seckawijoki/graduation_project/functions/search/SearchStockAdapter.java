@@ -102,14 +102,14 @@ class SearchStockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
           }
         });
       } else {
-        onBindViewHolder(holder, searchStockList.get(position - 1));
+        onBindViewHolder(holder, searchStockList.get(position - 1), position-1);
       }
     } else {
-      onBindViewHolder(holder, searchStockList.get(position));
+      onBindViewHolder(holder, searchStockList.get(position), position);
     }
   }
 
-  private void onBindViewHolder(RecyclerView.ViewHolder h, SearchStock searchStock) {
+  private void onBindViewHolder(RecyclerView.ViewHolder h, SearchStock searchStock, int position) {
     ViewHolder holder = (ViewHolder) h;
     switch ( searchStock.getStockType() ) {
       case StockType.SH:
@@ -131,7 +131,7 @@ class SearchStockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     holder.chbFavor.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        listener.onSearchStockFavor(searchStock);
+        listener.onSearchStockFavor(searchStock, position, isHistory);
       }
     });
   }

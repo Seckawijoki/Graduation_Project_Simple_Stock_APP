@@ -9,14 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.seckawijoki.graduation_project.R;
 
 class KLineChoiceAdapter extends RecyclerView.Adapter<KLineChoiceAdapter.ViewHolder> {
   private OnKLineChooseListener listener;
   private Context context;
+  private int previousChoice = 0;
   private int currentChoice = 0;
   private String[] kLineChoiceLabels;
+  private CheckBox chbPrevious;
 
   KLineChoiceAdapter(Context context) {
     this.context = context;
@@ -26,6 +29,10 @@ class KLineChoiceAdapter extends RecyclerView.Adapter<KLineChoiceAdapter.ViewHol
   KLineChoiceAdapter setOnKLineChooseListener(OnKLineChooseListener listener) {
     this.listener = listener;
     return this;
+  }
+
+  void updateKLineChoice() {
+    notifyItemChanged(previousChoice);
   }
 
   @Override
@@ -41,13 +48,42 @@ class KLineChoiceAdapter extends RecyclerView.Adapter<KLineChoiceAdapter.ViewHol
     }
     holder.chbChoice.setChecked(currentChoice == position);
     final int p = position;
-    holder.chbChoice.setOnClickListener(v -> {
-              currentChoice = p;
-              if ( listener != null ) {
-                listener.onKLineChoose(p);
-              }
-            }
-    );
+    CheckBox checkBox = holder.chbChoice;
+    holder.chbChoice.setOnClickListener((v) -> {
+
+      if ( currentChoice == p ) {
+        chbPrevious = checkBox;
+        checkBox.setChecked(true);
+        return;
+      }
+      if ( chbPrevious != null ) {
+        chbPrevious.setChecked(false);
+      }
+      notifyItemChanged(previousChoice = currentChoice);
+      currentChoice = p;
+      chbPrevious = checkBox;
+
+/*
+
+      CheckBox cb = (CheckBox) holder.chbChoice;
+      int clickedPos = ( (Integer) cb.getTag() ).intValue();
+
+      if ( cb.isChecked() ) {
+        if ( chbPrevious != null ) {
+          chbPrevious.setChecked(false);
+        }
+
+        chbPrevious = cb;
+        previousChoice = clickedPos;
+      } else
+        chbPrevious = null;
+
+*/
+
+      if ( listener != null ) {
+        listener.onKLineChoose(p);
+      }
+    });
   }
 
   @Override

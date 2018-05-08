@@ -225,11 +225,14 @@ public class RegisterFragment extends Fragment implements RegisterContract.View,
 
   private void attemptToRegister(){
     String vericode = actvVericode.getText().toString();
+/*
     if (TextUtils.isEmpty(vericode)){
       actvVericode.requestFocus();
       actvVericode.setError(getString(R.string.error_field_required));
       return;
     }
+*/
+
     String password = actvPassword.getText().toString();
     if (TextUtils.isEmpty(password)){
       actvPassword.requestFocus();
@@ -239,7 +242,10 @@ public class RegisterFragment extends Fragment implements RegisterContract.View,
     WifiManager wifiManager = (WifiManager)
             activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
     String mac = wifiManager.getConnectionInfo().getMacAddress();
-    callback.onRequestRegister(password, mac);
+    if (password.length() < 6){
+      actvPassword.setError(getString(R.string.error_too_short_password));
+    } else
+    callback.onRequestRegister(actvPhone.getText().toString(), password, mac);
   }
 
   @Override
@@ -262,6 +268,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View,
         sendVericodeHandler.post(runnable);
         btnGetVericode.setEnabled(false);
         callback.onRequestGetVericode("86", actvPhone.getText().toString());
+//        actvPassword.requestFocus();
         break;
       case R.id.img_clear_register_password:
         actvPassword.setText("");

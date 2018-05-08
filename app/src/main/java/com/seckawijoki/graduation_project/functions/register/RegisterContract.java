@@ -16,7 +16,7 @@ interface RegisterContract {
     interface ActionCallback {
       void onRequestGetVericode(String country, String phone);
       void onRequestSubmitVericode(String phone, String vericode);
-      void onRequestRegister(String password, String mac);
+      void onRequestRegister(String phone, String password, String mac);
     }
   }
 
@@ -26,7 +26,7 @@ interface RegisterContract {
     void setDataCallback(DataCallback callback);
     void requestGetVericode(String country, String phone);
     void requestSubmitVericode(String phone, String vericode);
-    void requestRegister(String password, String mac);
+    void requestRegister(String phone, String password, String mac);
     interface DataCallback {
       void onDisplaySubmitVericode(boolean successful, int msgId);
       void onDisplaySubmitVericode(boolean successful, String msg);

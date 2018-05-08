@@ -33,14 +33,21 @@ import okhttp3.Response;
 public class OkHttpUtils {
   private static final String TAG = "OkHttpUtils";
   private static ExecutorService threadPool;
-  private static final int TIMEOUT_SECONDS = 10;
+  private static final int TIMEOUT = 60;
 
-  private static OkHttpClient newOkHttpClient() {
-    return new OkHttpClient.Builder()
-            .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+  public static OkHttpClient newOkHttpClient() {
+    OkHttpClient okHttpClient;
+//    return new OkHttpClient();
+//    /*
+    okHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .build();
+//    */
+    Log.d(TAG, "newOkHttpClient()\n: okHttpClient.connectTimeoutMillis() = " + okHttpClient.connectTimeoutMillis());
+    return okHttpClient;
+    
   }
 
   private OkHttpUtils() {

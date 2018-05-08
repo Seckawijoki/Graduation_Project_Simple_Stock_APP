@@ -47,8 +47,8 @@ class RegisterPresenterImpl implements RegisterContract.Presenter,
   }
 
   @Override
-  public void onRequestRegister(String password, String mac) {
-    model.requestRegister(password, mac);
+  public void onRequestRegister(String phone, String password, String mac) {
+    model.requestRegister(phone, password, mac);
   }
 
   @Override

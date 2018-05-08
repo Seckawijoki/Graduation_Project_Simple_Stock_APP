@@ -112,7 +112,7 @@ class GroupEditorAdapter extends RecyclerView.Adapter<GroupEditorAdapter.ViewHol
 
   @Override
   public int getItemCount() {
-    return favoriteGroupTypeList == null ? 0 : favoriteGroupTypeList.size() + 1;
+    return favoriteGroupTypeList == null ? 0 : favoriteGroupTypeList.size();
   }
 
   static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

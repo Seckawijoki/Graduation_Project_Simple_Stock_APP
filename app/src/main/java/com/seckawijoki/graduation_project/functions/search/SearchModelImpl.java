@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.util.Log;
 
+import com.seckawijoki.graduation_project.constants.app.DefaultGroupIds;
 import com.seckawijoki.graduation_project.constants.server.ServerPath;
 import com.seckawijoki.graduation_project.db.client.SearchStock;
 import com.seckawijoki.graduation_project.db.server.FavoriteStock;
@@ -225,7 +226,7 @@ public final class SearchModelImpl implements SearchContract.Model {
       new FavoriteStock()
               .setStockTableId(searchStock.getStockTableId())
               .setSpecialAttention(false)
-              .setFavoriteGroupId(0)
+              .setFavoriteGroupId(DefaultGroupIds.ALL)
               .setRankWeight(jsonObject.getInt("rankWeight"))
               .save();
       ContentValues contentValues = new ContentValues();
