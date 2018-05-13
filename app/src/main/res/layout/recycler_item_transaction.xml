@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/p_t_b_layout_list_item_transaction"
+                android:paddingLeft="@dimen/p_l_r_layout_list_item_transaction"
+                android:paddingRight="@dimen/p_l_r_layout_list_item_transaction"
+                android:paddingTop="@dimen/p_t_b_layout_list_item_transaction">
+
+    <ImageView
+        android:id="@+id/img_transaction_user_portrait"
+        android:layout_width="@dimen/w_h_transaction_user_portrait"
+        android:layout_height="@dimen/w_h_transaction_user_portrait"
+        android:contentDescription="@string/label_portrait"/>
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/img_transaction_user_portrait"
+        android:layout_marginLeft="@dimen/m_l_transaction_user_nickname"
+        android:layout_toRightOf="@id/img_transaction_user_portrait"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:layout_below="@+id/img_transaction_user_portrait"
+        android:layout_marginTop="@dimen/m_t_transaction_dotted_line"
+        android:background="@drawable/shape_dotted_line"/>
+
+    <TextView
+        android:text="@string/label_buy"
+        android:id="@+id/tv_buy_or_sell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_nickname"
+        android:layout_below="@id/tv_nickname"
+        android:layout_marginRight="@dimen/m_r_transaction_buy_or_sell_label"
+        android:layout_marginTop="@dimen/m_t_transaction_buy_or_sell_label"/>
+
+    <TextView
+        android:id="@+id/tv_stock_name_id_and_type"
+        android:textColor="@color/tc_transaction_stock_name_id_and_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_buy_or_sell"
+        android:layout_toRightOf="@id/tv_buy_or_sell"
+        android:text="@string/default_value"        />
+
+    <TextView
+        android:id="@+id/tv_label_transaction_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_buy_or_sell"
+        android:layout_below="@id/tv_buy_or_sell"
+        android:layout_marginRight="@dimen/m_r_transaction_price_label"
+        android:layout_marginTop="@dimen/m_t_transaction_price_label"
+        android:text="@string/label_transaction_price"/>
+
+    <TextView
+        android:id="@+id/tv_value_transaction_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_label_transaction_price"
+        android:layout_toRightOf="@id/tv_label_transaction_price"
+        android:text="@string/default_value"/>
+
+    <TextView
+        android:id="@+id/tv_transaction_date_time"
+        android:layout_width="wrap_content"
+        android:textColor="@color/tc_transaction_date_time"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/ts_transaction_date_time"
+        android:layout_marginTop="@dimen/m_t_transaction_date_time"
+        android:layout_alignLeft="@id/tv_label_transaction_price"
+        android:layout_below="@id/tv_label_transaction_price"/>
+
+    <TextView
+        android:id="@+id/tv_follow_to_buy_or_sell"
+        android:layout_width="@dimen/w_follow_to_buy_or_sell"
+        android:layout_height="@dimen/h_follow_to_buy_or_sell"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/tv_transaction_date_time"
+        android:background="@drawable/shape_follow_to_buy"
+        android:gravity="center"
+        android:text="@string/action_follow_to_buy"
+        android:textColor="@color/white"
+        android:textSize="@dimen/ts_follow_to_buy_or_sell"/>
+</RelativeLayout>

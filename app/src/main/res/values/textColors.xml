@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- default colors -->
+    <color name="tc_tb">@color/white</color>
+    <color name="tc_default_magic_indicator_label_checked">@color/white</color>
+    <color name="tc_default_magic_indicator_label">#607D8B</color>
+
+
+    <!-- default colors about Stocks and Quotations -->
+    <color name="tc_stock_red">#F44336</color>
+    <color name="tc_stock_green">#4CAF50</color>'
+    <color name="tc_stock_grey">#E0E0E0</color>'
+
+    <!-- colors in MainActivity -->
+
+    <!-- colors in RegisterFragment -->
+
+    <!-- colors in RecommendationsFragment -->
+    <color name="tc_top_stock_group_type">@color/white</color>
+
+    <!-- colors in TransactionFragment -->
+    <color name="tc_transaction_date_time">#BDBDBD</color>
+    <color name="tc_transaction_stock_name_id_and_type">#2979FF</color>
+
+    <!-- colors in TradeFragment -->
+    <color name="tc_trade_stock_name_id_and_type">#757575</color>
+    <color name="tc_trade_stock_current_price">@color/red</color>
+    <color name="tc_trade_stock_current_point">@color/red</color>
+    <color name="tc_trade_stock_fluctuation_rate">@color/red</color>
+    <color name="tc_open_or_close_k_line_chart">#3F51B5</color>
+    <color name="tc_unit_price_of_buying_label">@color/black</color>
+    <color name="tc_unit_price_of_selling_label">@color/black</color>
+    <color name="tc_unit_price_of_buying_or_selling">@color/red</color>
+    <color name="tc_trade_summary_label">@color/tc_trade_stock_name_id_and_type</color>
+    <color name="tc_trade_summary_value_blue">@color/bg_follow_to_buy</color>
+    <color name="tc_trade_summary_value_orange">@color/bg_follow_to_sell</color>
+
+    <!-- colors in QuotationsFragment -->
+
+    <!-- colors in FavoritesFragment -->
+
+    <!-- colors in MarketFragment -->
+    <color name="tc_market_stock_name">@color/white</color>
+    <color name="tc_market_stock_current_price">@color/white</color>
+    <color name="tc_market_stock_current_point">@color/white</color>
+    <color name="tc_market_stock_fluctuation_rate">@color/white</color>
+
+    <!-- colors in QuotationListFragment -->
+
+    <!-- colors in GroupManagerFragment -->
+    <color name="tc_add_new_group">#0091EA</color>
+
+    <!-- colors in OldQuotationsFragment -->
+    <color name="tc_stock_id">#BDBDBD</color>
+
+    <!-- colors in QuotationDetailsViewImpl -->
+    <color name="tc_quotation_details_status">#9E9E9E</color>
+    <color name="tc_quotation_details_date_and_clock_time">#9E9E9E</color>
+    <color name="tc_quotation_details_label">#9E9E9E</color>
+    <color name="tc_k_line_choice">#E0E0E0</color>
+
+    <!-- colors in InformationFragment -->
+    <color name="tc_information_indicator_checked">@color/white</color>
+    <color name="tc_information_indicator_unchecked">#0091EA</color>
+
+    <!-- colors in InformationDetailsFragment -->
+    <color name="tc_information_details_title">@color/black</color>
+    <color name="tc_information_details_date_time">#BDBDBD</color>
+    <color name="tc_information_details_author">#2979FF</color>
+    <color name="tc_information_details_content">@color/black</color>
+
+    <!-- colors in MineFragment -->
+    <color name="tc_tv_personal_information">#2979FF</color>
+
+    <!-- colors in SettingsFragment -->
+    <color name="tc_settings_list_item_label">@color/black</color>
+    <color name="tc_settings_list_item_value">#9E9E9E</color>
+
+    <!-- colors in PersonalInfoFragment -->
+    <color name="tc_personal_info_list_item_label">@color/tc_settings_list_item_label</color>
+    <color name="tc_personal_info_list_item_value">@color/tc_settings_list_item_value</color>
+
+    <!-- colors in AboutUsFragment -->
+    <color name="tc_about_us_list_item_label">@color/tc_settings_list_item_label</color>
+    <color name="tc_about_us_list_item_value">@color/tc_settings_list_item_value</color>
+    <color name="tc_official_website">#1E88E5</color>
+    <color name="tc_copyright">#9E9E9E</color>
+
+
+</resources>

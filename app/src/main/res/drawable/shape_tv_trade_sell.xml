@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners
+        android:radius="@dimen/radius_bg_trade_buy_or_sell"/>
+    <solid
+        android:color="@color/bg_sell"/>
+    <stroke
+        android:width="0dp"/>
+    <padding
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp"
+        android:bottom="3dp"
+        />
+</shape>

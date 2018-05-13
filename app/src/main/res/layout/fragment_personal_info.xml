@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/bg_personal_info_fragment"
+              xmlns:app="http://schemas.android.com/apk/res-auto"    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_personal_info"
+        app:navigationIcon="@mipmap/ic_arrow_back_white"
+        android:background="?attr/colorPrimary"
+        app:title="@string/label_personal_info"
+        app:titleTextColor="@color/tc_tb"
+        app:theme="@style/MyToolBarTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_personal_info"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

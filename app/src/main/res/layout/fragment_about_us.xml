@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@color/bg_settings_fragment"
+                android:gravity="center_horizontal"
+                android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_about_us"
+        app:navigationIcon="@mipmap/ic_arrow_back_white"
+        app:titleTextColor="@color/tc_tb"
+        app:title="@string/label_about"
+        android:background="?attr/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_below="@id/tb_about_us"
+        android:layout_marginTop="@dimen/m_t_app_icon"
+        android:id="@+id/img_app_icon"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/ic_app_icon_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_below="@id/img_app_icon"
+        android:textColor="@color/black"
+        android:textSize="@dimen/ts_app_name_and_version"
+        android:layout_marginTop="@dimen/m_t_app_name_and_version"
+        android:layout_marginBottom="@dimen/m_b_app_name_and_version"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv_app_name_and_version"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/tv_app_name_and_version"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/rv_about_us"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_copyright"
+        android:textSize="@dimen/ts_copyright"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/label_copyright"
+        android:layout_marginBottom="@dimen/m_b_copyright"
+        android:textColor="@color/tc_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/ts_official_website"
+        android:layout_above="@id/tv_copyright"
+        android:gravity="center"
+        android:id="@+id/tv_official_website"
+        android:layout_marginBottom="@dimen/m_b_official_website"
+        android:text="@string/action_official_website"
+        android:textColor="@color/tc_official_website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

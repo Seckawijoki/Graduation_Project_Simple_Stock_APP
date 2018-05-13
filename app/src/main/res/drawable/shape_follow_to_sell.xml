@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="4dp"/>
+    <solid android:color="@color/bg_follow_to_sell"/>
+    <stroke
+        android:width="1px"
+        android:color="@color/bg_follow_to_sell"/>
+    <padding
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp"/>
+</shape>

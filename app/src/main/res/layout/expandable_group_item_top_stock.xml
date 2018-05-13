@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+                android:paddingTop="@dimen/p_t_b_layout_top_stock_group_type"
+                android:paddingBottom="@dimen/p_t_b_layout_top_stock_group_type"
+                android:paddingLeft="@dimen/p_l_r_layout_top_stock_group_type"
+                android:paddingRight="@dimen/p_l_r_layout_top_stock_group_type"
+              android:layout_height="wrap_content">
+    <TextView
+        android:text="@string/action_click_to_rename_group"
+        android:id="@+id/tv_top_stock_group_type"
+        android:textColor="@color/tc_top_stock_group_type"
+        android:textSize="@dimen/ts_top_stock_group_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

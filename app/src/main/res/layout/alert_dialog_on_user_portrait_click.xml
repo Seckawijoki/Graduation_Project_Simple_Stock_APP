@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              style="@style/layout_alert_dialog"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        style="@style/tv_alert_dialog_options_item"
+        android:id="@+id/tv_photograph"
+        android:text="@string/action_photograph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        style="@style/tv_alert_dialog_options_item"
+        android:id="@+id/tv_select_from_album"
+        android:text="@string/action_select_from_album"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:visibility="gone"
+        style="@style/tv_alert_dialog_options_item"
+        android:id="@+id/tv_check_portrait"
+        android:text="@string/action_check_portrait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

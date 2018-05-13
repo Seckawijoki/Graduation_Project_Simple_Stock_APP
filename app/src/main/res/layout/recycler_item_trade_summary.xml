@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:background="@color/transparent"
+              android:layout_marginTop="@dimen/m_t_b_layout_trade_summary_list_item"
+              android:layout_marginBottom="@dimen/m_t_b_layout_trade_summary_list_item"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_trade_summary_label"
+        android:textColor="@color/tc_trade_summary_label"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/ts_trade_summary"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_trade_summary_value"
+        android:textSize="@dimen/ts_trade_summary"
+        android:textColor="@color/tc_trade_summary_value_blue"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

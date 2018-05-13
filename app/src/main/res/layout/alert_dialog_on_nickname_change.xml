@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              style="@style/layout_alert_dialog"
+              android:paddingLeft="@dimen/p_l_r_layout_alert_dialog"
+              android:paddingRight="@dimen/p_l_r_layout_alert_dialog"
+              android:orientation="vertical"
+              android:layout_height="match_parent">
+
+    <EditText
+        style="@style/et_alert_dialog"
+        android:id="@+id/et_new_nickname"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/m_t_new_nickname"
+        android:layout_marginBottom="@dimen/m_b_new_nickname"
+        android:hint="@string/prompt_new_nickname"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="@string/tip_good_nickname_to_be_remembered"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="@dimen/m_b_new_nickname_tip"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            style="@style/btn_alert_dialog"
+            android:text="@string/action_save"
+            android:id="@+id/btn_save"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/btn_alert_dialog"
+            android:text="@string/action_cancel"
+            android:layout_alignBottom="@id/btn_save"
+            android:layout_toLeftOf="@id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</LinearLayout>

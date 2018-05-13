@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_increase_font_size"
+        android:orderInCategory="1"
+        android:icon="@mipmap/ic_increase_font_size_white"
+        android:title="@string/action_increase_font_size"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_decrease_font_size"
+        android:icon="@mipmap/ic_decrease_font_size_white"
+        android:orderInCategory="2"
+        android:title="@string/action_decrease_font_size"
+        app:showAsAction="ifRoom"/>
+</menu>
